@@ -1,0 +1,100 @@
+.form {
+  height: 436px;
+  width: 360px;
+  border-radius: 4px;
+}
+.formHeader {
+  background: rgba(34, 34, 34, 1);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.formHeader h2 {
+  font-family: Fira Sans;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+
+  color: rgba(255, 255, 255, 1);
+}
+.activities {
+  height: 132px;
+  display: flex;
+}
+.formcontrol {
+  flex-grow: 1;
+  background-color: #fff;
+  position: relative;
+}
+.formcontrol input[type='radio'] {
+  display: none;
+}
+.formcontrol input[type='checkbox'] {
+  display: none;
+}
+
+.formcontrol label {
+  text-align: center;
+}
+.formcontrol label img {
+  position: absolute;
+  left: 16.13%;
+  right: 14.75%;
+  top: 14.52%;
+  bottom: 14.68%;
+}
+
+.formcontrol label span {
+  position: absolute;
+  bottom: 18px;
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: rgba(175, 175, 175, 1);
+
+  left: 45px;
+}
+.button {
+  background: #232e29;
+  width: 360px;
+  height: 72px;
+  font-family: Fira Sans;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(251, 251, 251, 1);
+  border: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+}
+.activitytime {
+}
+.tidinfo span {
+  position: absolute;
+  left: 16.13%;
+  right: 14.75%;
+
+  bottom: 14.68%;
+}
+.tidinfo p {
+  font-family: Fira Sans;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: center;
+  color: rgba(175, 175, 175, 1);
+}

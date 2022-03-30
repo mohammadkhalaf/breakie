@@ -1,10 +1,13 @@
 import React from 'react';
 import Form from '../componets/Form';
+import classes from './home.module.css';
 
 const Home = () => {
   return (
     <>
-      <Form />
+      <div className={classes.home}>
+        <Form />
+      </div>
     </>
   );
 };
