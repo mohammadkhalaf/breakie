@@ -5,15 +5,16 @@ import Slumpbutton from '../componets/Slumpbutton'
 
 const Manuall = () => {
   return (
-    <>
+    <div className='manuall'>
    <header>
-    <Search />
+   <Search />
     </header>
     <body>
+    
     <Filter />
     <Slumpbutton/>
     </body>
-    </>
+    </div>
     
   )
 }
