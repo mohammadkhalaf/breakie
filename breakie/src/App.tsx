@@ -11,6 +11,9 @@ function App() {
       <Routes>
           <Route  path="/"  element={<Home/>}/>
           <Route  path="/manuall"   element={<Manuall/>}/>
+          {/* <Route  path="/input"   element={<InputBreakie/>}/>
+          <Route  path="/breakie"   element={<Breakie/>}/> */}
+          
           </Routes>
     </div>
   );
