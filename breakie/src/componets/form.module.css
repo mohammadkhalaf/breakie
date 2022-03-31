@@ -28,12 +28,10 @@
 }
 .formcontrol {
   flex-grow: 1;
-  background-color: #fff;
+  background-color: white;
   position: relative;
 }
-.formcontrol input[type='radio'] {
-  display: none;
-}
+
 .formcontrol input[type='checkbox'] {
   display: none;
 }
@@ -63,6 +61,13 @@
 
   left: 45px;
 }
+
+.active {
+  background: rgba(175, 175, 175, 1);
+}
+.active label span {
+  color: white;
+}
 .button {
   background: #232e29;
   width: 360px;
@@ -80,8 +85,7 @@
   border-bottom-right-radius: 4px;
   cursor: pointer;
 }
-.activitytime {
-}
+
 .tidinfo span {
   position: absolute;
   left: 16.13%;
@@ -97,4 +101,7 @@
   line-height: 25px;
   text-align: center;
   color: rgba(175, 175, 175, 1);
+}
+.active p {
+  color: white;
 }
