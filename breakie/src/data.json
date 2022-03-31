@@ -1,0 +1,40 @@
+[
+
+
+{
+    "name":"hoppa",
+    "type":"fysik",
+   "time":2,
+    "desc":""
+},  {
+    "name":"dansa",
+    "type":"fysik",
+   "time":3,
+    "desc":""
+},  {
+    "name":"springa",
+    "type":"fysik",
+   "time":1,
+    "desc":""
+},  {
+    "name":"räkna",
+    "type":"mental",
+   "time":2,
+    "desc":""
+},  {
+    "name":"stäng ögnen",
+    "type":"mental",
+   "time":1,
+    "desc":""
+},  {
+    "name":"vila",
+    "type":"mental",
+   "time":3,
+    "desc":""
+},  {
+    "name":"leka med din kompis",
+    "type":"social",
+   "time":2,
+    "desc":""
+}
+]
