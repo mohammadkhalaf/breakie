@@ -35,7 +35,7 @@ svg{
   justify-content: space-around;
   align-items: flex-start;
   margin-top:17%;
-  width:65%;
+  width:70%;
   margin-left:17%;
   justify-content: space-evenly;
 
@@ -77,17 +77,22 @@ margin-left:0;
  
 .label--checkbox {
   position: relative;
+  width:240px;
   cursor: pointer;
   margin-right:70px;
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
  color: #222222;
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
 }
 span{
-  font-weight: 400;
+font-weight: 400;
 font-size: 12px;
 line-height: 12px;
+padding-left:70px;
 }
 .list__item{
   height: 36px;
@@ -108,9 +113,9 @@ line-height: 12px;
   
 }
 .filterlist input[type="checkbox" i]{
-  margin-right:7px;
   width:20px;
   height:20px;
+  padding-left:0;
 }
 .list_item p{
   
