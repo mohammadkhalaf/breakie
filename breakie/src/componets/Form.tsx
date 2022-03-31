@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-import mental from '../assets/mental.png';
+import mental from '../assets/mental.svg';
+import mentalactive from '../assets/mentalactive.svg';
 import pic from '../assets/pic.svg';
-
-import social from '../assets/social.png';
+import picactive from '../assets/picactive.svg';
+import social from '../assets/social.svg';
+import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
-
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
@@ -20,6 +21,7 @@ const Form = () => {
   if (time && activity) {
     console.log(`this is the time ${time} and activty ${activity} `);
   }
+  console.log(activity);
 
   return (
     <div>
@@ -28,7 +30,13 @@ const Form = () => {
           <h2>Breakie-typ</h2>
         </div>
         <div className={classes.activities}>
-          <div className={classes.formcontrol}>
+          <div
+            className={
+              activity === 'fysisk'
+                ? `${classes.formcontrol} ${classes.active} `
+                : classes.formcontrol
+            }
+          >
             <label htmlFor='fysisk'>
               <input
                 checked={isChecked}
@@ -38,11 +46,17 @@ const Form = () => {
                 name='activity'
                 value='fysisk'
               />
-              <img src={pic} alt='' />
+              <img src={activity === 'fysisk' ? picactive : pic} alt='' />
               <span>fysisk</span>
             </label>
           </div>
-          <div className={classes.formcontrol}>
+          <div
+            className={
+              activity === 'mental'
+                ? `${classes.formcontrol} ${classes.active} `
+                : classes.formcontrol
+            }
+          >
             <label htmlFor='mental'>
               <input
                 checked={isChecked}
@@ -52,11 +66,17 @@ const Form = () => {
                 name='activity'
                 value='mental'
               />
-              <img src={mental} alt='' />
+              <img src={activity === 'mental' ? mentalactive : mental} alt='' />
               <span>mental</span>
             </label>
           </div>
-          <div className={classes.formcontrol}>
+          <div
+            className={
+              activity === 'social'
+                ? `${classes.formcontrol} ${classes.active} `
+                : classes.formcontrol
+            }
+          >
             <label htmlFor='social'>
               <input
                 checked={isChecked}
@@ -66,7 +86,7 @@ const Form = () => {
                 value='social'
                 name='social'
               />
-              <img src={social} alt='' />
+              <img src={activity === 'social' ? socialactive : social} alt='' />
               <span>social</span>
             </label>
           </div>
@@ -75,7 +95,13 @@ const Form = () => {
           <h2>Breakie-tid</h2>
         </div>
         <div className={classes.activities}>
-          <div className={classes.formcontrol}>
+          <div
+            className={
+              time === '1'
+                ? `${classes.formcontrol} ${classes.active} `
+                : classes.formcontrol
+            }
+          >
             <label htmlFor='1' className={classes.tidinfo}>
               <input
                 type='checkbox'
@@ -91,7 +117,13 @@ const Form = () => {
               <span>minut</span>
             </label>
           </div>
-          <div className={classes.formcontrol}>
+          <div
+            className={
+              time === '2'
+                ? `${classes.formcontrol} ${classes.active} `
+                : classes.formcontrol
+            }
+          >
             <label htmlFor='2' className={classes.tidinfo}>
               <input
                 type='checkbox'
@@ -107,7 +139,13 @@ const Form = () => {
               <span>minuter</span>
             </label>
           </div>
-          <div className={classes.formcontrol}>
+          <div
+            className={
+              time === '3'
+                ? `${classes.formcontrol} ${classes.active} `
+                : classes.formcontrol
+            }
+          >
             <label htmlFor='3' className={classes.tidinfo}>
               <input
                 type='checkbox'
@@ -124,6 +162,7 @@ const Form = () => {
             </label>
           </div>
         </div>
+
         <button className={classes.button}>
           {activity ? 'Random breakie' : 'Choose specific breakie'}
         </button>
