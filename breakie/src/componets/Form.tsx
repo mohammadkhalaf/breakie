@@ -7,10 +7,13 @@ import picactive from '../assets/picactive.svg';
 import social from '../assets/social.svg';
 import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
+import { useNavigate } from 'react-router-dom';
+import Breakie from '../pages/Breakie';
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
+  const navigate = useNavigate();
 
   const changeHandler = (e: any) => {
     setActivity(e.target.value);
@@ -18,14 +21,19 @@ const Form = () => {
   const timeHandler = (e: any) => {
     setTime(e.target.value);
   };
-  if (time && activity) {
-    console.log(`this is the time ${time} and activty ${activity} `);
-  }
-  console.log(activity);
+
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    if (activity && time) {
+      navigate('/breakie');
+    } else {
+      navigate('/manuall');
+    }
+  };
 
   return (
     <div>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.formHeader}>
           <h2>Breakie-typ</h2>
         </div>
