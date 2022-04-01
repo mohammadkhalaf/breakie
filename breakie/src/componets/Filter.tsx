@@ -8,24 +8,24 @@ const Filter = () => {
       <article className={classes.flex_item} >
         <h3 className={classes.filterTitle}>fysik</h3>
         <ul className={classes.filterlist}>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />dansa <span>1 minuter</span> </label></li>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />dansa <span>30 seconder</span></label></li>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />dansa <span>3 minuter</span> </label></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />dansa </label>  <span>1 minuter</span></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />dansa </label><span>30 seconder</span></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />dansa </label> <span>3 minuter</span></li>
         </ul>
       </article>
       <article className={classes.flex_item}>
         <h3 className={classes.filterTitle}>mental</h3>
         <ul className={classes.filterlist}>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />medita<span>3 minuter</span> </label></li>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />meditation<span>1 minuter</span> </label> </li>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />meditation  <span>4 minuter</span>  </label>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />medita </label> <span>3 minuter</span></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />meditation </label> <span>1 minuter</span></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />meditation   </label><span>4 minuter</span> 
           </li>
         </ul></article>
       <article className={classes.flex_item}>
         <h3 className={classes.filterTitle}>social</h3>
         <ul className={classes.filterlist}>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />spela <span>2 minuter</span> </label></li>
-          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />spela  <span>2 minuter</span></label></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />spela  </label><span>2 minuter</span></li>
+          <li className={classes.list__item}>  <label className={classes.label__checkbox}><input type="checkbox" />spela  </label><span>2 minuter</span></li>
 
         </ul></article>
     </section>
