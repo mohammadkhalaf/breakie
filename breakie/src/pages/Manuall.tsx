@@ -1,7 +1,7 @@
 import React from 'react'
 import Filter from '../componets/Filter'
 import Search from '../componets/Search'
-import Slumpbutton from '../componets/Slumpbutton'
+import Choosebutton from '../componets/Choosebutton'
 
 const Manuall = () => {
   return (
@@ -12,7 +12,7 @@ const Manuall = () => {
     <body>
     
     <Filter />
-    <Slumpbutton/>
+    <Choosebutton/>
     </body>
     </div>
     
