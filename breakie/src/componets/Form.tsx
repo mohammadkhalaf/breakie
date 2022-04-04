@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import mental from '../assets/mental.svg';
 import mentalactive from '../assets/mentalactive.svg';
@@ -9,10 +9,13 @@ import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
 import Breakie from '../pages/Breakie';
+import { AppContext } from '../context/activityContext';
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
+  const { dispatch } = useContext(AppContext);
+
   const navigate = useNavigate();
 
   const changeHandler = (e: any) => {
