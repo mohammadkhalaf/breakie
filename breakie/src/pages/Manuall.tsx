@@ -1,7 +1,7 @@
 import React from 'react';
-import Filter from '../componets/Filter';
-import Search from '../componets/Search';
-import Choosebutton from '../componets/Choosebutton';
+import Filter from '../components/Filter';
+import Search from '../components/Search';
+import Choosebutton from '../components/Choosebutton';
 
 const Manuall = () => {
   return (

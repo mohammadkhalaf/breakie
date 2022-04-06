@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+
 import Home from './pages/Home';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import Manuall from './pages/Manuall';
 import Breakie from './pages/Breakie';
-import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (

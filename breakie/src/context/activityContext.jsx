@@ -11,12 +11,11 @@ const reducer = (state, action) => {
 const initialState = {
   activities: [],
 };
-
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AppContext.Provider value={{ ...state, dispatch }}>
+    <AppContext.Provider value={{ ...state}}>
       {children}
     </AppContext.Provider>
   );
