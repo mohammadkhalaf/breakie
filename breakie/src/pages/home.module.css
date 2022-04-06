@@ -1,8 +1,6 @@
 .home {
-  background: linear-gradient(225deg, #33ba51 0%, #369f8c 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  height: 100vh;
+  height: 100 vh;
 }
