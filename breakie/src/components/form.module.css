@@ -1,7 +1,9 @@
 .form {
   height: 436px;
   width: 360px;
+
   border-radius: 4px;
+  margin: 100px auto;
 }
 .formHeader {
   background: rgba(34, 34, 34, 1);

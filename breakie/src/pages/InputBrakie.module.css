@@ -1,0 +1,173 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+}
+form {
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 1);
+
+  border: 1px solid black;
+  width: 580px;
+
+  border-radius: 4px;
+}
+
+.header {
+  background: rgba(34, 34, 34, 1);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Fira Sans;
+}
+.header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  color: rgba(255, 255, 255, 1);
+}
+
+.input-fields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 24px;
+  height: 117px;
+}
+.nameLabel {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+.nameLabel span {
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+}
+.nameLabel input {
+  width: 199px;
+  height: 30px;
+  border: 0.8px solid rgba(175, 175, 175, 1);
+  border-radius: 4px;
+}
+.nameLabel input:focus {
+  outline: none;
+}
+.nameLabel input[type='text'] {
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-left: 10px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+.activities {
+  /* height: 132px; */
+  display: flex;
+}
+
+.formcontrol {
+  flex-grow: 1;
+  background-color: white;
+  border: 1px solid #afafaf;
+  position: relative;
+  border-radius: 4px;
+  height: 30px;
+  width: 30px;
+  margin-right: 13px;
+}
+
+.formcontrol img {
+  width: 100%;
+}
+.formcontrol span {
+  font-family: Fira Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.active {
+  background: rgba(175, 175, 175, 1);
+}
+/* .tidinfo span {
+  position: absolute;
+  left: 16.13%;
+  right: 14.75%;
+
+  bottom: 14.68%;
+} */
+.tidinfo p {
+  font-family: Fira Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: center;
+  color: rgba(175, 175, 175, 1);
+}
+
+.active p {
+  color: white;
+}
+.mediaContainer {
+  height: 135px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 20px 0px 27px 24px;
+}
+.mediaContainer h2 {
+  font-family: Fira Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 1);
+}
+.mediaContainer input {
+  width: 100%;
+}
+.instructionContainer {
+  padding: 20px 27px 27px 24px;
+  height: 210px;
+}
+.instructionContainer h2 {
+  font-family: Fira Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.instructionContainer textarea {
+  width: 100%;
+  border: 0.8px solid rgba(175, 175, 175, 1);
+  height: 123px;
+  resize: none;
+}
+
+.form button {
+  width: 152px;
+  margin: 10px auto;
+  padding: 16px;
+  background: rgba(34, 34, 34, 0.9);
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
+  font-family: Fira Sans;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  color: rgba(251, 251, 251, 1);
+}
