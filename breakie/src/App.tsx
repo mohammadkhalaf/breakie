@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
 import Home from './pages/Home';
-import './App.css';
 import { Route, Routes } from 'react-router';
 import Manuall from './pages/Manuall';
 import Breakie from './pages/Breakie';
-import { BrowserRouter } from 'react-router-dom';
+import InputBrakie from './pages/InputBrakie';
+import './App.css';
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/manuall' element={<Manuall />} />
-        {/* <Route  path="/input"   element={<InputBreakie/>}/> */}
+        <Route path='/input' element={<InputBrakie />} />
         <Route path='/breakie' element={<Breakie />} />
       </Routes>
     </div>

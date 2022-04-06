@@ -15,8 +15,15 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const getData = (data) => {
+    dispatch({ type: 'SET_DATA', payload: data });
+  };
+  const getChosenData = (activity, time) => {
+    console.log(activity, time);
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, dispatch }}>
+    <AppContext.Provider value={{ ...state, getData, getChosenData }}>
       {children}
     </AppContext.Provider>
   );

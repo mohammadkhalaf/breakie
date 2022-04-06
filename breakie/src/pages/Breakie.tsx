@@ -3,13 +3,13 @@ import { AppContext } from '../context/activityContext';
 import useFetch from '../hooks/useFetch';
 
 const Breakie = () => {
-  const { state } = useContext(AppContext);
-  const { data, isPending, err } = useFetch();
+  const { activities } = useContext(AppContext);
+  const { isPending, err } = useFetch();
 
   return (
     <>
-      {data.map((item: any, index) => {
-        return <li key={index}>{item.name}</li>;
+      {activities.map((item: any) => {
+        return <li key={item.name}>{item.name}</li>;
       })}
     </>
   );

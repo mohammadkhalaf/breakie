@@ -4,25 +4,35 @@ import { AppContext } from '../context/activityContext';
 const useFetch = () => {
   const [err, setErr] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const [data, setData] = useState([]);
-  const { dispatch } = useContext(AppContext);
+
+  const { getData } = useContext(AppContext);
+  let cancel = false;
   const fetchData = useCallback(async () => {
     setIsPending(true);
     try {
       const res = await fetch('http://localhost:3000/data');
       const data = await res.json();
-      setData(data);
-
-      dispatch({ type: 'SET_DATA', payload: data });
-      setIsPending(false);
+      console.log(data);
+      getData(data);
+      if (!cancel) {
+        setIsPending(false);
+        setErr(null);
+      }
     } catch (error) {
-      setErr(error.message);
+      if (!cancel) {
+        setErr(error.message);
+        setIsPending(false);
+      }
     }
   }, []);
   useEffect(() => {
     fetchData();
-  }, []);
-  return { data, isPending, err };
+
+    return () => {
+      cancel = true;
+    };
+  }, [fetchData]);
+  return { isPending, err };
 };
 
 export default useFetch;
