@@ -11,8 +11,8 @@ const Breakie = () => {
 
   return (
     <>
-      {data.map((item: any, index) => {
-        return <li key={index}>{item.name}</li>;
+      {data.map((item: any) => {
+        return <li key={item.name}>{item.name}</li>;
       })}
       <>hello</>
     </>
