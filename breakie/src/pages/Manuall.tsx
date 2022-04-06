@@ -8,9 +8,8 @@ const Manuall = () => {
     <div className='manuall'>
       <header>
         <Search />
-      </header>
-
-      <Filter />
+       </header>
+       <Filter />
       <Choosebutton />
     </div>
   );

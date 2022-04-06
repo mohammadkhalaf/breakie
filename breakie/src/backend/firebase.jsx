@@ -18,7 +18,7 @@ import {doc, collection} from "firebase/firestore"
 
 
 
-export  const db = getFirestore(app);
+export  const db = await getFirestore(app);
 
 
  const breakiesRef   = collection(db, "Breakies"); 

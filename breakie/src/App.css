@@ -1,40 +1,24 @@
 .App {
-<<<<<<< HEAD
   background: linear-gradient(225deg, #33BA51 0%, #369F8C 100%);
   height:100vh;
   margin:0;
-=======
-  background: linear-gradient(225deg, #33ba51 0%, #369f8c 100%);
-  height: 100vh;
->>>>>>> 355a092b37f8a338f525b4e235731aca2ad49f06
 }
 header {
   padding-top: 30px;
 }
-
-<<<<<<< HEAD
+.manuall{
+  display:flex;
+  flex-direction: column;
+}
 .searchBar{
-top: 32px;  
+margin: 20px auto;
 max-width: 280px;
 height: 48px;
-margin-left:42rem;
 background: #FFFFFF;
 mix-blend-mode: normal;
 /* basic shadows */
 box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
 border-radius: 4px;
-=======
-.searchBar {
-  top: 32px;
-  width: 280px;
-  height: 48px;
-  margin-left: 41%;
-  background: #ffffff;
-  mix-blend-mode: normal;
-  /* basic shadows */
-  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
->>>>>>> 355a092b37f8a338f525b4e235731aca2ad49f06
 }
 .search {
   height: 30px;
@@ -48,7 +32,6 @@ svg {
   padding-left: 10px;
   fill: gray;
 }
-<<<<<<< HEAD
 svg{
   width:20px;
   height:20px;
@@ -57,5 +40,3 @@ svg{
   fill:gray;
 
 }
-=======
->>>>>>> 355a092b37f8a338f525b4e235731aca2ad49f06
