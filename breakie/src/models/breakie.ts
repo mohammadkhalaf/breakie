@@ -1,4 +1,4 @@
-export interface BreakieModule{
+export interface breakiemodule{
     id:string,
     name:string,
     type:string,
