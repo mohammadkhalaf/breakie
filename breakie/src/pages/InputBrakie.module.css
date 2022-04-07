@@ -72,7 +72,6 @@ input[type='checkbox'] {
   display: none;
 }
 .activities {
-  /* height: 132px; */
   display: flex;
 }
 
@@ -101,13 +100,7 @@ input[type='checkbox'] {
 .active {
   background: rgba(175, 175, 175, 1);
 }
-/* .tidinfo span {
-  position: absolute;
-  left: 16.13%;
-  right: 14.75%;
 
-  bottom: 14.68%;
-} */
 .tidinfo p {
   font-family: Fira Sans;
   font-size: 14px;
@@ -116,6 +109,10 @@ input[type='checkbox'] {
   line-height: 25px;
   text-align: center;
   color: rgba(175, 175, 175, 1);
+}
+.formcontrol .tidinfo span {
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .active p {

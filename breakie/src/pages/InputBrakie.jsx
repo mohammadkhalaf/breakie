@@ -41,7 +41,9 @@ const InputBrakie = () => {
               </label>
             </div>
             <div className={classes.typeContainer}>
-              <span>Typ</span>
+              <div className={classes.nameLabel}>
+                <span>Typ</span>
+              </div>
 
               <div className={classes.activities}>
                 <div
@@ -113,7 +115,9 @@ const InputBrakie = () => {
               </div>
             </div>
             <div>
-              <span>Tid</span>
+              <div className={classes.nameLabel}>
+                <span>Tid</span>
+              </div>
               <div className={classes.activities}>
                 <div
                   className={
