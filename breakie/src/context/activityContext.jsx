@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import useFetch from '../hooks/useFetch';
 export const AppContext = createContext();
 
