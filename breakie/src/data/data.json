@@ -1,5 +1,4 @@
- {
-  "breakies": [
+ [
     {
       "name": "hoppa",
       "type": "fysik",
@@ -42,5 +41,5 @@
       "time": 2,
       "desc": ""
     }
+  
   ]
-}

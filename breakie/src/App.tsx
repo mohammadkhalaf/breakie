@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import React from 'react';
+>>>>>>> 3fc445c5df2491e7865f53dae6eb951e9320b296
 import Home from './pages/Home';
 import { Route, Routes } from 'react-router';
 import Manuall from './pages/Manuall';

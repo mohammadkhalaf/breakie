@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/activityContext';
 import { db } from '../backend/firebase';
@@ -51,5 +52,22 @@ const useFetch = () => {
   // }, []);
   return { data, isPending, err };
 };
+=======
+// import React, { useCallback, useContext, useEffect, useState } from 'react';
+// import { AppContext } from '../context/activityContext';
+// import {db} from "../backend/firebase"
+// import{collection ,getDocs, doc} from "firebase/firestore"
+// import{ breakiemodule} from "../models/breakie"
 
-export default useFetch;
+// const useFetch = () => {
+//   const [err, setErr] = useState(null);
+//   const [isPending, setIsPending] = useState(false);
+//   // const { dispatch } = useContext(AppContext);
+
+  
+  
+//   return {data, isPending, err };
+// };
+>>>>>>> 3fc445c5df2491e7865f53dae6eb951e9320b296
+
+// export default useFetch;
