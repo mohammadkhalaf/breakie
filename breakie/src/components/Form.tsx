@@ -8,7 +8,6 @@ import social from '../assets/social.svg';
 import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
-
 import { AppContext } from '../context/activityContext';
 import { DocumentData } from 'firebase/firestore';
 const Form = () => {

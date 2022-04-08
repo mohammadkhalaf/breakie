@@ -7,17 +7,26 @@ import { breakiemodule } from '../models/breakie';
 import classes from './breakie.module.css';
 import pic from '../assets/pic.svg';
 
+
 const Breakie = () => {
   const [data, setData] = useState<DocumentData[] | null>(Array);
+  const [random,setRandom]=useState(Object)
   //
   const getAllData = async () => {
     const breakisSnapshot = await getDocs(collection(db, 'Breakies'));
     const breakieslist: DocumentData[] = breakisSnapshot.docs.map((doc) =>
       doc.data()
+     
     );
 
-    setData(breakieslist);
+    //Random Breakie
+    const randomElement:DocumentData = breakieslist[Math.floor(Math.random() * breakieslist.length)]
 
+    setData(breakieslist);
+    setRandom(randomElement);
+
+    console.log(randomElement);
+    
     console.log(breakieslist);
   };
 
@@ -26,6 +35,8 @@ const Breakie = () => {
   }, []);
   return (
     <>
+    {random?
+   
       <div className={classes.wrapper}>
         <div className={classes.container}>
           <div className={classes.header}>
@@ -33,10 +44,10 @@ const Breakie = () => {
             <div className={classes.info}>
               <div className={classes.type}>
                 <img src={pic} alt='' />
-                <span>fysisk</span>
+                <span>{random.type}</span>
               </div>
               <div>
-                <span className={classes.time}>3+</span>
+                <span className={classes.time}>{random.time}</span>
                 <span>minuter</span>
               </div>
             </div>
@@ -44,13 +55,15 @@ const Breakie = () => {
           <div className={classes.image}></div>
           <div className={classes.description}>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              aperiam doloremque quisquam magnam facilis nulla sequi, non cumque
-              aut ut. quisquam magnam facilis nulla sequi, non cumque
+              {random.desc}
             </p>
           </div>
         </div>
       </div>
+      :"loading"
+    
+}
+
     </>
   );
 };
