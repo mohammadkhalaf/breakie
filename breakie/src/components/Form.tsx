@@ -8,33 +8,18 @@ import social from '../assets/social.svg';
 import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
+
 import { AppContext } from '../context/activityContext';
-
-
-import { db } from "../backend/firebase"
-import { collection, getDocs, doc, DocumentData } from "firebase/firestore"
-
-
-const Form =async () => {
+import { DocumentData } from 'firebase/firestore';
+const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
   const { getChosenData } = useContext(AppContext);
-  //const [type,setType]=useState<DocumentData[]>(Array);
-  
 
 
-
-  // //sort by activity from firbase
-  // const typeRef=doc(db,"Breakie","activity");
-  // const typeSnapshot = await getDocs(collection(db, "Breakies"))
-  // const typeslist:DocumentData[]  = typeSnapshot.docs.map((doc) => doc.data());
-  // console.log(typeslist)
-  
-
-
- 
   const navigate = useNavigate();
+
 
   const changeHandler = (e: any) => {
     setActivity(e.target.value);
