@@ -24,17 +24,11 @@ header {
   height: 30px;
   width: 230px;
   border: 0px;
+  outline:none;
 }
 svg {
-  width: 20px;
-  height: 20px;
-  padding-top: 10px;
-  padding-left: 10px;
-  fill: gray;
-}
-svg {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   padding-top: 10px;
   padding-left: 10px;
   fill: gray;

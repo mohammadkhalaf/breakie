@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { doc, addDoc, collection } from 'firebase/firestore';
-import data from '../data/data.json';
+
 
 // Initialize Firebase
 const app = initializeApp({
