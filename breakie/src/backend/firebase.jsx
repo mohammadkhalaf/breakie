@@ -20,9 +20,19 @@ import data from "../data/data.json"
 
 export  const db = getFirestore(app);
 
- 
-// const items=JSON.stringify(data).map((item)=>{console.log(item)})
-console.log(items)
+      //skicka data.json till firestore
+      
+// const items=data.map((item)=>{console.log(item)  
+// console.log(items)
+
+//    addDoc(collection(db,"Breakies"),{
+//       name:item.name,
+//       type:item.type,
+//       time:item.time,
+//       desc:item.desc,
+//     })
+// })
+
 
 
 // const addData=async()=>{
@@ -43,3 +53,4 @@ console.log(items)
       
 //          addData();
 
+     

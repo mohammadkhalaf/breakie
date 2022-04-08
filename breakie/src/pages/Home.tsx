@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <div className={classes.home}>
-        <Form />
+        <Form/>
       </div>
     </>
   );
