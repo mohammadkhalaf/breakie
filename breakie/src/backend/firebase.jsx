@@ -22,7 +22,7 @@ export  const db = getFirestore(app);
 
  
 // const items=JSON.stringify(data).map((item)=>{console.log(item)})
-console.log(items)
+
 
 
 // const addData=async()=>{
