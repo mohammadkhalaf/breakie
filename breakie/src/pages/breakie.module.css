@@ -1,2 +1,84 @@
+.wrapper {
+  display: flex;
+
+  height: 100vh;
+
+  position: relative;
+  display: flex;
+
+  justify-content: center;
+}
 .container {
+  position: absolute;
+  width: 852px;
+  height: 479px;
+  background-color: white;
+  border-radius: 4px;
+  top: 100px;
+}
+.header {
+  background: rgba(34, 34, 34, 1);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 56px 9px 55px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.header h1 {
+  font-family: Fira Sans;
+  font-size: 22px;
+  line-height: 25px;
+
+  color: rgba(255, 255, 255, 1);
+}
+.info {
+  display: flex;
+  align-items: center;
+}
+.info img {
+  width: 25px;
+  height: 25px;
+}
+.type {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.container span {
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-weight: regular;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 9px;
+}
+.time {
+  font-family: Fira Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff;
+}
+.image {
+  background: #eeeeee;
+
+  height: 479px;
+}
+.description {
+  height: 113px;
+  background-color: #fff;
+  padding: 40px 55px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.description p {
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
 }

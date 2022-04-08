@@ -15,7 +15,6 @@ const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
-  const { getChosenData } = useContext(AppContext);
 
 
   const navigate = useNavigate();
@@ -33,14 +32,16 @@ const Form = () => {
     e.preventDefault();
     if (activity && time) {
       navigate('/breakie');
-      getChosenData(activity, time);
+      console.log(activity, time);
     } else {
       navigate('/manuall');
     }
   };
-
+  const testClick = () => {
+    console.log('s');
+  };
   return (
-    <div>
+    <>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.formHeader}>
           <h2>Breakie-typ</h2>
@@ -129,8 +130,8 @@ const Form = () => {
               />
               <div>
                 <p> &#60; 1</p>
+                <span>minut</span>
               </div>
-              <span>minut</span>
             </label>
           </div>
           <div
@@ -151,8 +152,8 @@ const Form = () => {
               />
               <div>
                 <p> 1-2</p>
+                <span>minuter</span>
               </div>
-              <span>minuter</span>
             </label>
           </div>
           <div
@@ -173,8 +174,8 @@ const Form = () => {
               />
               <div>
                 <p>3+</p>
+                <span>minuter</span>
               </div>
-              <span>minuter</span>
             </label>
           </div>
         </div>
@@ -183,7 +184,7 @@ const Form = () => {
           {activity ? 'Random breakie' : 'Choose specific breakie'}
         </button>
       </form>
-    </div>
+    </>
   );
 };
 
