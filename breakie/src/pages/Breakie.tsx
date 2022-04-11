@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/activityContext';
 // import useFetch from '../hooks/useFetch';
 import { db } from '../backend/firebase';
-import { collection, getDocs, doc, DocumentData } from 'firebase/firestore';
+import { collection, getDocs, doc, DocumentData, query, where } from 'firebase/firestore';
 import { breakiemodule } from '../models/breakie';
 import classes from './breakie.module.css';
 import pic from '../assets/pic.svg';
@@ -15,7 +15,7 @@ const Breakie = () => {
   const getAllData = async () => {
     const breakisSnapshot = await getDocs(collection(db, 'Breakies'));
     const breakieslist: DocumentData[] = breakisSnapshot.docs.map((doc) =>
-      doc.data()
+      doc.data(),
      
     );
 
@@ -25,10 +25,13 @@ const Breakie = () => {
     setData(breakieslist);
     setRandom(randomElement);
 
+
     console.log(randomElement);
     
     console.log(breakieslist);
   };
+
+
 
   useEffect(() => {
     getAllData();
@@ -40,7 +43,7 @@ const Breakie = () => {
       <div className={classes.wrapper}>
         <div className={classes.container}>
           <div className={classes.header}>
-            <h1>Macarena</h1>
+            <h1>{random.name}</h1>
             <div className={classes.info}>
               <div className={classes.type}>
                 <img src={pic} alt='' />
@@ -52,7 +55,12 @@ const Breakie = () => {
               </div>
             </div>
           </div>
-          <div className={classes.image}></div>
+          <div className={classes.image}>
+          {/* <video  >
+            <source src={random.link} type="video/mp4"  />
+          </video> */}
+            <img src={random.link} alt="" />
+          </div>
           <div className={classes.description}>
             <p>
               {random.desc}
