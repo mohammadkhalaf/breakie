@@ -11,28 +11,32 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/activityContext';
 import { collection, query, where,getDocs, DocumentData } from "firebase/firestore";
 import { db } from '../backend/firebase';
-const Form = () => {
+const Form = (props:any) => {
 
   
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
+
   const [breakie, setbreakie] = useState<DocumentData[] | null>(Array);
+  const {getData}= useContext(AppContext)
   
 
-  const getbreakie = async(activity:any,time:any)=>{
-    console.log(activity)
+  const getbreakie = async()=>{
+    if(activity==="mental" || activity==="social"|| activity==="fysisk")
+    {
+     const q = query(collection( db,"Breakies"),where("type","==",activity),where("time","==",2));
   
-    const breakieRef= collection( db,"Breakies");
-    const q = query(breakieRef, where("time", "==", 2),where("type","==","mental"));
     const breakieSnapshot = await  getDocs(q);
     const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
     doc.data() 
     );
+
     console.log(breakielist)
-    setbreakie(breakielist);  
+    getData(breakielist);  
    }
   
+}
 
   const navigate = useNavigate();
 
@@ -48,7 +52,8 @@ const Form = () => {
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (activity && time) {
-      getbreakie(activity,time);
+       getbreakie();
+ 
       navigate('/breakie');
 
       console.log(activity, time);

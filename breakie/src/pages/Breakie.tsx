@@ -1,41 +1,44 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/activityContext';
-// import useFetch from '../hooks/useFetch';
 import { db } from '../backend/firebase';
 import { collection, getDocs, doc, DocumentData, query, where } from 'firebase/firestore';
-import { breakiemodule } from '../models/breakie';
 import classes from './breakie.module.css';
 import pic from '../assets/pic.svg';
-
+  
 
 const Breakie = () => {
+const {activities} =useContext(AppContext)
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random,setRandom]=useState(Object)
   //
-  const getAllData = async () => {
-    const breakisSnapshot = await getDocs(collection(db, 'Breakies'));
-    const breakieslist: DocumentData[] = breakisSnapshot.docs.map((doc) =>
-      doc.data(),
-     
-    );
-
-    //Random Breakie
-    const randomElement:DocumentData = breakieslist[Math.floor(Math.random() * breakieslist.length)]
-
-    setData(breakieslist);
-    setRandom(randomElement);
-
-
-    console.log(randomElement);
+  const getRandom = async () => {
+    // const breakisSnapshot = await  getDocs(collection(db, "Breakies"));
+    // const breakieslist: DocumentData[] = breakisSnapshot.docs.map((doc) =>
+    //   doc.data(),
     
-    console.log(breakieslist);
+    // );
+  if(activities){
+   //Random Breakie
+   const randomElement:DocumentData = activities[Math.floor(Math.random() * activities.length)]
+    
+   setData(activities);
+   setRandom(randomElement);
+   console.log(randomElement);
+  
+  }
+ 
+
+   
+    
+    console.log(activities);
+    
   };
 
 
 
   useEffect(() => {
-    getAllData();
-  }, []);
+    getRandom();
+  }, [activities]);
   return (
     <>
     {random?
@@ -73,7 +76,7 @@ const Breakie = () => {
 }
 
     </>
-  );
-};
+  )
+}
 
 export default Breakie;

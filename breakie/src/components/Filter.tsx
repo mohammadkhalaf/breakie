@@ -5,18 +5,19 @@ import { db } from '../backend/firebase';
 
 
 const Filter =  () => {
-  const [fysik, setFysik] = useState<DocumentData[] | null>(Array);
+  const [fysisk, setFysisk] = useState<DocumentData[] | null>(Array);
   const [mental, setMental] = useState<DocumentData[] | null>(Array);
   const [social, setSocial] = useState<DocumentData[] | null>(Array);
- //sort fysik
-  const  getFysik= async ()=>{
-  const   q1 = query(collection( db,"Breakies"), where("type", "==", "fysik"));
-  const fysikSnapshot = await  getDocs(q1);
-  const fysiklist: DocumentData[] = fysikSnapshot.docs.map((doc) =>
+  
+ //sort fysisk
+  const  getFysisk= async ()=>{
+  const   q1 = query(collection( db,"Breakies"), where("type", "==", "fysisk"));
+  const fysiskSnapshot = await  getDocs(q1);
+  const fysisklist: DocumentData[] = fysiskSnapshot.docs.map((doc) =>
   doc.data() 
   );
-  console.log(fysiklist)
-  setFysik(fysiklist);  
+  console.log(fysisklist)
+  setFysisk(fysisklist);  
  }
  //sort mental
    const getMental = async()=>{
@@ -40,16 +41,16 @@ const Filter =  () => {
    }
 
  useEffect(()=>{
-   getFysik(),
+   getFysisk(),
    getMental(),
    getSocial()
  },[])
   return (
     <section className={classes.filter_box}>
       <article className={classes.flex_item} >
-        <h3 className={classes.filterTitle}>fysik</h3>
+        <h3 className={classes.filterTitle}>fysisk</h3>
         <ul className={classes.filterlist}>
-          {fysik && fysik.map(item=>{
+          {fysisk && fysisk.map(item=>{
             return (
 
               <li className={classes.list__item}><label className={classes.label__checkbox}><input type="checkbox" />{item.name}</label>  <span>{item.time} minuter</span></li> 
