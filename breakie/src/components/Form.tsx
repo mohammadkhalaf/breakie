@@ -9,11 +9,15 @@ import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/activityContext';
-import { collection, query, where,getDocs, DocumentData } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  DocumentData,
+} from 'firebase/firestore';
 import { db } from '../backend/firebase';
-const Form = (props:any) => {
-
-  
+const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
@@ -29,7 +33,7 @@ const Form = (props:any) => {
   
     const breakieSnapshot = await  getDocs(q);
     const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
-    doc.data() 
+      doc.data()
     );
 
     console.log(breakielist)
@@ -40,10 +44,8 @@ const Form = (props:any) => {
 
   const navigate = useNavigate();
 
-
   const changeHandler = (e: any) => {
     setActivity(e.target.value);
-  
   };
   const timeHandler = (e: any) => {
     setTime(e.target.value);
@@ -60,9 +62,6 @@ const Form = (props:any) => {
     } else {
       navigate('/manuall');
     }
-  };
-  const testClick = () => {
-    console.log('s');
   };
 
   return (
