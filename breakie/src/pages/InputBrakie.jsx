@@ -6,11 +6,19 @@ import picactive from '../assets/picactive.svg';
 import social from '../assets/social.svg';
 import socialactive from '../assets/socialactive.svg';
 import classes from './InputBrakie.module.css';
+import { db } from '../backend/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const InputBrakie = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
+  const [name, setName] = useState('');
   const [time, setTime] = useState('');
+  const [URL, setURL] = useState('');
+  const [instruction, setInstruction] = useState('');
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  };
 
   const changeHandler = (e) => {
     setActivity(e.target.value);
@@ -18,11 +26,28 @@ const InputBrakie = () => {
   const timeHandler = (e) => {
     setTime(e.target.value);
   };
+  const urlHandler = (e) => {
+    setURL(e.target.value);
+  };
+  const instrctionHandler = (e) => {
+    setInstruction(e.target.value);
+  };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    if (activity && time) {
-      console.log(activity, time);
+    try {
+      if (activity && time && URL && instruction && name) {
+        const docRef = await addDoc(collection(db, 'Breakies'), {
+          type: activity,
+          desc: instruction,
+          time,
+          name,
+          URL,
+        });
+        console.log('added');
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -37,7 +62,7 @@ const InputBrakie = () => {
             <div>
               <label className={classes.nameLabel}>
                 <span>Name</span>
-                <input type='text' />
+                <input type='text' value={name} onChange={nameHandler} />
               </label>
             </div>
             <div className={classes.typeContainer}>
@@ -192,12 +217,15 @@ const InputBrakie = () => {
             <h2>Media</h2>
             <label className={classes.nameLabel}>
               <span>URL</span>
-              <input type='url' />
+              <input type='url' value={URL} onChange={urlHandler} />
             </label>
           </div>
           <div className={classes.instructionContainer}>
             <h2>Instruction</h2>
-            <textarea></textarea>
+            <textarea
+              value={instruction}
+              onChange={instrctionHandler}
+            ></textarea>
           </div>
         </form>
         <button onClick={submitHandler} type='submit'>

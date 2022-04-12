@@ -16,14 +16,10 @@ const Form = () => {
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
 
-  
-
   const navigate = useNavigate();
-
 
   const changeHandler = (e: any) => {
     setActivity(e.target.value);
-  
   };
   const timeHandler = (e: any) => {
     setTime(e.target.value);
@@ -38,9 +34,7 @@ const Form = () => {
       navigate('/manuall');
     }
   };
-  const testClick = () => {
-    console.log('s');
-  };
+
   return (
     <>
       <form className={classes.form} onSubmit={submitHandler}>
