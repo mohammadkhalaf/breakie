@@ -9,7 +9,7 @@ const Manuall = () => {
       <header>
         <Search />
        </header>
-       <Filter />
+       <Filter/>
       <Choosebutton />
     </div>
   );

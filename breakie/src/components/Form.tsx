@@ -8,13 +8,37 @@ import social from '../assets/social.svg';
 import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
-
 import { AppContext } from '../context/activityContext';
-import { DocumentData } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  DocumentData,
+} from 'firebase/firestore';
+import { db } from '../backend/firebase';
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
+  const [breakie, setbreakie] = useState<DocumentData[] | null>(Array);
+
+  const getbreakie = async (activity: any, time: any) => {
+    console.log(activity);
+
+    const breakieRef = collection(db, 'Breakies');
+    const q = query(
+      breakieRef,
+      where('time', '==', 2),
+      where('type', '==', 'mental')
+    );
+    const breakieSnapshot = await getDocs(q);
+    const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
+      doc.data()
+    );
+    console.log(breakielist);
+    setbreakie(breakielist);
+  };
 
   const navigate = useNavigate();
 
@@ -28,7 +52,9 @@ const Form = () => {
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (activity && time) {
+      getbreakie(activity, time);
       navigate('/breakie');
+
       console.log(activity, time);
     } else {
       navigate('/manuall');
