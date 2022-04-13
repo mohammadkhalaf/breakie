@@ -13,18 +13,28 @@ const {activities,chosen} =useContext(AppContext)
   
   const getRandom = async () => {
   
-  if(activities ){
+  switch(Array){
+   case activities:{
    //Random Breakie
+   const randomElement = chosen[Math.floor(Math.random() * chosen.length)] 
+   setData(chosen);
+   setRandom(randomElement);
+   console.log(randomElement);
+  
+  }
+  break;
+  default : {
    const randomElement:DocumentData = activities[Math.floor(Math.random() * activities.length)] 
    setData(activities);
    setRandom(randomElement);
    console.log(randomElement);
+ 
+   
   }
+
+}
   
-     
-    // const randomElement= chosen[Math.floor(Math.random() * chosen.length)]
-    // setData(chosen);
-    // setRandom(randomElement);
+
    
   
   };
@@ -54,7 +64,7 @@ const {activities,chosen} =useContext(AppContext)
             </div>
           </div>
           <div className={classes.image}>
-           <iframe src={random.URL} width="420" height="345" >
+           <iframe src={random.URL} width="100%" height="100%" >
           </iframe> 
             {/* <img src={random.URL} alt="" /> */}
           </div>

@@ -7,6 +7,7 @@ export const AppContext = createContext();
 const reducer = (state, action) => {
   if (action.type === 'SET_DATA') {
     return { ...state, activities: action.payload };
+  
   }
   return state;
 };
