@@ -27,10 +27,10 @@ const Form = () => {
   
 
   const getbreakie = async()=>{
-    if(activity==="mental" || activity==="social"|| activity==="fysisk")
-    {
-     const q = query(collection( db,"Breakies"),where("type","==",activity),where("time","==",2));
-  
+    if(activity==="mental"|| activity==="social"|| activity==="fysisk")
+     { 
+    
+     const q = query(collection( db,"Breakies"),where("type","==",activity),where("time","==",3));
     const breakieSnapshot = await  getDocs(q);
     const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
       doc.data()
@@ -39,6 +39,7 @@ const Form = () => {
     console.log(breakielist)
     getData(breakielist);  
    }
+  
   
 }
 

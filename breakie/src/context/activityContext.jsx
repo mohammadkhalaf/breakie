@@ -12,6 +12,7 @@ const reducer = (state, action) => {
 };
 const initialState = {
   activities: [],
+  chosen:[{name:"salsa",time:2,desc:"",URL:""},{name:"sal",time:3,desc:"",URL:""}],
 };
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

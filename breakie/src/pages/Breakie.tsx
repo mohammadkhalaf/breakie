@@ -7,38 +7,33 @@ import pic from '../assets/pic.svg';
   
 
 const Breakie = () => {
-const {activities} =useContext(AppContext)
+const {activities,chosen} =useContext(AppContext)
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random,setRandom]=useState(Object)
-  //
+  
   const getRandom = async () => {
-    // const breakisSnapshot = await  getDocs(collection(db, "Breakies"));
-    // const breakieslist: DocumentData[] = breakisSnapshot.docs.map((doc) =>
-    //   doc.data(),
-    
-    // );
-  if(activities){
+  
+  if(activities ){
    //Random Breakie
-   const randomElement:DocumentData = activities[Math.floor(Math.random() * activities.length)]
-    
+   const randomElement:DocumentData = activities[Math.floor(Math.random() * activities.length)] 
    setData(activities);
    setRandom(randomElement);
    console.log(randomElement);
-  
   }
- 
-
+  
+     
+    // const randomElement= chosen[Math.floor(Math.random() * chosen.length)]
+    // setData(chosen);
+    // setRandom(randomElement);
    
-    
-    console.log(activities);
-    
+  
   };
 
 
 
   useEffect(() => {
     getRandom();
-  }, [activities]);
+  }, [activities,chosen]);
   return (
     <>
     {random?
@@ -59,10 +54,9 @@ const {activities} =useContext(AppContext)
             </div>
           </div>
           <div className={classes.image}>
-          {/* <video  >
-            <source src={random.link} type="video/mp4"  />
-          </video> */}
-            <img src={random.link} alt="" />
+           <iframe src={random.URL} width="420" height="345" >
+          </iframe> 
+            {/* <img src={random.URL} alt="" /> */}
           </div>
           <div className={classes.description}>
             <p>
