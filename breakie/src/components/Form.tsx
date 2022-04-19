@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-
 import mental from '../assets/mental.svg';
 import mentalactive from '../assets/mentalactive.svg';
 import pic from '../assets/pic.svg';
@@ -9,39 +8,31 @@ import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/activityContext';
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  DocumentData,
-} from 'firebase/firestore';
+import {collection, query, where, getDocs, DocumentData,} from 'firebase/firestore';
 import { db } from '../backend/firebase';
+import { iteratorSymbol } from 'immer/dist/internal';
+
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
-
   const [breakie, setbreakie] = useState<DocumentData[] | null>(Array);
-  const {getData}= useContext(AppContext)
-  
+  const { getData } = useContext(AppContext)
 
-  const getbreakie = async()=>{
-    if(activity==="mental"|| activity==="social"|| activity==="fysisk")
-     { 
-    
-     const q = query(collection( db,"Breakies"),where("type","==",activity),where("time","==",3));
-    const breakieSnapshot = await  getDocs(q);
-    const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
-      doc.data()
-    );
 
-    console.log(breakielist)
-    getData(breakielist);  
-   }
-  
-  
-}
+  const getbreakie = async () => {
+    if (activity === "mental" || activity === "social" || activity === "fysisk") {
+      const q1 = query(collection(db, "Breakies"), where("type", "==", activity));
+      const breakieSnapshot = await getDocs(q1)
+      const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
+        doc.data()).filter((doc)=>doc.time==time);
+   
+      console.log(breakielist)
+      getData(breakielist);
+    }
+
+  }
+
 
   const navigate = useNavigate();
 
@@ -55,8 +46,7 @@ const Form = () => {
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (activity && time) {
-       getbreakie();
- 
+      getbreakie();
       navigate('/breakie');
 
       console.log(activity, time);

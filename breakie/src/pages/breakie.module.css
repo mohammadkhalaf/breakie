@@ -68,8 +68,14 @@
   background: #eeeeee;
   height: 479px;
 }
+
+.image iframe {
+  width: 100% !important;
+  height: 100%;
+  object-fit: cover;
+}
 .image img {
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   object-fit: cover;
 }
@@ -86,3 +92,4 @@
   font-weight: 400;
   line-height: 16px;
 }
+
