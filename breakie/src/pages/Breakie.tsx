@@ -13,24 +13,25 @@ import classes from './breakie.module.css';
 import pic from '../assets/pic.svg';
 
 const Breakie = () => {
-  const { activities } = useContext(AppContext);
+  const { activities, chosen } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
-  //
+
   const getRandom = async () => {
     if (activities) {
+      //Random Breakie
       const randomElement: DocumentData =
         activities[Math.floor(Math.random() * activities.length)];
-
       setData(activities);
       setRandom(randomElement);
       console.log(randomElement);
-    } 
+    }
   };
 
   useEffect(() => {
     getRandom();
-  }, [activities]);
+  }, [activities, chosen]);
+  console.log(random);
   return (
     <>
       {random ? (
@@ -49,15 +50,13 @@ const Breakie = () => {
                 </div>
               </div>
             </div>
-            <div className={classes.image}>
-              {/* <video  >
-            <source src={random.link} type="video/mp4"  />
-          </video> */}
-              <img src={random.link} alt='' />
-            </div>
-            <div className={classes.description}>
-              <p>{random.desc}</p>
-            </div>
+          </div>
+          <div className={classes.image}>
+            <iframe src={random.URL} />:
+            <img src={random.URL} />
+          </div>
+          <div className={classes.description}>
+            <p>{random.desc}</p>
           </div>
         </div>
       ) : (
