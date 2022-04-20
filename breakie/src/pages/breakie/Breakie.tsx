@@ -1,30 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/activityContext';
-import {  DocumentData} from 'firebase/firestore';
+import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
-  
 
 const Breakie = () => {
   const { activities, chosen } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
-  const [random,setRandom]=useState(Object)
-  
+  const [random, setRandom] = useState(Object);
+
   const getRandom = async () => {
-    
-  if(activities){
-   //Random Breakie
-   const randomElement:DocumentData = activities[Math.floor(Math.random() * activities.length)] 
-   setData(activities);
-   setRandom(randomElement);
-}  
-  
+    if (activities) {
+      //Random Breakie
+      const randomElement: DocumentData =
+        activities[Math.floor(Math.random() * activities.length)];
+      setData(activities);
+      setRandom(randomElement);
+    }
   };
 
   useEffect(() => {
     getRandom();
-  }, [activities,chosen]);
- 
+  }, [activities, chosen]);
+
   return (
     <>
       {random ? (
@@ -43,15 +41,15 @@ const Breakie = () => {
                 </div>
               </div>
             </div>
-         
-          <div className={classes.image} >
-           <iframe src={random.URL}/>
-            {/* <img src={random.URL} />  */}
+
+            <div className={classes.image}>
+              <iframe src={random.URL} />
+              {/* <img src={random.URL} />  */}
+            </div>
+            <div className={classes.description}>
+              <p>{random.desc}</p>
+            </div>
           </div>
-          <div className={classes.description}>
-            <p>{random.desc}</p>
-          </div>
-        </div>
         </div>
       ) : (
         'loading'
