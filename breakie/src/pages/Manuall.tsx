@@ -6,10 +6,7 @@ import Choosebutton from '../components/Choosebutton';
 const Manuall = () => {
   return (
     <div className='manuall'>
-      <header>
-        <Search />
-       </header>
-       <Filter/>
+      <Filter />
       <Choosebutton />
     </div>
   );

@@ -1,109 +1,90 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classes from './css/filter.module.css';
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  DocumentData,
-} from 'firebase/firestore';
-import { db } from '../backend/firebase';
+import { FaSearch } from 'react-icons/fa';
+import useCollection from '../hooks/useCollection';
 
 const Filter = () => {
-  const [fysisk, setFysisk] = useState<DocumentData[] | null>(Array);
-  const [mental, setMental] = useState<DocumentData[] | null>(Array);
-  const [social, setSocial] = useState<DocumentData[] | null>(Array);
+  const [searchField, setSearchField] = useState('');
+  const { mental, social, fysisk } = useCollection('Breakies');
 
-  //sort fysisk
-  const getFysisk = async () => {
-    const q1 = query(collection(db, 'Breakies'), where('type', '==', 'fysisk'));
-    const fysiskSnapshot = await getDocs(q1);
-    const fysisklist: DocumentData[] = fysiskSnapshot.docs.map((doc) =>
-      doc.data()
-    );
-    console.log(fysisklist);
-    setFysisk(fysisklist);
+  const handleSearch = (event: any) => {
+    setSearchField(event.target.value);
   };
-  //sort mental
-  const getMental = async () => {
-    const q2 = query(collection(db, 'Breakies'), where('type', '==', 'mental'));
-    const mentalSnapshot = await getDocs(q2);
-    const mentallist: DocumentData[] = mentalSnapshot.docs.map((doc) =>
-      doc.data()
-    );
-    console.log(mentallist);
-    setMental(mentallist);
-  };
-  //sort Social
-  const getSocial = async () => {
-    const q2 = query(collection(db, 'Breakies'), where('type', '==', 'social'));
-    const socialSnapshot = await getDocs(q2);
-    const sociallist: DocumentData[] = socialSnapshot.docs.map((doc) =>
-      doc.data()
-    );
-    console.log(sociallist);
-    setSocial(sociallist);
-  };
+  const changeHandler = () => {};
 
-  useEffect(() => {
-    getFysisk();
-    getMental();
-    getSocial();
-  }, []);
   return (
-    <section className={classes.filter_box}>
-      <article className={classes.flex_item}>
-        <h3 className={classes.filterTitle}>fysisk</h3>
-        <ul className={classes.filterlist}>
-          {fysisk &&
-            fysisk.map((item) => {
-              return (
-                <li className={classes.list__item}>
-                  <label className={classes.label__checkbox}>
-                    <input type='checkbox' />
-                    {item.name}
-                  </label>{' '}
-                  <span>{item.time} minuter</span>
-                </li>
-              );
-            })}
-        </ul>
-      </article>
-      <article className={classes.flex_item}>
-        <h3 className={classes.filterTitle}>mental</h3>
-        <ul className={classes.filterlist}>
-          {mental &&
-            mental.map((item) => {
-              return (
-                <li className={classes.list__item}>
-                  <label className={classes.label__checkbox}>
-                    <input type='checkbox' />
-                    {item.name}
-                  </label>{' '}
-                  <span>{item.time} minuter</span>
-                </li>
-              );
-            })}
-        </ul>
-      </article>
-      <article className={classes.flex_item}>
-        <h3 className={classes.filterTitle}>social</h3>
-        <ul className={classes.filterlist}>
-          {social &&
-            social.map((item) => {
-              return (
-                <li className={classes.list__item}>
-                  <label className={classes.label__checkbox}>
-                    <input type='checkbox' />
-                    {item.name}
-                  </label>{' '}
-                  <span>{item.time} minuter</span>
-                </li>
-              );
-            })}
-        </ul>
-      </article>
-    </section>
+    <>
+      <div className='searchBar'>
+        <FaSearch />
+        <input
+          className='search'
+          placeholder=''
+          type='text'
+          value={searchField}
+          onChange={handleSearch}
+        />
+      </div>
+
+      <section className={classes.filter_box}>
+        <article className={classes.flex_item}>
+          <h3 className={classes.filterTitle}>fysisk</h3>
+          <ul className={classes.filterlist}>
+            {fysisk &&
+              fysisk
+                .filter((item) => item.name.includes(searchField))
+                .map((item) => {
+                  return (
+                    <li className={classes.list__item} key={item.name}>
+                      <label className={classes.label__checkbox}>
+                        <input type='checkbox' onChange={changeHandler} />
+                        {item.name}
+                      </label>
+                      <span>{item.time} minuter</span>
+                    </li>
+                  );
+                })}
+          </ul>
+        </article>
+        <article className={classes.flex_item}>
+          <h3 className={classes.filterTitle}>mental</h3>
+          <ul className={classes.filterlist}>
+            {mental &&
+              mental
+                .filter((item) => item.name.includes(searchField))
+                .map((item) => {
+                  return (
+                    <li className={classes.list__item} key={item.name}>
+                      <label className={classes.label__checkbox}>
+                        <input type='checkbox' onChange={changeHandler} />
+                        {item.name}
+                      </label>
+                      <span>{item.time} minuter</span>
+                    </li>
+                  );
+                })}
+          </ul>
+        </article>
+        <article className={classes.flex_item}>
+          <h3 className={classes.filterTitle}>social</h3>
+          <ul className={classes.filterlist}>
+            {social &&
+              social
+                .filter((item) => item.name.includes(searchField))
+                .map((item) => {
+                  return (
+                    <li className={classes.list__item} key={item.name}>
+                      <label className={classes.label__checkbox}>
+                        <input type='checkbox' onChange={changeHandler} />
+                        {item.name}
+                      </label>
+                      <span>{item.time} minuter</span>
+                    </li>
+                  );
+                })}
+          </ul>
+        </article>
+      </section>
+    </>
   );
 };
 
