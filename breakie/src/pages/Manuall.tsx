@@ -5,8 +5,7 @@ import Choosebutton from '../components/Choosebutton';
 const Manuall = () => {
   return (
     <div className='manuall'>
-     
-       <Filter/>
+      <Filter />
       <Choosebutton />
     </div>
   );
