@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../context/activityContext';
-import { db } from '../backend/firebase';
-import { collection, getDocs, doc, DocumentData, query, where } from 'firebase/firestore';
+import { AppContext } from '../../context/activityContext';
+import {  DocumentData} from 'firebase/firestore';
 import classes from './breakie.module.css';
-import pic from '../assets/pic.svg';
+import pic from '../../assets/pic.svg';
   
 
 const Breakie = () => {
@@ -12,26 +11,20 @@ const {activities,chosen} =useContext(AppContext)
   const [random,setRandom]=useState(Object)
   
   const getRandom = async () => {
-  
-
+    
   if(activities){
    //Random Breakie
    const randomElement:DocumentData = activities[Math.floor(Math.random() * activities.length)] 
    setData(activities);
    setRandom(randomElement);
-   console.log(randomElement);  
-  
-
 }  
   
   };
 
-
-
   useEffect(() => {
     getRandom();
   }, [activities,chosen]);
-  console.log(random)
+ 
   return (
     <>
     {random?
@@ -52,8 +45,8 @@ const {activities,chosen} =useContext(AppContext)
             </div>
           </div>
           <div className={classes.image} >
-           <iframe src={random.URL} />:
-           <img src={random.URL} />
+           <iframe src={random.URL}/>
+            <img src={random.URL} /> 
           </div>
           <div className={classes.description}>
             <p>

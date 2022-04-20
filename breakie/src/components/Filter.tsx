@@ -7,7 +7,8 @@ import { FaSearch } from 'react-icons/fa';
 
 const Filter = () => {
   const [name, setName] = useState('');
-  const [checked, setChecked] = useState(Array);
+  const [checked, setChecked] =useState (Object)
+  const [chosen, setChosen]=useState(Array)
   const [fysisk, setFysisk] = useState<DocumentData[] | null>(Array);
   const [mental, setMental] = useState<DocumentData[] | null>(Array);
   const [social, setSocial] = useState<DocumentData[] | null>(Array);
@@ -48,19 +49,21 @@ const Filter = () => {
   }
   // Add/Remove checked item from list
   const handleCheck = (event: any) => {
-    var updatedList = [...checked];
+    var updatedList:Array<object>;
     if (event.target.checked) {
       updatedList = [...checked, event.target.value];
-    } else {
-      updatedList.splice(checked.indexOf(event.target.value), 1);
-    }
+      updatedList.push(checked.indexOf(event.target.value));
+       
     console.log(updatedList)
-    setChecked(updatedList);
+    setChosen(updatedList)
+    } 
+    
+  
   };
 
   // Generate string of checked items
   const checkedItems = checked.length
-    ? checked.reduce((total, item) => {
+    ? checked.reduce((total:any, item:any) => {
       return total + ", " + item;
     })
     : "";

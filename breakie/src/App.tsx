@@ -2,7 +2,7 @@ import React from 'react';
 import Home from './pages/Home';
 import { Route, Routes } from 'react-router';
 import Manuall from './pages/Manuall';
-import Breakie from './pages/Breakie';
+import Breakie from './pages/breakie/Breakie';
 import InputBrakie from './pages/InputBrakie';
 import './App.css';
 
