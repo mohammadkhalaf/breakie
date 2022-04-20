@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../context/activityContext';
+import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
-import { AppContext } from '../../context/activityContext';
-
-import { DocumentData } from 'firebase/firestore';
 
 const Breakie = () => {
   const { activities, chosen } = useContext(AppContext);
