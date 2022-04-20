@@ -8,7 +8,7 @@ const Breakie = () => {
   const { activities, chosen } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
-
+ 
   const getRandom = async () => {
     if (activities) {
       //Random Breakie
@@ -17,10 +17,13 @@ const Breakie = () => {
       setData(activities);
       setRandom(randomElement);
     }
+  
+
   };
 
   useEffect(() => {
     getRandom();
+   
   }, [activities, chosen]);
 
   return (

@@ -87,3 +87,20 @@
 }
 .list_item p {
 }
+.choose{
+  width:11rem;
+  padding: 16px;
+  margin:7rem auto;
+  background: rgba(34, 34, 34, 0.9);
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-family: 'Fira Sans';
+  font-style: normal;font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  align-items: center;
+  text-align: center;
+  color: #FBFBFB;
+  order: 0;
+
+}
