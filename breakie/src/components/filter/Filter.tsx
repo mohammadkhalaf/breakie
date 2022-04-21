@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import classes from './filter.module.css';
 import { FaSearch } from 'react-icons/fa';
 import useCollection from '../../hooks/useCollection';
+import { AppContext } from '../.././context/activityContext';
+import { useNavigate } from 'react-router-dom';
 
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
   const { mental, social, fysisk } = useCollection('Breakies');
-  const [checked, setChecked]=useState<boolean>(false);
+  const [checked, setChecked]=useState(false);
   const [choseList, setChoseList]=useState(Array);
+  const { chooseData } = useContext(AppContext);
+ const navigate= useNavigate()
+
 
   const handleSearch = (event: any) => {
     setSearchField(event.target.value);
   };
   const changeHandler = () => {
-    
-      
+    setChecked(true)
+   
   };
+  const RandomEl= ()=>{
+  chooseData(choseList)
+  navigate('/breakie')
+  }
 
   return (
     <>
@@ -40,9 +49,7 @@ const Filter = () => {
                 .map((item) => {
                   return (
                     <li className={classes.list__item} key={item.name} onChange={()=>{choseList.push(item);
-                      setChoseList(choseList)
-                      console.log(choseList)
-                      console.log(`${item.name}`)}} >
+                      setChoseList(choseList)}} >
                       <label className={classes.label__checkbox}>
                         <input type='checkbox' />
                         {item.name}
@@ -62,9 +69,7 @@ const Filter = () => {
                 .map((item) => {
                   return (
                     <li className={classes.list__item} key={item.name} onChange={()=>{choseList.push(item);
-                      setChoseList(choseList)
-                      console.log(choseList)
-                      console.log(`${item.name}`)}} >
+                      setChoseList(choseList)}} >
                       <label className={classes.label__checkbox}>
                         <input type='checkbox' />
                         {item.name}
@@ -84,9 +89,7 @@ const Filter = () => {
                 .map((item) => {
                   return (
                     <li className={classes.list__item} key={item.name}  onClick={()=>{choseList.push(item);
-                      setChoseList(choseList)
-                      console.log(choseList)
-                      console.log(`${item.name}`)}}>
+                      setChoseList(choseList)}}>
                       <label className={classes.label__checkbox}>
                         <input type='checkbox' />
                         {item.name}
@@ -99,7 +102,7 @@ const Filter = () => {
         </article>
       </section>
   
-     <button  className={classes.choose}  onClick={()=>console.log( choseList[Math.floor(Math.random() * choseList.length)])}>Choose breakie</button>
+     <button  className={classes.choose}  onClick={RandomEl}>Choose breakie</button>
      </>
   );
 };

@@ -5,26 +5,23 @@ import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
 
 const Breakie = () => {
-  const { activities, chosen } = useContext(AppContext);
+  const { activities } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
- 
+   
+
   const getRandom = async () => {
-    if (activities) {
       //Random Breakie
       const randomElement: DocumentData =
         activities[Math.floor(Math.random() * activities.length)];
       setData(activities);
       setRandom(randomElement);
-    }
-  
-
-  };
+  }
 
   useEffect(() => {
-    getRandom();
-   
-  }, [activities, chosen]);
+    getRandom()
+
+  }, [activities]);
 
   return (
     <>
