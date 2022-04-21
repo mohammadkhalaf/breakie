@@ -11,7 +11,7 @@ const Filter = () => {
   const [checked, setChecked]=useState(false);
   const [choseList, setChoseList]=useState(Array);
   const { chooseData } = useContext(AppContext);
- const navigate= useNavigate()
+  const navigate= useNavigate()
 
 
   const handleSearch = (event: any) => {
