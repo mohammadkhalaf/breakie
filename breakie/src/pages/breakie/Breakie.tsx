@@ -43,8 +43,9 @@ const Breakie = () => {
             </div>
 
             <div className={classes.image}>
-              <iframe src={random.URL} />
-              {/* <img src={random.URL} />  */}
+              <object data={random.URL} >
+                
+               </object>
             </div>
             <div className={classes.description}>
               <p>{random.desc}</p>

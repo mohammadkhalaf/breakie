@@ -78,14 +78,15 @@
   margin-left: -16px;
   margin-top:30px;
 }
-.filterlist input[type='checkbox' i] {
+.filterlist input[type='checkbox'] {
   width: 20px;
   height: 20px;
   padding-left: 0;
   display:block;
   margin-right:5px;
 }
-.list_item p {
+.filterlist input[type='checkbox']:checked {
+  display:block;
 }
 .choose{
   width:11rem;

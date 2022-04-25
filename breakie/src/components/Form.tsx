@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/activityContext';
 import {collection, query, where, getDocs, DocumentData,} from 'firebase/firestore';
 import { db } from '../backend/firebase';
-import { iteratorSymbol } from 'immer/dist/internal';
 
 const Form = () => {
   const [activity, setActivity] = useState('');
@@ -21,7 +20,8 @@ const Form = () => {
 
 
   const getbreakie = async () => {
-    if (activity === "mental" || activity === "social" || activity === "fysisk") {
+    console.log(time)
+    if (activity.length) {
       const q1 = query(collection(db, "Breakies"), where("type", "==", activity));
       const breakieSnapshot = await getDocs(q1)
       const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
@@ -41,6 +41,8 @@ const Form = () => {
   };
   const timeHandler = (e: any) => {
     setTime(e.target.value);
+
+
   };
 
   const submitHandler = (e: any) => {
