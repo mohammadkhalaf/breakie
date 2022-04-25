@@ -1,12 +1,11 @@
 import React from 'react';
-import Filter from '../components/Filter';
-import Choosebutton from '../components/Choosebutton';
+import Filter from '../components/filter/Filter';
 
 const Manuall = () => {
   return (
     <div className='manuall'>
       <Filter />
-      <Choosebutton />
+      
     </div>
   );
 };

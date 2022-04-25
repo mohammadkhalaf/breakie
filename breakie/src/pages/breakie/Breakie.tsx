@@ -10,13 +10,11 @@ const Breakie = () => {
   const [random, setRandom] = useState(Object);
 
   const getRandom = async () => {
-    if (activities) {
-      //Random Breakie
-      const randomElement: DocumentData =
-        activities[Math.floor(Math.random() * activities.length)];
-      setData(activities);
-      setRandom(randomElement);
-    }
+    //Random Breakie
+    const randomElement: DocumentData =
+      activities[Math.floor(Math.random() * activities.length)];
+    setData(activities);
+    setRandom(randomElement);
   };
 
   useEffect(() => {
