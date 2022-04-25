@@ -5,7 +5,7 @@ import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
 
 const Breakie = () => {
-  const { activities, chosen } = useContext(AppContext);
+  const { activities } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
 
@@ -21,7 +21,18 @@ const Breakie = () => {
 
   useEffect(() => {
     getRandom();
-  }, [activities, chosen]);
+  }, [activities]);
+  let url;
+  if (random && random.URL) {
+    url =
+      random && random.URL.includes('youtube') ? (
+        <video>
+          <source src={random.URL} type='video/mp4' />
+        </video>
+      ) : (
+        <img src={random.URL} alt='' />
+      );
+  }
 
   return (
     <>
@@ -43,8 +54,14 @@ const Breakie = () => {
             </div>
 
             <div className={classes.image}>
-              <iframe src={random.URL} />
-              {/* <img src={random.URL} />  */}
+              {/* <Link to={`/breakie}`}>{mo}</Link> */}
+              {/* <div>{mo}</div> */}
+              {url && url}
+              {/* <a href={random.url}>{mo}</a> */}
+
+              {/* <video controls>
+                <source src={random.URL} type='video/mp4'></source>
+              </video> */}
             </div>
             <div className={classes.description}>
               <p>{random.desc}</p>
