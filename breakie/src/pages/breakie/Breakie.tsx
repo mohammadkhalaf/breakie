@@ -8,29 +8,20 @@ const Breakie = () => {
   const { activities } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
+   
 
   const getRandom = async () => {
-    //Random Breakie
-    const randomElement: DocumentData =
-      activities[Math.floor(Math.random() * activities.length)];
-    setData(activities);
-    setRandom(randomElement);
-  };
+      //Random Breakie
+      const randomElement: DocumentData =
+        activities[Math.floor(Math.random() * activities.length)];
+      setData(activities);
+      setRandom(randomElement);
+  }
 
   useEffect(() => {
-    getRandom();
+    getRandom()
+
   }, [activities]);
-  let url;
-  if (random && random.URL) {
-    url =
-      random && random.URL.includes('youtube') ? (
-        <video>
-          <source src={random.URL} type='video/mp4' />
-        </video>
-      ) : (
-        <img src={random.URL} alt='' />
-      );
-  }
 
   return (
     <>
@@ -52,14 +43,8 @@ const Breakie = () => {
             </div>
 
             <div className={classes.image}>
-              {/* <Link to={`/breakie}`}>{mo}</Link> */}
-              {/* <div>{mo}</div> */}
-              {url && url}
-              {/* <a href={random.url}>{mo}</a> */}
-
-              {/* <video controls>
-                <source src={random.URL} type='video/mp4'></source>
-              </video> */}
+              <object data={random.URL} />
+               <img src={random.URL} />  
             </div>
             <div className={classes.description}>
               <p>{random.desc}</p>
