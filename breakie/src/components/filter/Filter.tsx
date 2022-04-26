@@ -1,4 +1,4 @@
-import React, { useState , useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import classes from './filter.module.css';
 import { FaSearch } from 'react-icons/fa';
 import useCollection from '../../hooks/useCollection';
@@ -8,31 +8,28 @@ import { useNavigate } from 'react-router-dom';
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
   const { mental, social, fysisk } = useCollection('Breakies');
-  const [ischecked, setChecked]=useState(false);
-  const [choseList, setChoseList]=useState(Array);
+  const [ischecked, setChecked] = useState(false);
+  const [choseList, setChoseList] = useState(Array);
   const { chooseData } = useContext(AppContext);
-  const navigate= useNavigate()
-
+  const navigate = useNavigate();
 
   const handleSearch = (event: any) => {
-   setSearchField(event.target.value);
+    setSearchField(event.target.value);
   };
-  const changeHandler = (event:any) => {
-    ischecked==true;
-    setChecked(event.target.checked)
-   
-    console.log(event.target.checked)
-    
+  const changeHandler = (event: any) => {
+    setChecked(event.target.checked);
+
+    console.log(event.target.checked);
   };
 
-  const RandomEl= ()=>{
-  chooseData(choseList)
-  navigate('/breakie')
-  }
+  const RandomEl = () => {
+    chooseData(choseList);
+    navigate('/breakie');
+  };
 
-  const SearchItem=()=>{
-    console.log("activites.filter")
-  }
+  const SearchItem = () => {
+    console.log('activites.filter');
+  };
   return (
     <>
       <div className='searchBar'>
@@ -55,10 +52,16 @@ const Filter = () => {
                 .filter((item) => item.name.includes(searchField))
                 .map((item) => {
                   return (
-                    <li className={classes.list__item} key={item.name} onChange={()=>{choseList.push(item);
-                      setChoseList(choseList);}} >
+                    <li
+                      className={classes.list__item}
+                      key={item.name}
+                      onChange={() => {
+                        choseList.push(item);
+                        setChoseList(choseList);
+                      }}
+                    >
                       <label className={classes.label__checkbox}>
-                        <input type='checkbox' onChange={ changeHandler}/>
+                        <input type='checkbox' onChange={changeHandler} />
                         {item.name}
                       </label>
                       <span>{item.time} minuter</span>
@@ -72,13 +75,19 @@ const Filter = () => {
           <ul className={classes.filterlist}>
             {mental &&
               mental
-                 .filter((item) => item.name.includes(searchField))
+                .filter((item) => item.name.includes(searchField))
                 .map((item) => {
                   return (
-                    <li className={classes.list__item} key={item.name} onChange={()=>{choseList.push(item);
-                      setChoseList(choseList)}} >
+                    <li
+                      className={classes.list__item}
+                      key={item.name}
+                      onChange={() => {
+                        choseList.push(item);
+                        setChoseList(choseList);
+                      }}
+                    >
                       <label className={classes.label__checkbox}>
-                        <input type='checkbox'onChange={ changeHandler} />
+                        <input type='checkbox' onChange={changeHandler} />
                         {item.name}
                       </label>
                       <span>{item.time} minuter</span>
@@ -95,9 +104,14 @@ const Filter = () => {
                 .filter((item) => item.name.includes(searchField))
                 .map((item) => {
                   return (
-                    <li className={classes.list__item} key={item.name} 
-                     onClick={()=>{choseList.push(item);
-                      setChoseList(choseList);}}>
+                    <li
+                      className={classes.list__item}
+                      key={item.name}
+                      onClick={() => {
+                        choseList.push(item);
+                        setChoseList(choseList);
+                      }}
+                    >
                       <label className={classes.label__checkbox}>
                         <input type='checkbox' onChange={changeHandler} />
                         {item.name}
@@ -109,9 +123,11 @@ const Filter = () => {
           </ul>
         </article>
       </section>
-  
-     <button  className={classes.choose}  onClick={RandomEl}>Choose breakie</button>
-     </>
+
+      <button className={classes.choose} onClick={RandomEl}>
+        Choose breakie
+      </button>
+    </>
   );
 };
 
