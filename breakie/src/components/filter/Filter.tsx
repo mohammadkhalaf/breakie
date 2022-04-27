@@ -5,7 +5,6 @@ import useCollection from '../../hooks/useCollection';
 import { AppContext } from '../.././context/activityContext';
 import { useNavigate } from 'react-router-dom';
 
-
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
   const { mental, social, fysisk } = useCollection('Breakies');
@@ -17,18 +16,12 @@ const Filter = () => {
 
   const handleSearch = (event: any) => {
    setSearchField(event.target.value);
-   setChecked(!ischecked)
-   SearchItem(ischecked);
   };
-  const changeHandler = (item:any) => {
-    const ff=choseList.includes(item.id);
-    if(ff==false)
-    {
-      choseList.push(item);
-      setChoseList(choseList);
-      setChecked(!ischecked)
-      console.log(choseList)
-    }
+  const changeHandler = (event:any) => {
+    ischecked==true;
+    setChecked(event.target.checked)
+   
+    console.log(event.target.checked)
     
   };
 
@@ -36,11 +29,9 @@ const Filter = () => {
   chooseData(choseList)
   navigate('/breakie')
   }
-  const SearchItem=(index:any)=>{
 
-    // var el=document.getElementsByClassName(`${classes.list__item}`);
-   
-  // console.log(el)
+  const SearchItem=()=>{
+    console.log("activites.filter")
   }
   return (
     <>
@@ -60,14 +51,14 @@ const Filter = () => {
           <h3 className={classes.filterTitle}>fysisk</h3>
           <ul className={classes.filterlist}>
             {fysisk &&
-              fysisk.filter((item) => item.name.includes(searchField))
-                 .map((item) => {
+              fysisk
+                .filter((item) => item.name.includes(searchField))
+                .map((item) => {
                   return (
-                    <li className={classes.list__item} key={item.id}  onClick={(item)=>{changeHandler(item)
-                     
-                      }} >
+                    <li className={classes.list__item} key={item.name} onChange={()=>{choseList.push(item);
+                      setChoseList(choseList);}} >
                       <label className={classes.label__checkbox}>
-                        <input type='checkbox' checked={item.ischecked}  />
+                        <input type='checkbox' onChange={ changeHandler}/>
                         {item.name}
                       </label>
                       <span>{item.time} minuter</span>
@@ -82,13 +73,12 @@ const Filter = () => {
             {mental &&
               mental
                  .filter((item) => item.name.includes(searchField))
-                 .map((item) => {
+                .map((item) => {
                   return (
-                    <li className={classes.list__item} key={item.id} onChange={()=>{choseList.push(item); setChoseList(choseList);
-        
-                        } }>
+                    <li className={classes.list__item} key={item.name} onChange={()=>{choseList.push(item);
+                      setChoseList(choseList)}} >
                       <label className={classes.label__checkbox}>
-                      <input type='checkbox' checked={item.ischecked} />
+                        <input type='checkbox'onChange={ changeHandler} />
                         {item.name}
                       </label>
                       <span>{item.time} minuter</span>
@@ -105,11 +95,11 @@ const Filter = () => {
                 .filter((item) => item.name.includes(searchField))
                 .map((item) => {
                   return (
-                    <li className={classes.list__item} key={item.id} 
+                    <li className={classes.list__item} key={item.name} 
                      onClick={()=>{choseList.push(item);
                       setChoseList(choseList);}}>
                       <label className={classes.label__checkbox}>
-                        <input type='checkbox' />
+                        <input type='checkbox' onChange={changeHandler} />
                         {item.name}
                       </label>
                       <span>{item.time} minuter</span>
