@@ -36,6 +36,7 @@ const useCollection = (col: string) => {
     const socialSnapshot = await getDocs(q2);
     const sociallist: DocumentData[] = socialSnapshot.docs.map((doc) =>
       doc.data()
+     
     );
     setSocial(sociallist);
   };

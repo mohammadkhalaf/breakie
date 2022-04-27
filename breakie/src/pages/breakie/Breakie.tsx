@@ -24,11 +24,14 @@ const Breakie = () => {
     getRandom()
 
   }, [activities]);
+
   let randomUrl;
 
   if (random && random.URL) {
     
     console.log(`${random.URL}`)
+    
+
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video
    const newURL=random.URL.replace("watch?v=","embed/");
     
