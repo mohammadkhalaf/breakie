@@ -9,7 +9,6 @@ import ListItem from '../ListItem/ListItem';
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
   const { mental, social, fysisk } = useCollection('Breakies');
-
   const [choseList, setChoseList] = useState([]);
   const { chooseData } = useContext(AppContext);
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Filter = () => {
     setChoseList(choseList.filter((x) => x.id !== item.id));
   };
   const saveData = (item) => {
-    setChoseList([...choseList, item]);
+     setChoseList([...choseList, item]);
   };
   console.log(choseList);
 
