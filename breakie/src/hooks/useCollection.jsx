@@ -28,7 +28,7 @@ const useCollection = (col) => {
     let mentalResults = [];
     const mentalSnapshot = await getDocs(q2);
     mentalSnapshot.docs.map((doc) => {
-      mentalResults.push({ ...doc.data(), id: doc.id, isChecked: false });
+      mentalResults.push({ ...doc.data(), id: doc.id, isChecked: "false" });
     });
     setMental(mentalResults);
   };
