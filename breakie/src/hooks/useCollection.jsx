@@ -15,6 +15,7 @@ const useCollection = (col) => {
   const allbreakies=[...fysisk,...mental,...social];
 
 
+
   const getFysisk = async () => {
     const q1 = query(collection(db, 'Breakies'), where('type', '==', 'fysisk'));
     let fysiskResults = [];
@@ -51,7 +52,7 @@ const useCollection = (col) => {
     getFysisk();
   }, [col]);
 
-  return { mental, social, fysisk, allbreakies };
+  return { mental, setMental, social, fysisk, allbreakies };
 };
 
 export default useCollection;

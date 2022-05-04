@@ -16,7 +16,7 @@ interface localStorageProps {
 
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
-  const { mental, social, fysisk } = useCollection("Breakies");
+  const { mental, setMental, social, fysisk } = useCollection("Breakies");
   const [choseList, setChoseList] = useState(new Array);
   const { chooseData, show } = useContext(AppContext);
 
@@ -27,7 +27,6 @@ const Filter = () => {
   //   fysisk.filter((item: any) => item.name.includes(searchField))
    }
 
-
   const RandomEl = () => {
     chooseData(choseList);
     navigate('/breakie');
@@ -36,16 +35,20 @@ const Filter = () => {
   const removeItem = (item: any) => {
     setChoseList(choseList.filter((x: any) => x.id !== item.id));
   };
+
+
   const saveData = (item: any) => {
-    setChoseList([...choseList, {...item,isChecked:!item.isChecked}]);
+    //    setChoseList([...choseList, {...item,isChecked:!item.isChecked}]);
+    if(item.type === 'mental') {
 
+      let m: any = [...mental];
+      let idx:number = m.findIndex((i:any) => i.id === item.id);
+      m[idx].isChecked = !m[idx].isChecked;
+  
+      setMental(m)
 
-
-  };
-  console.log(choseList);
- 
-
- 
+    }
+  }
 
   return (
     <>
