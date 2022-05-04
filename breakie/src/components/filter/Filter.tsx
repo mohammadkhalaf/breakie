@@ -52,7 +52,7 @@ const Filter = () => {
   }
 
 
-  return (
+  return ( 
     <>
       {show && <Overlay choseList={choseList} />}
       <div className={classes.searchBar}>

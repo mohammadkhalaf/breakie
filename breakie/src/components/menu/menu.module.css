@@ -14,7 +14,17 @@ border-radius: 4px;
 justify-content: space-around;
 }
 .menu_link{
-background: #EEEEEE;
+padding:5px;
 border-radius: 4px;
-margin: 12px 0px;
+
+}
+.menu_icon{
+ background-color:#FFFFFF;
+}
+.menu_icon:hover{
+background-color:rgba(238, 238, 238, 1);
+}
+.menu_button{
+ outline:none;
+ background-color:#FFFFFF;
 }
