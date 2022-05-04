@@ -8,13 +8,11 @@ import ListItem from '../ListItem/ListItem';
 import { breakie } from '../../models/breakie';
 import Overlay from '../overlay/Overlay';
 
-
-
-
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
-  const { mental, setMental, social, setSocial, fysisk, setFysisk } = useCollection("Breakies");
-  const [choseList, setChoseList] = useState(new Array);
+  const { mental, setMental, social, setSocial, fysisk, setFysisk } =
+    useCollection('Breakies');
+  const [choseList, setChoseList] = useState(new Array());
   const { chooseData, show } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -26,31 +24,26 @@ const Filter = () => {
 
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
-    setChoseList([...choseList, {...item,isChecked:!item.isChecked}]);
-
+    setChoseList([...choseList, { ...item, isChecked: !item.isChecked }]);
 
     //uppdate data with isChecked  in usecollection for localstorge then
-    if(item.type === 'mental') {
+    if (item.type === 'mental') {
       let m: any = [...mental];
-      let idx:number = m.findIndex((i:any) => i.id === item.id);
+      let idx: number = m.findIndex((i: any) => i.id === item.id);
       m[idx].isChecked = !m[idx].isChecked;
-      setMental(m)
-
-    }
-    else if(item.type==="fysisk"){
+      setMental(m);
+    } else if (item.type === 'fysisk') {
       let f: any = [...fysisk];
-      let idx:number = f.findIndex((i:any) => i.id === item.id);
+      let idx: number = f.findIndex((i: any) => i.id === item.id);
       f[idx].isChecked = !f[idx].isChecked;
-      setFysisk(f)
-    }
-    else{
+      setFysisk(f);
+    } else {
       let s: any = [...social];
-      let idx:number = s.findIndex((i:any) => i.id === item.id);
+      let idx: number = s.findIndex((i: any) => i.id === item.id);
       s[idx].isChecked = !s[idx].isChecked;
-      setSocial(s)
+      setSocial(s);
     }
-  }
-
+  };
 
   return (
     <>
@@ -60,11 +53,11 @@ const Filter = () => {
         <input
           className={classes.search}
           placeholder=''
-          type='text' 
+          type='text'
           value={searchField}
           onChange={(e) => setSearchField(e.target.value)}
         />
-      </div> 
+      </div>
       <section className={classes.filter_box}>
         <article className={classes.flex_item}>
           <h3 className={classes.filterTitle}>fysisk</h3>
@@ -74,11 +67,7 @@ const Filter = () => {
                 .filter((item: any) => item.name.includes(searchField))
                 .map((item: any) => {
                   return (
-                    <ListItem
-                      key={item.id}
-                      item={item}
-                      saveData={saveData}
-                    />
+                    <ListItem key={item.id} item={item} saveData={saveData} />
                   );
                 })}
           </ul>
@@ -91,14 +80,7 @@ const Filter = () => {
                 .filter((item: any) => item.name.includes(searchField))
                 .map((item: any) => {
                   return (
-                    <ListItem
-                      key={item.id}
-                      item={item}
-                      saveData={saveData}
-
-
-
-                    />
+                    <ListItem key={item.id} item={item} saveData={saveData} />
                   );
                 })}
           </ul>
@@ -111,14 +93,7 @@ const Filter = () => {
                 .filter((item: any) => item.name.includes(searchField))
                 .map((item: any) => {
                   return (
-                    <ListItem
-                      key={item.id}
-                      item={item}
-                      saveData={saveData}
-                    
-
-
-                    />
+                    <ListItem key={item.id} item={item} saveData={saveData} />
                   );
                 })}
           </ul>
@@ -133,5 +108,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-
