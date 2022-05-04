@@ -42,7 +42,7 @@ const Overlay = ({ choseList}) => {
             <div className={classes.modal}>
                 <button className={classes.favo} onClick={addTolocal}> Spara favoriter</button>
 
-                 <p className={classes.list}>    </p>
+                 <p className={classes.list}>   Name </p>
                  <span className={classes.list__span}>{choseList.length}</span>
              
             </div>
