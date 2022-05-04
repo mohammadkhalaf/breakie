@@ -21,7 +21,7 @@ const ListItem = ({ item, saveData, removeItem}) => {
   return (
     <>
       <li className={classes.list__item} key={item.id} >
-        <label className={classes.label__checkbox}>
+        <label className={classes.label__checkbox} onClick={e => changeHandler(e, item)}>
           <input
             onChange={e => changeHandler(e, item)}
             checked={item.isChecked}
