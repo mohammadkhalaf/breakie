@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Home from './pages/Home';
 import { Route, Routes } from 'react-router';
 import Manuall from './pages/Manuall';
 import Breakie from './pages/breakie/Breakie';
 import InputBrakie from './pages/InputBrakie';
 import './App.css';
+import Menu from './components/menu/menu';
+import Overlay from './components/overlay/Overlay'
 
 function App() {
+   
   return (
     <div className='App'>
-      <Routes>
+      <Menu/>
+        <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/manuall' element={<Manuall />} />
         <Route path='/input' element={<InputBrakie />} />

@@ -112,7 +112,7 @@
   height: 436px;
   width: 360px;
   border-radius: 4px;
-  margin: 100px auto;
+  margin: 16rem auto;
 }
 .formHeader {
   background: rgba(34, 34, 34, 1);
@@ -125,7 +125,7 @@
 }
 .formHeader h2 {
   font-family: Fira Sans;
-  font-size: 22px;
+  font-size: 2.2rem;
   font-style: normal;
   font-weight: 700;
   line-height: 25px;
@@ -185,7 +185,7 @@
   width: 360px;
   height: 72px;
   font-family: Fira Sans;
-  font-size: 22px;
+  font-size: 2.2rem;
   font-style: normal;
   font-weight: 700;
   line-height: 25px;
@@ -213,7 +213,7 @@
 } */
 .tidinfo p {
   font-family: Fira Sans;
-  font-size: 45px;
+  font-size: 4.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: 25px;

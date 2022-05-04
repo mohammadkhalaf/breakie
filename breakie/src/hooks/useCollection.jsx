@@ -12,12 +12,14 @@ const useCollection = (col) => {
   const [fysisk, setFysisk] = useState(Array);
   const [mental, setMental] = useState(Array);
   const [social, setSocial] = useState(Array);
+  const allbreakies=[...fysisk,...mental,...social];
+
 
   const getFysisk = async () => {
     const q1 = query(collection(db, 'Breakies'), where('type', '==', 'fysisk'));
     let fysiskResults = [];
     const fysiskSnapshot = await getDocs(q1);
-    fysiskSnapshot.docs.map((doc) => {
+     fysiskSnapshot.docs.map((doc) => {
       fysiskResults.push({ ...doc.data(), id: doc.id, isChecked: false });
     });
     setFysisk(fysiskResults);
@@ -27,8 +29,8 @@ const useCollection = (col) => {
     const q2 = query(collection(db, 'Breakies'), where('type', '==', 'mental'));
     let mentalResults = [];
     const mentalSnapshot = await getDocs(q2);
-    mentalSnapshot.docs.map((doc) => {
-      mentalResults.push({ ...doc.data(), id: doc.id});
+     mentalSnapshot.docs.map((doc) => {
+      mentalResults.push({ ...doc.data(), id: doc.id, isChecked: false });
     });
     setMental(mentalResults);
   };
@@ -37,8 +39,8 @@ const useCollection = (col) => {
     const q2 = query(collection(db, 'Breakies'), where('type', '==', 'social'));
     let socialResults = [];
     const socialSnapshot = await getDocs(q2);
-    socialSnapshot.docs.map((doc) => {
-      socialResults.push({ ...doc.data(), id: doc.id });
+   socialSnapshot.docs.map((doc) => {
+      socialResults.push({ ...doc.data(), id: doc.id, isChecked: false  });
     });
     setSocial(socialResults);
   };
@@ -49,7 +51,7 @@ const useCollection = (col) => {
     getFysisk();
   }, [col]);
 
-  return { mental, social, fysisk };
+  return { mental, social, fysisk, allbreakies };
 };
 
 export default useCollection;

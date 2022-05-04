@@ -80,7 +80,7 @@ const Form = () => {
                 name='activity'
                 value='fysisk'
               />
-              <img src={activity === 'fysisk' ? picactive : pic} alt='' />
+              <img src={activity === 'fysisk' ? picactive : pic} alt='fysisk' />
               <span>fysisk</span>
             </label>
           </div>
@@ -100,7 +100,7 @@ const Form = () => {
                 name='activity'
                 value='mental'
               />
-              <img src={activity === 'mental' ? mentalactive : mental} alt='' />
+              <img src={activity === 'mental' ? mentalactive : mental} alt='mental' />
               <span>mental</span>
             </label>
           </div>
@@ -120,7 +120,7 @@ const Form = () => {
                 value='social'
                 name='social'
               />
-              <img src={activity === 'social' ? socialactive : social} alt='' />
+              <img src={activity === 'social' ? socialactive : social} alt='social' />
               <span>social</span>
             </label>
           </div>

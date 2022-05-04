@@ -3,7 +3,7 @@ import { AppContext } from '../../context/activityContext';
 import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
-import { watch } from 'fs';
+
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
@@ -26,12 +26,8 @@ const Breakie = () => {
   }, [activities]);
 
   let randomUrl;
-
   if (random && random.URL) {
-    
     console.log(`${random.URL}`)
-    
-
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video
    const newURL=random.URL.replace("watch?v=","embed/");
     
@@ -41,7 +37,7 @@ const Breakie = () => {
        <embed src= {newURL}    width="100%"  type='video/mp4' height='100%'></embed>
         //"https://www.youtube.com/embed/i8n1gSw_o_8" 
          ) : (
-        <img src={random.URL} alt='' />
+        <img src={random.URL} alt='breakie-image' />
       );
   
   }
@@ -54,7 +50,7 @@ const Breakie = () => {
               <h1>{random.name}</h1>
               <div className={classes.info}>
                 <div className={classes.type}>
-                  <img src={pic} alt='' />
+                  <img src={pic} alt='breakie' />
                   <span>{random.type}</span>
                 </div>
                 <div>

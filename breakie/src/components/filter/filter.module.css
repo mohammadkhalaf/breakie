@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  margin-top: 12rem;
+  margin-top: 1rem;
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
@@ -26,7 +26,7 @@
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 2.2rem;
   line-height: 25px;
   text-align: center;
   color: #ffffff;
@@ -43,7 +43,7 @@
   width: 240px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 12px;
   color: #222222;
   display: flex;
@@ -52,7 +52,7 @@
 }
 .list__item span {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 12px;
   width:90px;
  
@@ -89,19 +89,40 @@
   display:block;
 }
 .choose{
-  width:11rem;
-  padding: 16px;
+  width:17rem;
+  padding: 1.6rem;
   margin:7rem auto;
   background: rgba(34, 34, 34, 0.9);
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   font-family: 'Fira Sans';
   font-style: normal;font-weight: 700;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 25px;
   align-items: center;
   text-align: center;
   color: #FBFBFB;
   order: 0;
 
+}
+.searchBar {
+  margin:23rem auto 7rem 18% ;
+  height: 48px;
+  width: 40rem;
+  background: #ffffff;
+  mix-blend-mode: normal;
+  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.search {
+  height: 30px;
+  border: 0px;
+  outline: none; 
+}
+svg {
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  fill: gray;
 }

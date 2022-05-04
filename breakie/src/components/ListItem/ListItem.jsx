@@ -1,14 +1,18 @@
+
 import React, { useState } from 'react';
 import classes from './listitem.module.css';
 
-const ListItem = ({ item, saveData, removeItem }) => {
-  const [ischecked, setischecked] = useState(false);
+ 
+const ListItem = ({ item, saveData, removeItem}) => {
+const [checked,setChecked]=useState(item.isChecked)
   const changeHandler = (e, item) => {
-    setischecked(!ischecked);
-    if (!ischecked) {
+    if (!item.isChecked) {
       saveData(item);
+      setChecked(!item.isChecked)
+  
     } else {
       removeItem(item);
+      
     }
   };
   return (
@@ -16,9 +20,10 @@ const ListItem = ({ item, saveData, removeItem }) => {
       <li className={classes.list__item} key={item.id}>
         <label className={classes.label__checkbox}>
           <input
+          checked={checked}
+            value={item.isChecked}
             type='checkbox'
-            checked={ischecked}
-            onChange={(e) => changeHandler(e, item)}
+             onChange={(e) => {changeHandler(e, item); }}
           />
           {item.name}
         </label>

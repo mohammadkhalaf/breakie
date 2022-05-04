@@ -1,8 +1,9 @@
 export interface breakie{
- breakiemodule : Array<{
+ breakiemod:Array<{
     id:string,
     name:string,
     type:string,
     time:number,
     desc:string,
-}> }
+    isChecked:boolean,
+}>}
