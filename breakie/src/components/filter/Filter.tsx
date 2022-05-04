@@ -8,47 +8,49 @@ import ListItem from '../ListItem/ListItem';
 import { breakie } from '../../models/breakie';
 import Overlay from '../overlay/Overlay';
 
-interface localStorageProps {
-  addToLocal: [];
-  addOverlay: () => void
-}
+
 
 
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
-  const { mental, setMental, social, fysisk } = useCollection("Breakies");
+  const { mental, setMental, social, setSocial, fysisk, setFysisk } = useCollection("Breakies");
   const [choseList, setChoseList] = useState(new Array);
   const { chooseData, show } = useContext(AppContext);
 
   const navigate = useNavigate();
-
-   const Search = () => {
-
-  //   fysisk.filter((item: any) => item.name.includes(searchField))
-   }
 
   const RandomEl = () => {
     chooseData(choseList);
     navigate('/breakie');
   };
 
-  const removeItem = (item: any) => {
-    setChoseList(choseList.filter((x: any) => x.id !== item.id));
-  };
-
-
   const saveData = (item: any) => {
-    //    setChoseList([...choseList, {...item,isChecked:!item.isChecked}]);
-    if(item.type === 'mental') {
+    //save data in state for slump breakir from manuall
+    setChoseList([...choseList, {...item,isChecked:!item.isChecked}]);
 
+
+    //uppdate data with isChecked  in usecollection for localstorge then
+    if(item.type === 'mental') {
       let m: any = [...mental];
       let idx:number = m.findIndex((i:any) => i.id === item.id);
       m[idx].isChecked = !m[idx].isChecked;
-  
       setMental(m)
 
     }
+    else if(item.type==="fysisk"){
+      let f: any = [...fysisk];
+      let idx:number = f.findIndex((i:any) => i.id === item.id);
+      f[idx].isChecked = !f[idx].isChecked;
+      setFysisk(f)
+    }
+    else{
+      let s: any = [...social];
+      let idx:number = s.findIndex((i:any) => i.id === item.id);
+      s[idx].isChecked = !s[idx].isChecked;
+      setSocial(s)
+    }
   }
+
 
   return (
     <>
@@ -76,7 +78,6 @@ const Filter = () => {
                       key={item.id}
                       item={item}
                       saveData={saveData}
-                      removeItem={removeItem}
                     />
                   );
                 })}
@@ -94,7 +95,6 @@ const Filter = () => {
                       key={item.id}
                       item={item}
                       saveData={saveData}
-                      removeItem={removeItem}
 
 
 
@@ -115,7 +115,7 @@ const Filter = () => {
                       key={item.id}
                       item={item}
                       saveData={saveData}
-                      removeItem={removeItem}
+                    
 
 
                     />

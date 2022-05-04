@@ -12,7 +12,6 @@ const useCollection = (col) => {
   const [fysisk, setFysisk] = useState(Array);
   const [mental, setMental] = useState(Array);
   const [social, setSocial] = useState(Array);
-  const allbreakies=[...fysisk,...mental,...social];
 
 
 
@@ -52,7 +51,7 @@ const useCollection = (col) => {
     getFysisk();
   }, [col]);
 
-  return { mental, setMental, social, fysisk, allbreakies };
+  return { mental, setMental,setFysisk,setSocial, social, fysisk };
 };
 
 export default useCollection;
