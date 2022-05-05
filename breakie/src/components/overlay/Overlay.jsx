@@ -1,65 +1,76 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import classes from './overlay.module.css';
 import { AppContext } from '../../context/activityContext';
 import { useContext } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import close from '../../assets/close.png';
 
+const Overlay = ({ choseList }) => {
+  const { openOverlay } = useContext(AppContext);
 
+  const savedItems = localStorage.getItem('Breakies')
+    ? JSON.parse(localStorage.getItem('Breakies'))
+    : [];
 
-const Overlay = ({ choseList}) => {
-    const { openOverlay } = useContext(AppContext);
-    const [localList,setLocalList]=useState([])
-  
+  const [list, setList] = useState(savedItems);
 
-   const addTolocal = () => {
-   const x=prompt("enter name")
-   if(x!=""){
-    localStorage.setItem(`${x}`, JSON.stringify(choseList));
-    
-   }
-      
+  const oldData = JSON.parse(localStorage.getItem('Breakies')) || [];
 
-let key;
-   for ( var i = 0; i < localStorage.length ; ++i ) {
-     key = localStorage.key(i);  
-    localList.push(key);
-     console.log(localStorage.key(i)+ localStorage.key(i).length);
-     setLocalList([...localList])
-     
+  const addTolocal = () => {
+    const name = prompt('enter name');
+    if (!name) {
+      return;
     }
-   }
-    const saveItems = () => {
-        openOverlay();
 
-    };
-    console.log(choseList);
-    return createPortal(
-
-        <div className={classes.overlay}>
-            <button onClick={saveItems} className={classes.close}>close</button>
-            <div className={classes.modal}>
-                <button className={classes.favo} onClick={addTolocal}> Spara favoriter</button>
-                <ul className={classes.locallist} >
-               {localList.map((item)=>{
-                   return(
-                 <li className={classes.listItem} >
-                 <p className={classes.list}> {item} </p>
-                 <span className={classes.list__span}>{item.length} breakies</span>
-                 </li>
-               )})
-}
-        </ul>
-            </div>
-
-        </div>
-        ,
-
-        document.getElementById('modal')
-
+    const newItem = localStorage.setItem(
+      'Breakies',
+      JSON.stringify([...oldData, { name, choseList }])
     );
+    setList(JSON.parse(localStorage.getItem('Breakies')));
+  };
 
+  const closeOverlay = () => {
+    openOverlay();
+  };
+  const removFromLocalStorage = (item, index) => {
+    let newBreakies = JSON.parse(localStorage.getItem('Breakies'));
+    newBreakies.splice(index, 1);
+    setList(newBreakies);
+    localStorage.setItem('Breakies', JSON.stringify(newBreakies));
+  };
+
+  return createPortal(
+    <div className={classes.overlay}>
+      <span onClick={closeOverlay} className={classes.closeoverlay}>
+        <img src={close} alt='' className={classes.closebtn} />
+      </span>
+      <div className={classes.modal}>
+        <button className={classes.favo} onClick={addTolocal}>
+          Spara favoriter
+        </button>
+        <ul className={classes.locallist}>
+          {list.length > 0 &&
+            list.map((item, index) => {
+              return (
+                <li className={classes.listItem} key={index}>
+                  <FaTimes
+                    className={classes.closeicon}
+                    onClick={() => removFromLocalStorage(item, index)}
+                  />
+
+                  <p className={classes.listname}> {item.name} </p>
+                  <span className={classes.list__span}>
+                    {item.choseList.length} breakies
+                  </span>
+                </li>
+              );
+            })}
+        </ul>
+      </div>
+    </div>,
+    document.getElementById('modal')
+  );
 };
-
-
 
 export default Overlay;
