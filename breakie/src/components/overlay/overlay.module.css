@@ -67,4 +67,19 @@ color:#FFFFFF;
     font-size:16px;
     color:white;
 }
+.listItem{
+width: 280px;
+height: 72px;
+left: 268px;
+top: 450px;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 4px;
+}
+.locallist{
+    display:flex;
+    flex-direction: row;
+    padding-left: 0;
+    justify-content: space-between;
+    align-items: center;
+}
 

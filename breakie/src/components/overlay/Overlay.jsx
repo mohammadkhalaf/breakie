@@ -6,34 +6,32 @@ import { useContext } from 'react';
 
 
 
-
-
-
 const Overlay = ({ choseList}) => {
     const { openOverlay } = useContext(AppContext);
-    //  const [name, setName] = useState(String);
+    const [localList,setLocalList]=useState([])
   
 
-   let name;
    const addTolocal = () => {
    const x=prompt("enter name")
    if(x!=""){
     localStorage.setItem(`${x}`, JSON.stringify(choseList));
     
    }
+      
 
-   console.log(x)
-   
-
+let key;
+   for ( var i = 0; i < localStorage.length ; ++i ) {
+     key = localStorage.key(i);  
+    localList.push(key);
+     console.log(localStorage.key(i)+ localStorage.key(i).length);
+     setLocalList([...localList])
+     
     }
-      
-      
-
+   }
     const saveItems = () => {
         openOverlay();
 
     };
-    console.log(name);
     console.log(choseList);
     return createPortal(
 
@@ -41,10 +39,16 @@ const Overlay = ({ choseList}) => {
             <button onClick={saveItems} className={classes.close}>close</button>
             <div className={classes.modal}>
                 <button className={classes.favo} onClick={addTolocal}> Spara favoriter</button>
-
-                 <p className={classes.list}>   Name </p>
-                 <span className={classes.list__span}>{choseList.length}</span>
-             
+                <ul className={classes.locallist} >
+               {localList.map((item)=>{
+                   return(
+                 <li className={classes.listItem} >
+                 <p className={classes.list}> {item} </p>
+                 <span className={classes.list__span}>{item.length} breakies</span>
+                 </li>
+               )})
+}
+        </ul>
             </div>
 
         </div>
