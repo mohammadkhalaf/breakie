@@ -6,7 +6,6 @@ const ListItem = ({ item, saveData,removeItem}) => {
 const changeHandler = (e, item) => {
   if(!item.isChecked){
     saveData(item);
-
   }else{
     removeItem(item)
   }
