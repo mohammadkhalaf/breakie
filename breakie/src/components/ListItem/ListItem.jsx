@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classes from './listitem.module.css';
 
-const ListItem = ({ item, saveData }) => {
+const ListItem = ({ item, saveData, removeitem }) => {
   const changeHandler = (e, item) => {
     saveData(item);
   };

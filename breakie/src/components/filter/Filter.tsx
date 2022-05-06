@@ -15,15 +15,24 @@ const Filter = () => {
   const [choseList, setChoseList] = useState(new Array());
   const { chooseData, show } = useContext(AppContext);
 
+  const test = choseList.filter((ite) => ite.isChecked === true);
+  console.log(test);
+  console.log(choseList);
+
   const navigate = useNavigate();
 
   const RandomEl = () => {
     chooseData(choseList);
     navigate('/breakie');
   };
+
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
+
     setChoseList([...choseList, { ...item, isChecked: !item.isChecked }]);
+    console.log(choseList.length);
+
+    console.log(choseList.length);
 
     //uppdate data with isChecked  in usecollection for localstorge then
     if (item.type === 'mental') {
@@ -42,6 +51,11 @@ const Filter = () => {
       s[idx].isChecked = !s[idx].isChecked;
       setSocial(s);
     }
+  };
+
+  const removeitem = (item: any) => {
+    const newList = choseList.filter((i) => i.id !== item.id);
+    setChoseList(newList);
   };
 
   return (
@@ -68,7 +82,12 @@ const Filter = () => {
                   .filter((item: any) => item.name.includes(searchField))
                   .map((item: any) => {
                     return (
-                      <ListItem key={item.id} item={item} saveData={saveData} />
+                      <ListItem
+                        key={item.id}
+                        item={item}
+                        saveData={saveData}
+                        removeitem={removeitem}
+                      />
                     );
                   })}
             </ul>
@@ -81,7 +100,12 @@ const Filter = () => {
                   .filter((item: any) => item.name.includes(searchField))
                   .map((item: any) => {
                     return (
-                      <ListItem key={item.id} item={item} saveData={saveData} />
+                      <ListItem
+                        key={item.id}
+                        item={item}
+                        saveData={saveData}
+                        removeitem={removeitem}
+                      />
                     );
                   })}
             </ul>
@@ -94,7 +118,12 @@ const Filter = () => {
                   .filter((item: any) => item.name.includes(searchField))
                   .map((item: any) => {
                     return (
-                      <ListItem key={item.id} item={item} saveData={saveData} />
+                      <ListItem
+                        key={item.id}
+                        item={item}
+                        saveData={saveData}
+                        removeitem={removeitem}
+                      />
                     );
                   })}
             </ul>
