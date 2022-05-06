@@ -14,15 +14,24 @@ const Filter = () => {
   const [choseList, setChoseList] = useState(new Array());
   const { chooseData, show } = useContext(AppContext);
 
+  const test = choseList.filter((ite) => ite.isChecked === true);
+  console.log(test);
+  console.log(choseList);
+
   const navigate = useNavigate();
 
   const RandomEl = () => {
     chooseData(choseList);
     navigate('/breakie');
   };
+
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
+
     setChoseList([...choseList, { ...item, isChecked: !item.isChecked }]);
+    console.log(choseList.length);
+
+    console.log(choseList.length);
 
     //uppdate data with isChecked  in usecollection for localstorge then
     if (item.type === 'mental') {

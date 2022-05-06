@@ -9,6 +9,13 @@ import close from '../../assets/close.png';
 const Overlay = ({ choseList }) => {
   const { openOverlay } = useContext(AppContext);
 
+  const fitlereddd = (choseList) => {
+    const filtered = choseList.filter((item) => item.isChecked !== false);
+    return filtered;
+  };
+  const x = fitlereddd(choseList);
+  console.log(x);
+
   const savedItems = localStorage.getItem('Breakies')
     ? JSON.parse(localStorage.getItem('Breakies'))
     : [];
