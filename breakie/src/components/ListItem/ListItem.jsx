@@ -13,10 +13,10 @@ const changeHandler = (e, item) => {
   };
   return (
     <>
-      <li className={classes.list__item} key={item.id} >
+      <li className={classes.list__item} key={item.id}>
         <label className={classes.label__checkbox}>
           <input
-           onChange={e => changeHandler(e, item)}
+            onChange={(e) => changeHandler(e, item)}
             checked={item.isChecked}
             type='checkbox'
           />

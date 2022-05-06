@@ -1,4 +1,4 @@
-.filter_box {
+/* .filter_box {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -36,7 +36,7 @@
 .filterlist {
   list-style: none;
   padding: 0.1rem 1rem;
-}
+} */
 
 .label__checkbox {
   position: relative;
@@ -84,7 +84,7 @@
 .filterlist input[type='checkbox']:checked {
   display: block;
 }
-.choose {
+/* .choose {
   width: 11rem;
   padding: 16px;
   margin: 7rem auto;
@@ -100,4 +100,4 @@
   text-align: center;
   color: #fbfbfb;
   order: 0;
-}
+} */
