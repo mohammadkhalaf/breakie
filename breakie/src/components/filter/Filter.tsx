@@ -4,7 +4,6 @@ import useCollection from '../../hooks/useCollection';
 import { AppContext } from '../../context/activityContext';
 import { useNavigate } from 'react-router-dom';
 import ListItem from '../ListItem/ListItem';
-import { breakie } from '../../models/breakie';
 import Overlay from '../overlay/Overlay';
 import search from '../../assets/search.svg';
 
@@ -62,8 +61,10 @@ const Filter = () => {
       s[idx].isChecked = !s[idx].isChecked;
       setSocial(s);
     }
+    
+    setChoseList(choseList.filter((x: any) => x.id !== item.id));  
   }
-
+console.log(choseList)
   return (
     <>
       {show && <Overlay choseList={choseList} />}
