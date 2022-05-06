@@ -28,14 +28,13 @@ const Filter = () => {
     //save data in state for slump breakir from manuall
     setChoseList([...choseList, {...item,isChecked:!item.isChecked}]);
 
-
+    
     //uppdate data with isChecked  in usecollection for localstorge then
     if(item.type === 'mental') {
       let m: any = [...mental];
       let idx:number = m.findIndex((i:any) => i.id === item.id);
       m[idx].isChecked = !m[idx].isChecked;
       setMental(m)
-
     }
     else if(item.type==="fysisk"){
       let f: any = [...fysisk];
@@ -51,7 +50,28 @@ const Filter = () => {
     }
   }
 
-
+  const removeItem = (item: any) => {
+  //  setChoseList(choseList.filter((x: any) => x.id !== item.id));
+   if(item.type === 'mental') {
+    let m: any = [...mental];
+    let idx:number = m.findIndex((i:any) => i.id === item.id);
+    m[idx].isChecked = !m[idx].isChecked;
+    setMental(m)
+  }
+  else if(item.type==="fysisk"){
+    let f: any = [...fysisk];
+    let idx:number = f.findIndex((i:any) => i.id === item.id);
+    f[idx].isChecked = !f[idx].isChecked;
+    setFysisk(f)
+  }
+  else{
+    let s: any = [...social];
+    let idx:number = s.findIndex((i:any) => i.id === item.id);
+    s[idx].isChecked = !s[idx].isChecked;
+    setSocial(s)
+  }
+ };
+console.log(choseList)
   return ( 
     <>
       {show && <Overlay choseList={choseList} />}
@@ -78,6 +98,7 @@ const Filter = () => {
                       key={item.id}
                       item={item}
                       saveData={saveData}
+                      removeItem={removeItem}
                     />
                   );
                 })}
@@ -95,7 +116,7 @@ const Filter = () => {
                       key={item.id}
                       item={item}
                       saveData={saveData}
-
+                      removeItem={removeItem}
 
 
                     />
@@ -115,9 +136,7 @@ const Filter = () => {
                       key={item.id}
                       item={item}
                       saveData={saveData}
-                    
-
-
+                      removeItem={removeItem}
                     />
                   );
                 })}
