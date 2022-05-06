@@ -1,20 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25rem;
+  padding: 0rem 26rem;
+}
 .filter_box {
   display: flex;
-  justify-content: space-around;
   align-items: flex-start;
-  margin-top: 1rem;
-  width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .flex_item {
   justify-content: center;
-  width: 280px;
+  min-width: 25rem;
   background: #ffffff;
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   margin-left: 0;
+  margin-right: 3.5rem;
+}
+.flex_item:last-child {
+  margin-right: 0;
 }
 
 .filterTitle {
@@ -48,16 +53,12 @@
   color: #222222;
   display: flex;
   align-items: center;
-  
 }
 .list__item span {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 12px;
-  width:90px;
- 
-
-  
+  width: 90px;
 }
 .list__item {
   height: 36px;
@@ -65,8 +66,8 @@
   top: 86px;
   margin: 0 0 0.3rem 0;
   padding: 0;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 }
 
 .list__item::after {
@@ -76,53 +77,62 @@
   height: 0px;
   border: 1px solid rgba(0, 0, 0, 0.04);
   margin-left: -16px;
-  margin-top:30px;
+  margin-top: 30px;
 }
 .filterlist input[type='checkbox'] {
   width: 20px;
   height: 20px;
   padding-left: 0;
-  display:block;
-  margin-right:5px;
+  display: block;
+  margin-right: 5px;
 }
 .filterlist input[type='checkbox']:checked {
-  display:block;
+  display: block;
 }
-.choose{
-  width:17rem;
+.choose {
+  width: 17rem;
   padding: 1.6rem;
-  margin:7rem auto;
+  /* margin: 7rem auto; */
   background: rgba(34, 34, 34, 0.9);
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   font-family: 'Fira Sans';
-  font-style: normal;font-weight: 700;
+  font-style: normal;
+  font-weight: 700;
   font-size: 1.8rem;
   line-height: 25px;
   align-items: center;
   text-align: center;
-  color: #FBFBFB;
-  order: 0;
-
+  color: #fbfbfb;
+  display: inline-block;
+  margin: 5rem auto;
 }
 .searchBar {
-  margin:23rem auto 7rem 18% ;
-  height: 48px;
-  width: 40rem;
+  height: 5rem;
+  position: relative;
+
+  max-width: 55rem;
   background: #ffffff;
   mix-blend-mode: normal;
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 0.4rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.searchicon {
+  position: absolute;
+
+  height: 3rem;
+  width: 3rem;
+  margin-left: 1.4rem;
 }
 .search {
-  height: 30px;
   border: 0px;
-  outline: none; 
-}
-svg {
-  width: 30px;
-  height: 30px;
-  padding-top: 10px;
-  padding-left: 10px;
-  fill: gray;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding-left: 5rem;
+  border-radius: 0.4rem;
 }

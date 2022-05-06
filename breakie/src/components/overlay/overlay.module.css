@@ -1,85 +1,129 @@
-/* .overlay {
-position: fixed;
-background: rgba(34, 34, 34, 1);
-opacity: 0.96;
-height: 100vh;
-width: 100vw;
-    
-}*/
-.favo{   
-width: 134px;
-height: 36px;
-border: 0.8px solid #FBFBFB;
-box-sizing: border-box;
-border-radius: 4px;
-background: rgba(34, 34, 34, 0.5);
-opacity: 0.96;
-color:#FFFFFF;
+.favo {
+  width: 134px;
+  height: 36px;
+  border: 0.8px solid #fbfbfb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: rgba(34, 34, 34, 0.5);
+  opacity: 0.96;
+  color: #ffffff;
+}
+.close {
+  position: absolute;
+  top: 3.2rem;
+  left: 3.2rem;
+  width: 1.8rem;
+  height: 45px;
 
-} 
-.close{
-position: absolute;
-width: 45px;
-height: 45px;
-border: 0.8px solid #FBFBFB;
-box-sizing: border-box;
-border-radius: 4px;
-background: rgba(34, 34, 34, 0.5);
-opacity: 0.96;
-color:#FFFFFF;
+  border-radius: 4px;
+
+  background-color: #ffffff;
+
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .overlay {
-    position: absolute;
-    background: rgba(34, 34, 34, 1);
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
+  position: fixed;
+  background: rgba(34, 34, 34, 1);
+
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
 }
 .modal {
-    position: fixed;
-    top: 50%;
-    left:20%;
-    width: 500px;
-    height: 500px;
-    z-index: 4;
-}
-.list {
-    color: white;
-    font-size: 3rem;
-}
-.name{
-    font-size:16px;
-    color:white;
-}
-.inputkey{
-width: 134px;
-height: 36px;
-border: 0.8px solid #FBFBFB;
-box-sizing: border-box;
-border-radius: 4px;
-background: rgba(34, 34, 34, 0.5);
-opacity: 0.7;
-color:#FFFFFF;
-}
-.list__span{
-    font-size:16px;
-    color:white;
-}
-.listItem{
-width: 280px;
-height: 72px;
-left: 268px;
-top: 450px;
-background: rgba(255, 255, 255, 0.2);
-border-radius: 4px;
-}
-.locallist{
-    display:flex;
-    flex-direction: row;
-    padding-left: 0;
-    justify-content: space-between;
-    align-items: center;
-}
+  position: relative;
+  width: 100%;
+  max-width: 100rem;
 
+  z-index: 4;
+
+  margin: 100px auto;
+  top: 30rem;
+}
+.listname {
+  color: white;
+  font-size: 2.2rem;
+  font-family: Fira Sans;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-transform: capitalize;
+}
+.name {
+  font-size: 16px;
+  color: white;
+}
+.inputkey {
+  width: 134px;
+  height: 36px;
+  border: 0.8px solid #fbfbfb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: rgba(34, 34, 34, 0.5);
+  opacity: 0.7;
+}
+.list__span {
+  font-family: Fira Sans;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+}
+.listItem {
+  height: 72px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-right: 3.2rem;
+  list-style: none;
+  padding: 1.2rem 6rem 1.3rem 1.7rem;
+  min-width: 28rem;
+  position: relative;
+  margin-bottom: 1.3rem;
+}
+.closeicon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0;
+  width: 1rem;
+  height: 1rem;
+
+  fill: #ffffff;
+}
+.closeoverlay {
+  position: absolute;
+
+  top: 3.2rem;
+  left: 3.2rem;
+  background-color: white;
+  width: 4rem;
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.closebtn {
+  width: 2rem;
+  height: 2rem;
+}
+.locallist {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-left: 0;
+
+  align-items: center;
+
+  margin-top: 1.6rem;
+}
