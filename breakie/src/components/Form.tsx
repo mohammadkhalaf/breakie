@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import mental from '../assets/mental.svg';
 import mentalactive from '../assets/mentalactive.svg';
-import pic from '../assets/pic.svg';
-import picactive from '../assets/picactive.svg';
+
+import fysisk from '../assets/fysisk.svg';
 import social from '../assets/social.svg';
 import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
@@ -69,18 +69,18 @@ const Form = () => {
               activity === 'fysisk'
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
-            }
+            }  onChange={changeHandler}
           >
             <label htmlFor='fysisk'>
               <input
                 checked={isChecked}
                 type='checkbox'
                 id='fysisk'
-                onChange={changeHandler}
+               
                 name='activity'
                 value='fysisk'
               />
-              <img src={activity === 'fysisk' ? picactive : pic} alt='fysisk' />
+              <img src={fysisk} alt='fysisk' />
               <span>fysisk</span>
             </label>
           </div>

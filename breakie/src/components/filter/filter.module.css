@@ -1,8 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin-top: 25rem;
-  padding: 0rem 26rem;
+  margin-top: 23rem;
+  padding: 0rem 20rem;
 }
 .filter_box {
   display: flex;
@@ -110,7 +110,6 @@
 .searchBar {
   height: 5rem;
   position: relative;
-
   max-width: 55rem;
   background: #ffffff;
   mix-blend-mode: normal;
@@ -123,7 +122,6 @@
 
 .searchicon {
   position: absolute;
-
   height: 3rem;
   width: 3rem;
   margin-left: 1.4rem;
@@ -135,4 +133,33 @@
   height: 100%;
   padding-left: 5rem;
   border-radius: 0.4rem;
+}
+.search__close{
+  display:none;
+}
+.storedLocal{
+  display:flex;
+  max-width:17.7rem;
+  margin-bottom:2.6rem;
+  height:2.6rem;
+  border-radius:.4rem;
+  background-color: rgba(255, 255, 255, .4);
+  width: max-content;
+  align-items:center;
+  padding-right: 1.2rem;
+  
+}
+.storedLocal img{
+  width:.8rem;
+  height:.8rem;
+  margin-left:1rem;
+
+}
+.storedLocal span{
+  display:inline-block;
+  color:rgb(0,0,0,1);
+  font-size:1.2rem;
+  margin-left:1.3rem;
+  font-weight: 400;;
+
 }
