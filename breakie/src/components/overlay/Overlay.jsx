@@ -6,8 +6,10 @@ import { useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import close from '../../assets/close.png';
 
-const Overlay = ({ choseList }) => {
+
+const Overlay = ({ choseList,storedItems }) => {
   const { openOverlay } = useContext(AppContext);
+  
 
   const fitlereddd = (choseList) => {
     const filtered = choseList.filter((item) => item.isChecked !== false);
@@ -40,6 +42,11 @@ const Overlay = ({ choseList }) => {
   const closeOverlay = () => {
     openOverlay();
   };
+
+  const closeOver = (item) => {
+    storedItems(item)
+    openOverlay();
+  };
   const removFromLocalStorage = (item, index) => {
     let newBreakies = JSON.parse(localStorage.getItem('Breakies'));
     newBreakies.splice(index, 1);
@@ -60,7 +67,7 @@ const Overlay = ({ choseList }) => {
           {list.length > 0 &&
             list.map((item, index) => {
               return (
-                <li className={classes.listItem} key={index}>
+                <li className={classes.listItem} key={index} onClick={()=>{closeOver({item})}}>
                   <FaTimes
                     className={classes.closeicon}
                     onClick={() => removFromLocalStorage(item, index)}

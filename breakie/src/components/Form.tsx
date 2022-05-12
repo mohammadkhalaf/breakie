@@ -100,12 +100,10 @@ const Form = () => {
             }
             onClick={() => setTime('1')}
           >
-            <label htmlFor='1' className={classes.tidinfo}>
-              <div>
-                <p> &#60; 1</p>
-                <span>minut</span>
-              </div>
-            </label>
+            <div className={classes.tidinfo}>
+              <p> &#60; 1</p>
+              <span>minut</span>
+            </div>
           </div>
           <div
             className={
@@ -115,12 +113,10 @@ const Form = () => {
             }
             onClick={() => setTime('2')}
           >
-            <label htmlFor='2' className={classes.tidinfo}>
-              <div>
-                <p> 1-2</p>
-                <span>minuter</span>
-              </div>
-            </label>
+            <div className={classes.tidinfo}>
+              <p> 1-2</p>
+              <span>minuter</span>
+            </div>
           </div>
           <div
             className={
@@ -130,12 +126,10 @@ const Form = () => {
             }
             onClick={() => setTime('3')}
           >
-            <label htmlFor='3' className={classes.tidinfo}>
-              <div>
-                <p>3+</p>
-                <span>minuter</span>
-              </div>
-            </label>
+            <div className={classes.tidinfo}>
+              <p>3+</p>
+              <span>minuter</span>
+            </div>
           </div>
         </div>
 

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import ListItem from '../ListItem/ListItem';
 import Overlay from '../overlay/Overlay';
 import search from '../../assets/search.svg';
+import close from '../../assets/close.png';
 
 const Filter = () => {
   const [searchField, setSearchField] = useState('');
@@ -15,7 +16,48 @@ const Filter = () => {
   const { chooseData, show } = useContext(AppContext);
   const [active, setActive] = useState(false);
 
+  const [localitems, setLocalItems] = useState(Object);
+
   const navigate = useNavigate();
+
+  //hämta list from localStorge with checked item
+  const storedItems = (items: any) => {
+    setLocalItems(items.item);
+    const arr: any = items.item.choseList;
+    console.log(arr);
+    console.log(items.item);
+    console.log(items.item.choseList);
+    arr.map((item: any) => {
+      if (item.type === 'fysisk') {
+        let f: any = [...fysisk];
+        let idx: number = f.findIndex((i: any) => i.id === item.id);
+        f[idx].isChecked = !f[idx].isChecked;
+        console.log(f[idx].isChecked);
+        setFysisk(f);
+      } else if (item.type === 'mental') {
+        let m: any = [...mental];
+        let idx: number = m.findIndex((i: any) => i.id === item.id);
+        m[idx].isChecked = !m[idx].isChecked;
+        setMental(m);
+      } else {
+        let s: any = [...social];
+        let idx: number = s.findIndex((i: any) => i.id === item.id);
+        s[idx].isChecked = !s[idx].isChecked;
+        setSocial(s);
+      }
+    });
+  };
+  console.log(localitems);
+
+  const closeStoredName = () => {
+    setLocalItems({});
+    // let f: any = [...fysisk,];
+    // let m: any = [...mental];
+    // let s: any = [...social];
+    // setFysisk(f);
+    // setMental(m);
+    // setSocial(s);
+  };
 
   const RandomEl = () => {
     chooseData(choseList);
@@ -26,9 +68,6 @@ const Filter = () => {
     //save data in state for slump breakir from manuall
 
     setChoseList([...choseList, { ...item, isChecked: !item.isChecked }]);
-    console.log(choseList.length);
-
-    console.log(choseList.length);
 
     //uppdate data with isChecked  in usecollection for localstorge then
     if (item.type === 'mental') {
@@ -76,7 +115,7 @@ const Filter = () => {
 
   return (
     <>
-      {show && <Overlay choseList={choseList} />}
+      {show && <Overlay choseList={choseList} storedItems={storedItems} />}
       <div className={classes.wrapper}>
         <div
           className={
@@ -99,6 +138,13 @@ const Filter = () => {
             onChange={(e) => setSearchField(e.target.value)}
           />
         </div>
+
+        {localitems.name ? (
+          <span className={classes.storedLocal}>
+            <img src={close} alt='close' onClick={() => closeStoredName()} />
+            <span>{localitems.name}</span>
+          </span>
+        ) : null}
         <section className={classes.filter_box}>
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>fysisk</h3>
@@ -156,8 +202,12 @@ const Filter = () => {
           </article>
         </section>
 
-        <button className={classes.choose} onClick={RandomEl}>
-          Choose breakie
+        <button
+          className={classes.choose}
+          onClick={RandomEl}
+          disabled={choseList.length < 1}
+        >
+          {choseList.length > 0 ? 'slumpa from en breakie' : 'välj breakie'}
         </button>
       </div>
     </>
