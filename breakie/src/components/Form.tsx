@@ -1,50 +1,40 @@
 import React, { useContext, useState } from 'react';
 import mental from '../assets/mental.svg';
-import mentalactive from '../assets/mentalactive.svg';
-import pic from '../assets/pic.svg';
-import picactive from '../assets/picactive.svg';
+import fysisk from '../assets/fysisk.svg';
 import social from '../assets/social.svg';
-import socialactive from '../assets/socialactive.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/activityContext';
-import {collection, query, where, getDocs, DocumentData,} from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  DocumentData,
+} from 'firebase/firestore';
 import { db } from '../backend/firebase';
-
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
-  const [breakie, setbreakie] = useState<DocumentData[] | null>(Array);
-  const { getData } = useContext(AppContext)
-
-
+  const { getData } = useContext(AppContext);
   const getbreakie = async () => {
-    console.log(time)
+    console.log(time);
     if (activity.length) {
-      const q1 = query(collection(db, "Breakies"), where("type", "==", activity));
-      const breakieSnapshot = await getDocs(q1)
-      const breakielist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
-        doc.data()).filter((doc)=>doc.time==time);
-   
-      console.log(breakielist)
+      const q1 = query(
+        collection(db, 'Breakies'),
+        where('type', '==', activity)
+      );
+      const breakieSnapshot = await getDocs(q1);
+      const breakielist: DocumentData[] = breakieSnapshot.docs
+        .map((doc) => doc.data())
+        .filter((doc) => doc.time == time);
+
+      console.log(breakielist);
       getData(breakielist);
     }
-
-  }
-
-
+  };
   const navigate = useNavigate();
-
-  const changeHandler = (e: any) => {
-    setActivity(e.target.value);
-  };
-  const timeHandler = (e: any) => {
-    setTime(e.target.value);
-
-
-  };
-
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (activity && time) {
@@ -70,19 +60,10 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
+            onClick={() => setActivity('fysisk')}
           >
-            <label htmlFor='fysisk'>
-              <input
-                checked={isChecked}
-                type='checkbox'
-                id='fysisk'
-                onChange={changeHandler}
-                name='activity'
-                value='fysisk'
-              />
-              <img src={activity === 'fysisk' ? picactive : pic} alt='fysisk' />
-              <span>fysisk</span>
-            </label>
+            <img src={fysisk} alt='fysisk' />
+            <span>fysisk</span>
           </div>
           <div
             className={
@@ -90,19 +71,10 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
+            onClick={() => setActivity('mental')}
           >
-            <label htmlFor='mental'>
-              <input
-                checked={isChecked}
-                type='checkbox'
-                id='mental'
-                onChange={changeHandler}
-                name='activity'
-                value='mental'
-              />
-              <img src={activity === 'mental' ? mentalactive : mental} alt='mental' />
-              <span>mental</span>
-            </label>
+            <img src={mental} alt='mental' />
+            <span>mental</span>
           </div>
           <div
             className={
@@ -110,19 +82,10 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
+            onClick={() => setActivity('social')}
           >
-            <label htmlFor='social'>
-              <input
-                checked={isChecked}
-                type='checkbox'
-                id='social'
-                onChange={changeHandler}
-                value='social'
-                name='social'
-              />
-              <img src={activity === 'social' ? socialactive : social} alt='social' />
-              <span>social</span>
-            </label>
+            <img src={social} alt='social' />
+            <span>social</span>
           </div>
         </div>
         <div className={classes.formHeader}>
@@ -135,16 +98,9 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
+            onClick={() => setTime('1')}
           >
             <label htmlFor='1' className={classes.tidinfo}>
-              <input
-                type='checkbox'
-                checked={isChecked}
-                id='1'
-                onChange={timeHandler}
-                value='1'
-                name='1'
-              />
               <div>
                 <p> &#60; 1</p>
                 <span>minut</span>
@@ -157,16 +113,9 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
+            onClick={() => setTime('2')}
           >
             <label htmlFor='2' className={classes.tidinfo}>
-              <input
-                type='checkbox'
-                checked={isChecked}
-                id='2'
-                onChange={timeHandler}
-                value='2'
-                name='2'
-              />
               <div>
                 <p> 1-2</p>
                 <span>minuter</span>
@@ -179,16 +128,9 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
+            onClick={() => setTime('3')}
           >
             <label htmlFor='3' className={classes.tidinfo}>
-              <input
-                type='checkbox'
-                checked={isChecked}
-                id='3'
-                onChange={timeHandler}
-                value='3'
-                name='3'
-              />
               <div>
                 <p>3+</p>
                 <span>minuter</span>

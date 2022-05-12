@@ -13,6 +13,7 @@ const Filter = () => {
     useCollection('Breakies');
   const [choseList, setChoseList] = useState(new Array());
   const { chooseData, show } = useContext(AppContext);
+  const [active, setActive] = useState(false);
 
   const navigate = useNavigate();
 
@@ -69,13 +70,27 @@ const Filter = () => {
     setChoseList(choseList.filter((x: any) => x.id !== item.id));
   };
   console.log(choseList);
+  const activeBar = () => {
+    setActive(!active);
+  };
+
   return (
     <>
       {show && <Overlay choseList={choseList} />}
       <div className={classes.wrapper}>
-        <div className={classes.searchBar}>
-          {/* <FaSearch className={classes.searchicon} /> */}
-          <img src={search} alt='' className={classes.searchicon} />
+        <div
+          className={
+            active
+              ? `${classes.searchBar} ${classes.active}`
+              : `${classes.searchBar}`
+          }
+        >
+          <img
+            src={search}
+            alt=''
+            className={classes.searchicon}
+            onClick={activeBar}
+          />
           <input
             className={classes.search}
             placeholder=''
