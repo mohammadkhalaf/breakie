@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import mental from '../assets/mental.svg';
-import mentalactive from '../assets/mentalactive.svg';
-import pic from '../assets/pic.svg';
-import picactive from '../assets/picactive.svg';
+import fysisk from '../assets/fysisk.svg';
 import social from '../assets/social.svg';
-import socialactive from '../assets/socialactive.svg';
 import classes from './InputBrakie.module.css';
 import { db } from '../backend/firebase';
 import { collection, addDoc } from 'firebase/firestore';
-
 const InputBrakie = () => {
   const [activity, setActivity] = useState('');
-  const [isChecked, setChecked] = useState(false);
+
   const [name, setName] = useState('');
   const [time, setTime] = useState('');
   const [URL, setURL] = useState('');
@@ -20,12 +16,12 @@ const InputBrakie = () => {
     setName(e.target.value);
   };
 
-  const changeHandler = (e) => {
-    setActivity(e.target.value);
-  };
-  const timeHandler = (e) => {
-    setTime(e.target.value);
-  };
+  // const changeHandler = (e) => {
+  //   setActivity(e.target.value);
+  // };
+  // const timeHandler = (e) => {
+  //   setTime(e.target.value);
+  // };
   const urlHandler = (e) => {
     setURL(e.target.value);
   };
@@ -56,22 +52,22 @@ const InputBrakie = () => {
       <div className={classes.form}>
         <form onSubmit={submitHandler}>
           <div className={classes.header}>
-            <h2>Create a Breakie</h2>
+            <h2>Skapa en breakie</h2>
           </div>
           <div className={classes['input-fields']}>
             <div>
               <label className={classes.nameLabel}>
-                <span>Name</span>
+                <span>Title</span>
                 <input type='text' value={name} onChange={nameHandler} />
               </label>
             </div>
             <div className={classes.typeContainer}>
               <div className={classes.nameLabel}>
-                <span>Typ</span>
+                <span>Typ av breakie</span>
               </div>
 
               <div className={classes.activities}>
-                <div
+                {/* <div
                   className={
                     activity === 'fysisk'
                       ? `${classes.formcontrol} ${classes.active} `
@@ -87,11 +83,14 @@ const InputBrakie = () => {
                       name='activity'
                       value='fysisk'
                     />
-                    <img src={activity === 'fysisk' ? picactive : pic} alt='' />
+                    <img
+                      src={activity === 'fysisk' ? picactive : fysisk}
+                      alt=''
+                    />
                     <span>fysisk</span>
                   </label>
-                </div>
-                <div
+                </div> */}
+                {/* <div
                   className={
                     activity === 'mental'
                       ? `${classes.formcontrol} ${classes.active} `
@@ -113,8 +112,8 @@ const InputBrakie = () => {
                     />
                     <span>mental</span>
                   </label>
-                </div>
-                <div
+                </div> */}
+                {/* <div
                   className={
                     activity === 'social'
                       ? `${classes.formcontrol} ${classes.active} `
@@ -136,14 +135,47 @@ const InputBrakie = () => {
                     />
                     <span>social</span>
                   </label>
+                </div> */}
+                <div
+                  className={
+                    activity === 'fysisk'
+                      ? `${classes.formcontrol} ${classes.active} `
+                      : classes.formcontrol
+                  }
+                  onClick={() => setActivity('fysisk')}
+                >
+                  <img src={fysisk} alt='fysisk' />
+                  <span>fysisk</span>
+                </div>
+                <div
+                  className={
+                    activity === 'mental'
+                      ? `${classes.formcontrol} ${classes.active} `
+                      : classes.formcontrol
+                  }
+                  onClick={() => setActivity('mental')}
+                >
+                  <img src={mental} alt='mental' />
+                  <span>mental</span>
+                </div>
+                <div
+                  className={
+                    activity === 'social'
+                      ? `${classes.formcontrol} ${classes.active} `
+                      : classes.formcontrol
+                  }
+                  onClick={() => setActivity('social')}
+                >
+                  <img src={social} alt='social' />
+                  <span>social</span>
                 </div>
               </div>
             </div>
             <div>
               <div className={classes.nameLabel}>
-                <span>Tid</span>
+                <span>Tidsåtgång</span>
               </div>
-              <div className={classes.activities}>
+              {/* <div className={classes.activities}>
                 <div
                   className={
                     time === '1'
@@ -210,6 +242,47 @@ const InputBrakie = () => {
                     <span>minuter</span>
                   </label>
                 </div>
+              </div> */}
+              <div className={classes.activities}>
+                <div
+                  className={
+                    time === '1'
+                      ? `${classes.formcontrol} ${classes.active} `
+                      : classes.formcontrol
+                  }
+                  onClick={() => setTime('1')}
+                >
+                  <div className={classes.tidinfo}>
+                    <p> &#60; 1</p>
+                    <span>minut</span>
+                  </div>
+                </div>
+                <div
+                  className={
+                    time === '2'
+                      ? `${classes.formcontrol} ${classes.active} `
+                      : classes.formcontrol
+                  }
+                  onClick={() => setTime('2')}
+                >
+                  <div className={classes.tidinfo}>
+                    <p> 1-2</p>
+                    <span>minuter</span>
+                  </div>
+                </div>
+                <div
+                  className={
+                    time === '3'
+                      ? `${classes.formcontrol} ${classes.active} `
+                      : classes.formcontrol
+                  }
+                  onClick={() => setTime('3')}
+                >
+                  <div className={classes.tidinfo}>
+                    <p>3+</p>
+                    <span>minuter</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -221,7 +294,7 @@ const InputBrakie = () => {
             </label>
           </div>
           <div className={classes.instructionContainer}>
-            <h2>Instruction</h2>
+            <h2>Instructioner</h2>
             <textarea
               value={instruction}
               onChange={instrctionHandler}
@@ -229,7 +302,7 @@ const InputBrakie = () => {
           </div>
         </form>
         <button onClick={submitHandler} type='submit'>
-          Create brakie
+          Skapa breakien
         </button>
       </div>
     </>

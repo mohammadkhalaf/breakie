@@ -89,7 +89,7 @@
   border-bottom-right-radius: 4px;
   cursor: pointer;
 }
-.tidinfo div {
+.tidinfo {
   display: flex;
   justify-content: center;
   align-items: center;
