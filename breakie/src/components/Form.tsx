@@ -15,11 +15,9 @@ import {
 import { db } from '../backend/firebase';
 const Form = () => {
   const [activity, setActivity] = useState('');
-  const [isChecked, setChecked] = useState(false);
   const [time, setTime] = useState('');
   const { getData } = useContext(AppContext);
   const getbreakie = async () => {
-    console.log(time);
     if (activity.length) {
       const q1 = query(
         collection(db, 'Breakies'),
@@ -29,8 +27,6 @@ const Form = () => {
       const breakielist: DocumentData[] = breakieSnapshot.docs
         .map((doc) => doc.data())
         .filter((doc) => doc.time == time);
-
-      console.log(breakielist);
       getData(breakielist);
     }
   };
@@ -40,8 +36,6 @@ const Form = () => {
     if (activity && time) {
       getbreakie();
       navigate('/breakie');
-
-      console.log(activity, time);
     } else {
       navigate('/manuall');
     }
@@ -51,7 +45,7 @@ const Form = () => {
     <>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.formHeader}>
-          <h2>Breakie-typ</h2>
+          <h2>Typ av breakie</h2>
         </div>
         <div className={classes.activities}>
           <div
@@ -89,7 +83,7 @@ const Form = () => {
           </div>
         </div>
         <div className={classes.formHeader}>
-          <h2>Breakie-tid</h2>
+          <h2>Tidsåtgång</h2>
         </div>
         <div className={classes.activities}>
           <div
@@ -134,7 +128,7 @@ const Form = () => {
         </div>
 
         <button className={classes.button}>
-          {activity ? 'Random breakie' : 'Choose specific breakie'}
+          {activity ? 'Slumpa fram en breakie' : 'Välj specifik Breakie'}
         </button>
       </form>
     </>

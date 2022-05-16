@@ -6,18 +6,8 @@ import { useContext } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import close from '../../assets/close.png';
 
-
-const Overlay = ({ choseList,storedItems }) => {
+const Overlay = ({ choseList, storedItems }) => {
   const { openOverlay } = useContext(AppContext);
-  
-
-  const fitlereddd = (choseList) => {
-    const filtered = choseList.filter((item) => item.isChecked !== false);
-    return filtered;
-  };
-  const x = fitlereddd(choseList);
-  console.log(x);
-
   const savedItems = localStorage.getItem('Breakies')
     ? JSON.parse(localStorage.getItem('Breakies'))
     : [];
@@ -32,7 +22,7 @@ const Overlay = ({ choseList,storedItems }) => {
       return;
     }
 
-    const newItem = localStorage.setItem(
+    localStorage.setItem(
       'Breakies',
       JSON.stringify([...oldData, { name, choseList }])
     );
@@ -43,8 +33,9 @@ const Overlay = ({ choseList,storedItems }) => {
     openOverlay();
   };
 
-  const closeOver = (item) => {
-    storedItems(item)
+  const showFavorit = (items) => {
+    console.log(items);
+    storedItems(items);
     openOverlay();
   };
   const removFromLocalStorage = (item, index) => {
@@ -67,13 +58,20 @@ const Overlay = ({ choseList,storedItems }) => {
           {list.length > 0 &&
             list.map((item, index) => {
               return (
-                <li className={classes.listItem} key={index} onClick={()=>{closeOver({item})}}>
+                <li className={classes.listItem} key={index}>
                   <FaTimes
                     className={classes.closeicon}
                     onClick={() => removFromLocalStorage(item, index)}
                   />
 
-                  <p className={classes.listname}> {item.name} </p>
+                  <p
+                    className={classes.listname}
+                    onClick={() => {
+                      showFavorit({ item });
+                    }}
+                  >
+                    {item.name}
+                  </p>
                   <span className={classes.list__span}>
                     {item.choseList.length} breakies
                   </span>

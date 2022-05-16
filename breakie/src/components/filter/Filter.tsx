@@ -22,17 +22,16 @@ const Filter = () => {
 
   //hämta list from localStorge with checked item
   const storedItems = (items: any) => {
-    setLocalItems(items.item);
+    console.log('clicked');
+
     const arr: any = items.item.choseList;
-    console.log(arr);
-    console.log(items.item);
-    console.log(items.item.choseList);
+
     arr.map((item: any) => {
       if (item.type === 'fysisk') {
         let f: any = [...fysisk];
         let idx: number = f.findIndex((i: any) => i.id === item.id);
         f[idx].isChecked = !f[idx].isChecked;
-        console.log(f[idx].isChecked);
+
         setFysisk(f);
       } else if (item.type === 'mental') {
         let m: any = [...mental];
@@ -46,23 +45,44 @@ const Filter = () => {
         setSocial(s);
       }
     });
+
+    setLocalItems(items.item);
+    setChoseList([...items.item.choseList]);
   };
-  console.log(localitems);
 
   const closeStoredName = () => {
+    setChoseList([]);
+    let s = [...social];
+
+    setSocial(
+      s.map((item: any) => {
+        return { ...item, isChecked: false };
+      })
+    );
+    let f = [...fysisk];
+
+    setFysisk(
+      f.map((item: any) => {
+        return { ...item, isChecked: false };
+      })
+    );
+
+    let m = [...mental];
+
+    setMental(
+      m.map((item: any) => {
+        return { ...item, isChecked: false };
+      })
+    );
+
     setLocalItems({});
-    // let f: any = [...fysisk,];
-    // let m: any = [...mental];
-    // let s: any = [...social];
-    // setFysisk(f);
-    // setMental(m);
-    // setSocial(s);
   };
 
   const RandomEl = () => {
     chooseData(choseList);
     navigate('/breakie');
   };
+  console.log('clicked 2');
 
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
@@ -87,6 +107,9 @@ const Filter = () => {
       setSocial(s);
     }
   };
+
+  console.log(choseList);
+
   const removeItem = (item: any) => {
     //uppdate data with isChecked  in usecollection for localstorge then
     if (item.type === 'mental') {
@@ -108,7 +131,7 @@ const Filter = () => {
 
     setChoseList(choseList.filter((x: any) => x.id !== item.id));
   };
-  console.log(choseList);
+
   const activeBar = () => {
     setActive(!active);
   };
