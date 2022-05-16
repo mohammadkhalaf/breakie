@@ -1,165 +1,56 @@
-/* .form {
-  height: 436px;
-  width: 360px;
-
-  border-radius: 4px;
-  margin: 100px auto;
-}
-.formHeader {
-  background: rgba(34, 34, 34, 1);
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-}
-.formHeader h2 {
-  font-family: Fira Sans;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 25px;
-  letter-spacing: 0em;
-
-  color: rgba(255, 255, 255, 1);
-}
-.activities {
-  height: 132px;
-  display: flex;
-}
-.formcontrol {
-  flex-grow: 1;
-  background-color: white;
-  position: relative;
-}
-
-.formcontrol input[type='checkbox'] {
-  display: none;
-}
-
-.formcontrol label {
-  text-align: center;
-}
-.formcontrol label img {
-  position: absolute;
-  left: 16.13%;
-  right: 14.75%;
-  top: 14.52%;
-  bottom: 14.68%;
-}
-
-.formcontrol label span {
-  position: absolute;
-  bottom: 18px;
-  font-family: Fira Sans;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 12px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: rgba(175, 175, 175, 1);
-
-  left: 45px;
-}
-
-.active {
-  background: rgba(175, 175, 175, 1);
-}
-.active label span {
-  color: white;
-}
-.button {
-  background: #232e29;
-  width: 360px;
-  height: 72px;
-  font-family: Fira Sans;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 25px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: rgba(251, 251, 251, 1);
-  border: none;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  cursor: pointer;
-}
-
-.tidinfo span {
-  position: absolute;
-  left: 16.13%;
-  right: 14.75%;
-
-  bottom: 14.68%;
-}
-.tidinfo p {
-  font-family: Fira Sans;
-  font-size: 45px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 25px;
-  text-align: center;
-  color: rgba(175, 175, 175, 1);
-}
-.active p {
-  color: white;
-} */
-
 .form {
-  height: 436px;
-  width: 360px;
+  width: 36rem;
   border-radius: 4px;
   margin: 16rem auto;
+
+  height: 54.2rem;
 }
 .formHeader {
   background: rgba(34, 34, 34, 1);
-  height: 50px;
+  height: 5.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border-top-right-radius: 4px;
-  border-top-left-radius: 4px; */
 }
 .formHeader h2 {
   font-family: Fira Sans;
   font-size: 2.2rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 25px;
+  line-height: 2.5rem;
   letter-spacing: 0em;
 
   color: rgba(255, 255, 255, 1);
 }
 .activities {
-  height: 132px;
   display: flex;
 }
 .formcontrol {
   flex-grow: 1;
   background-color: white;
   position: relative;
+
+  height: 18rem;
+}
+.formcontrol:not(:last-child) {
+  border-right: 1px solid #afafaf;
 }
 
-.formcontrol input[type='checkbox'] {
-  display: none;
-}
-
-/* .formcontrol label {
-  text-align: center;
-} */
-.formcontrol label img {
+.formcontrol img {
   position: absolute;
-  left: 16.13%;
-  right: 14.75%;
+
   top: 14.52%;
   bottom: 14.68%;
   padding: 5px;
+
+  width: 100%;
+  height: 60%;
+}
+.formcontrol:nth-child(2) img {
+  height: 50%;
 }
 
-.formcontrol label span {
+.formcontrol span {
   position: absolute;
   bottom: 18px;
   font-family: Fira Sans;
@@ -169,20 +60,22 @@
   line-height: 12px;
 
   color: rgba(175, 175, 175, 1);
+  color: black;
 
-  left: 45px;
+  width: 100%;
+  left: 0;
+  top: 12.8rem;
+  text-align: center;
 }
 
 .active {
-  background: rgba(175, 175, 175, 1);
+  background: #dddddd;
 }
-.active label span {
-  color: white;
-}
+
 .button {
   background: #232e29;
-  width: 360px;
-  height: 72px;
+  width: 100%;
+  height: 7.8rem;
   font-family: Fira Sans;
   font-size: 2.2rem;
   font-style: normal;
@@ -196,20 +89,17 @@
   border-bottom-right-radius: 4px;
   cursor: pointer;
 }
-.tidinfo div {
+.tidinfo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
+.breakiebtn {
+  border: none;
+  background-color: none;
+}
 
-/* .tidinfo span {
-  position: absolute;
-  left: 16.13%;
-  right: 14.75%;
-  text-align: center;
-  bottom: 14.68%;
-} */
 .tidinfo p {
   font-family: Fira Sans;
   font-size: 4.5rem;
@@ -217,10 +107,8 @@
   font-weight: 700;
   line-height: 25px;
   text-align: center;
-  color: rgba(175, 175, 175, 1);
-}
-.active p {
-  color: white;
+
+  color: black;
 }
 
 .buttontest {

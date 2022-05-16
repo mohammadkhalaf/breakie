@@ -4,43 +4,41 @@ import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
 
-
 const Breakie = () => {
   const { activities } = useContext(AppContext);
   const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
-   
+  const [loading, setLoading] = useState(false);
 
   const getRandom = async () => {
-      //Random Breakie
-      const randomElement: DocumentData =
-        activities[Math.floor(Math.random() * activities.length)];
-      setData(activities);
-      setRandom(randomElement);
-  }
-  
+    //Random Breakie
+    setLoading(true);
+    const randomElement: DocumentData =
+      activities[Math.floor(Math.random() * activities.length)];
+    setData(activities);
+    setRandom(randomElement);
+    setLoading(false);
+  };
 
   useEffect(() => {
-    getRandom()
-
+    getRandom();
   }, [activities]);
 
   let randomUrl;
   if (random && random.URL) {
-    console.log(`${random.URL}`)
+    console.log(`${random.URL}`);
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video
-   const newURL=random.URL.replace("watch?v=","embed/");
-    
-  randomUrl=
-     random && random.URL.includes('youtube') ? ( 
-       
-       <embed src= {newURL}    width="100%"  type='video/mp4' height='100%'></embed>
-        //"https://www.youtube.com/embed/i8n1gSw_o_8" 
-         ) : (
+    const newURL = random.URL.replace('watch?v=', 'embed/');
+
+    randomUrl =
+      random && random.URL.includes('youtube') ? (
+        <embed src={newURL} width='100%' type='video/mp4' height='100%'></embed>
+      ) : (
+        //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
-  
   }
+
   return (
     <>
       {random ? (
@@ -60,9 +58,7 @@ const Breakie = () => {
               </div>
             </div>
 
-            <div className={classes.image}>
-             {randomUrl} 
-            </div>
+            <div className={classes.image}>{randomUrl}</div>
             <div className={classes.description}>
               <p>{random.desc}</p>
             </div>

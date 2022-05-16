@@ -20,20 +20,24 @@
   left: 0px;
   top: 86px;
   margin: 0 0 0.3rem 0;
-  padding: 0;
+  padding: 0 0.8rem;
   display: flex;
   align-items: center;
+
+  border-bottom: 1px solid #8c8c8c;
 }
 
-.list__item::after {
+/* .list__item::after {
   content: '';
   position: absolute;
-  width: 280px;
+
   height: 0px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  margin-left: -16px;
+
+  left: 0;
   margin-top: 30px;
-}
+  border: 4px solid red;
+  width: 100%;
+} */
 .filterlist input[type='checkbox'] {
   width: 20px;
   height: 20px;
@@ -44,20 +48,3 @@
 .filterlist input[type='checkbox']:checked {
   display: block;
 }
-/* .choose {
-  width: 11rem;
-  padding: 16px;
-  margin: 7rem auto;
-  background: rgba(34, 34, 34, 0.9);
-  box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  font-family: 'Fira Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 25px;
-  align-items: center;
-  text-align: center;
-  color: #fbfbfb;
-  order: 0;
-} */

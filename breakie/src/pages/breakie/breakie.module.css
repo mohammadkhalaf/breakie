@@ -9,7 +9,7 @@
   width: 85rem;
   height: 47.9rem;
   background-color: white;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   top: 100px;
 }
 .header {
@@ -34,7 +34,7 @@
 }
 .info img {
   width: 2.5rem;
-  height:  2.5rem;
+  height: 2.5rem;
 }
 .type {
   display: flex;
@@ -49,7 +49,7 @@
   letter-spacing: 0em;
   text-align: center;
   color: rgba(255, 255, 255, 1);
-  margin-left: .9rem;
+  margin-left: 0.9rem;
 }
 .time {
   font-family: Fira Sans;
@@ -79,8 +79,8 @@
   height: 8rem;
   background-color: #fff;
   padding: 4rem 5.5rem;
-  border-bottom-left-radius:  .4rem;
-  border-bottom-right-radius: .4rem;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
 }
 .description p {
   font-family: Fira Sans;
