@@ -16,12 +16,6 @@ const InputBrakie = () => {
     setName(e.target.value);
   };
 
-  // const changeHandler = (e) => {
-  //   setActivity(e.target.value);
-  // };
-  // const timeHandler = (e) => {
-  //   setTime(e.target.value);
-  // };
   const urlHandler = (e) => {
     setURL(e.target.value);
   };
@@ -67,75 +61,6 @@ const InputBrakie = () => {
               </div>
 
               <div className={classes.activities}>
-                {/* <div
-                  className={
-                    activity === 'fysisk'
-                      ? `${classes.formcontrol} ${classes.active} `
-                      : classes.formcontrol
-                  }
-                >
-                  <label htmlFor='fysisk'>
-                    <input
-                      checked={isChecked}
-                      type='checkbox'
-                      id='fysisk'
-                      onChange={changeHandler}
-                      name='activity'
-                      value='fysisk'
-                    />
-                    <img
-                      src={activity === 'fysisk' ? picactive : fysisk}
-                      alt=''
-                    />
-                    <span>fysisk</span>
-                  </label>
-                </div> */}
-                {/* <div
-                  className={
-                    activity === 'mental'
-                      ? `${classes.formcontrol} ${classes.active} `
-                      : classes.formcontrol
-                  }
-                >
-                  <label htmlFor='mental'>
-                    <input
-                      checked={isChecked}
-                      type='checkbox'
-                      id='mental'
-                      onChange={changeHandler}
-                      name='activity'
-                      value='mental'
-                    />
-                    <img
-                      src={activity === 'mental' ? mentalactive : mental}
-                      alt=''
-                    />
-                    <span>mental</span>
-                  </label>
-                </div> */}
-                {/* <div
-                  className={
-                    activity === 'social'
-                      ? `${classes.formcontrol} ${classes.active} `
-                      : classes.formcontrol
-                  }
-                >
-                  <label htmlFor='social'>
-                    <input
-                      checked={isChecked}
-                      type='checkbox'
-                      id='social'
-                      onChange={changeHandler}
-                      value='social'
-                      name='social'
-                    />
-                    <img
-                      src={activity === 'social' ? socialactive : social}
-                      alt=''
-                    />
-                    <span>social</span>
-                  </label>
-                </div> */}
                 <div
                   className={
                     activity === 'fysisk'
@@ -175,74 +100,7 @@ const InputBrakie = () => {
               <div className={classes.nameLabel}>
                 <span>Tidsåtgång</span>
               </div>
-              {/* <div className={classes.activities}>
-                <div
-                  className={
-                    time === '1'
-                      ? `${classes.formcontrol} ${classes.active} `
-                      : classes.formcontrol
-                  }
-                >
-                  <label htmlFor='1' className={classes.tidinfo}>
-                    <input
-                      type='checkbox'
-                      checked={isChecked}
-                      id='1'
-                      onChange={timeHandler}
-                      value='1'
-                      name='1'
-                    />
-                    <div>
-                      <p> &#60; 1</p>
-                    </div>
-                    <span>minut</span>
-                  </label>
-                </div>
-                <div
-                  className={
-                    time === '2'
-                      ? `${classes.formcontrol} ${classes.active} `
-                      : classes.formcontrol
-                  }
-                >
-                  <label htmlFor='2' className={classes.tidinfo}>
-                    <input
-                      type='checkbox'
-                      checked={isChecked}
-                      id='2'
-                      onChange={timeHandler}
-                      value='2'
-                      name='2'
-                    />
-                    <div>
-                      <p> 1-2</p>
-                    </div>
-                    <span>minuter</span>
-                  </label>
-                </div>
-                <div
-                  className={
-                    time === '3'
-                      ? `${classes.formcontrol} ${classes.active} `
-                      : classes.formcontrol
-                  }
-                >
-                  <label htmlFor='3' className={classes.tidinfo}>
-                    <input
-                      type='checkbox'
-                      checked={isChecked}
-                      id='3'
-                      onChange={timeHandler}
-                      value='3'
-                      name='3'
-                    />
-                    <div>
-                      <p>3+</p>
-                    </div>
-                    <span>minuter</span>
-                  </label>
-                </div>
-              </div> */}
+
               <div className={classes.activities}>
                 <div
                   className={
