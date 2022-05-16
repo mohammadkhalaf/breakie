@@ -8,14 +8,6 @@ import close from '../../assets/close.png';
 
 const Overlay = ({ choseList, storedItems }) => {
   const { openOverlay } = useContext(AppContext);
-
-  const fitlereddd = (choseList) => {
-    const filtered = choseList.filter((item) => item.isChecked !== false);
-    return filtered;
-  };
-  const x = fitlereddd(choseList);
-  console.log(x);
-
   const savedItems = localStorage.getItem('Breakies')
     ? JSON.parse(localStorage.getItem('Breakies'))
     : [];
@@ -41,8 +33,9 @@ const Overlay = ({ choseList, storedItems }) => {
     openOverlay();
   };
 
-  const showFavorit = (item) => {
-    storedItems(item);
+  const showFavorit = (items) => {
+    console.log(items);
+    storedItems(items);
     openOverlay();
   };
   const removFromLocalStorage = (item, index) => {
