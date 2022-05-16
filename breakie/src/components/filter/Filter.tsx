@@ -27,8 +27,7 @@ const [localitems, setLocalItems]=useState(Object)
     setLocalItems(items.item);
       const arr:any=items.item.choseList;  
   
-       console.log(items.item.choseList)
-  setChoseList(arr)
+   setChoseList(arr)
   
   arr.map((item:any)=>{
     if(item.type==="fysisk"){
