@@ -21,33 +21,36 @@ const Filter = () => {
   const navigate = useNavigate();
 
   //hämta list from localStorge with checked item
-  const storedItems = (items: any) => {
-    console.log('clicked');
+  const storedItems = (items:any) => {
 
-    const arr: any = items.item.choseList;
 
-    arr.map((item: any) => {
-      if (item.type === 'fysisk') {
+     setChoseList([...items.item.choseList]);
+     let x= items.item;
+     setLocalItems(x)
+     console.log(localitems)
+
+     const arr: any = items.item.choseList;
+        arr.map((item: any) => {
+        if (item.type === 'fysisk') {
         let f: any = [...fysisk];
         let idx: number = f.findIndex((i: any) => i.id === item.id);
-        f[idx].isChecked = !f[idx].isChecked;
-
-        setFysisk(f);
-      } else if (item.type === 'mental') {
+         f[idx].isChecked = true;
+         setFysisk([...f]);
+        
+       } else if (item.type === 'mental') {
         let m: any = [...mental];
         let idx: number = m.findIndex((i: any) => i.id === item.id);
-        m[idx].isChecked = !m[idx].isChecked;
-        setMental(m);
-      } else {
-        let s: any = [...social];
+        m[idx].isChecked = true;
+        setMental([...m]);
+       } else {
+         let s: any = [...social];
         let idx: number = s.findIndex((i: any) => i.id === item.id);
-        s[idx].isChecked = !s[idx].isChecked;
-        setSocial(s);
-      }
-    });
-
-    setLocalItems(items.item);
-    setChoseList([...items.item.choseList]);
+       s[idx].isChecked = true;
+         setSocial([...s]);
+       }
+     });
+  
+   
   };
 
   const closeStoredName = () => {
@@ -82,7 +85,7 @@ const Filter = () => {
     chooseData(choseList);
     navigate('/breakie');
   };
-  console.log('clicked 2');
+  
 
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
@@ -138,8 +141,8 @@ const Filter = () => {
 
   return (
     <>
-      {show && <Overlay choseList={choseList} storedItems={storedItems} />}
-      <div className={classes.wrapper}>
+      {show && <Overlay choseList={choseList} storedItems={storedItems}  />}
+      <div className={classes.wrapper} >
         <div
           className={
             active
@@ -162,12 +165,13 @@ const Filter = () => {
           />
         </div>
 
-        {localitems.name ? (
+        {localitems.name ?  (
           <span className={classes.storedLocal}>
             <img src={close} alt='close' onClick={() => closeStoredName()} />
             <span>{localitems.name}</span>
           </span>
         ) : null}
+        
         <section className={classes.filter_box}>
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>fysisk</h3>
