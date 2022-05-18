@@ -2,7 +2,8 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/activityContext';
 import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
-import pic from '../../assets/pic.svg';
+import fysisk from '../../assets/fysisk.svg';
+import social from '../../assets/social.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Breakie = () => {
@@ -69,6 +70,14 @@ const Breakie = () => {
         <img src={random.URL} alt='breakie-image' />
       );
   }
+   let imgtype;
+  if(random){
+    imgtype=random.type==="fysisk"?(
+    <img src={fysisk} alt='fysisk' />
+    ):
+  (
+    <img src={social} alt='social'/>)
+  }
 
   return (
     <>
@@ -80,7 +89,7 @@ const Breakie = () => {
 
               <div className={classes.info}>
                 <div className={classes.type}>
-                  <img src={pic} alt='' style={{}} />
+                   {imgtype}
                   <span>{random.type}</span>
                 </div>
                 <div>
