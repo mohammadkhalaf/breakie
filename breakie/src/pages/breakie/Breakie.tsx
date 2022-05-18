@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
-  const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
   const [loading, setLoading] = useState(false);
 
@@ -20,11 +19,12 @@ const Breakie = () => {
     setLoading(true);
     const randomElement: DocumentData =
       activities[Math.floor(Math.random() * activities.length)];
-    setData(activities);
     setRandom(randomElement);
-
-    setMinutes(randomElement?.time);
-    setSeconds(0);
+     if (randomElement){
+       setMinutes(randomElement.time);
+       setSeconds(0);
+      }
+    
 
     setLoading(false);
   };
@@ -80,7 +80,7 @@ const Breakie = () => {
 
               <div className={classes.info}>
                 <div className={classes.type}>
-                  <img src={pic} alt='' />
+                  <img src={pic} alt='' style={{}} />
                   <span>{random.type}</span>
                 </div>
                 <div>
