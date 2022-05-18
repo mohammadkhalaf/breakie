@@ -63,14 +63,13 @@ const Breakie = () => {
 
     randomUrl =
       random && random.URL.includes('youtube') ? (
-        <embed src={newURL} width='100%' type='video/mp4' height='100%'  ></embed>
+        <embed src={newURL} width='100%' type='video/mp4' height='100%'></embed>
       ) : (
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
   }
 
-  
   return (
     <>
       {random ? (
@@ -78,8 +77,10 @@ const Breakie = () => {
           <div className={classes.container}>
             <div className={classes.header}>
               <h1>{random.name}</h1>
+
               <div className={classes.info}>
                 <div className={classes.type}>
+                  <img src={pic} alt='' />
                   <span>{random.type}</span>
                 </div>
                 <div>
