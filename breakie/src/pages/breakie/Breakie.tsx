@@ -61,14 +61,15 @@ const Breakie = () => {
   if (random && random.URL) {
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video
     const newURL = random.URL.replace('watch?v=', 'embed/');
-
+          
     randomUrl =
       random && random.URL.includes('youtube') ? (
-        <embed src={newURL} width='100%' type='video/mp4' height='100%'></embed>
+        <embed src={`${newURL}?autoplay=1&mute=1`} width='100%' type='video/mp4' height='100%'></embed>
       ) : (
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
+      console.log(`${newURL}?autoplay=1`)
   }
    let imgtype;
   if(random){
