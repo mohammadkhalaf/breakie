@@ -15,52 +15,62 @@ const Filter = () => {
   const [choseList, setChoseList] = useState(new Array());
   const { chooseData, show } = useContext(AppContext);
   const [active, setActive] = useState(false);
-  const [localitems, setLocalItems] = useState( Object);
+  const [localitems, setLocalItems] = useState(Object);
   const navigate = useNavigate();
 
   //hämta list from localStorge with checked item
-  const storedItems = (items:any) => {
+  const storedItems = (items: any) => {
 
-     closeFavoritList()
-     setChoseList([...items.item.choseList]);
-     setLocalItems(items.item)
-     console.log(localitems)
+    //ta bort checked from gamal favorit list
+    setMental( 
+      mental.map((item: any) => {
+       return { ...item, isChecked: false };
+     }))
+     setFysisk(
+      fysisk.map((item: any) => {
+        return { ...item, isChecked: false };
+      }))
+      setSocial(
+        social.map((item: any) => {
+          return { ...item, isChecked: false };
+        }))
 
-     const arr: any = items.item.choseList;
-        arr.map((item: any) => {
-        if (item.type === 'fysisk') {
+    setChoseList([...items.item.choseList]);
+    setLocalItems(items.item)
+
+    const arr: any = items.item.choseList;
+    arr.map((item: any) => {
+      if (item.type === 'fysisk') {
         let f: any = [...fysisk];
         let idx: number = f.findIndex((i: any) => i.id === item.id);
-         f[idx].isChecked = true;
-         setFysisk([...f]);
-        
-       } else if (item.type === 'mental') {
+        f[idx].isChecked = true;
+        setFysisk([...f]);
+
+      } else if (item.type === 'mental') {
         let m: any = [...mental];
         let idx: number = m.findIndex((i: any) => i.id === item.id);
         m[idx].isChecked = true;
         setMental([...m]);
-       } else {
-         let s: any = [...social];
+      } else {
+        let s: any = [...social];
         let idx: number = s.findIndex((i: any) => i.id === item.id);
-       s[idx].isChecked = true;
-         setSocial([...s]);
-       }
-     });
-  
-   
+        s[idx].isChecked = true;
+        setSocial([...s]);
+      }
+    });
+
+
   };
 
   const closeFavoritList = () => {
     setChoseList([]);
     let s = [...social];
-
     setSocial(
       s.map((item: any) => {
         return { ...item, isChecked: false };
       })
     );
     let f = [...fysisk];
-
     setFysisk(
       f.map((item: any) => {
         return { ...item, isChecked: false };
@@ -68,9 +78,8 @@ const Filter = () => {
     );
 
     let m = [...mental];
-
-    setMental(
-      m.map((item: any) => {
+    setMental( 
+       m.map((item: any) => {
         return { ...item, isChecked: false };
       })
     );
@@ -82,7 +91,7 @@ const Filter = () => {
     chooseData(choseList);
     navigate('/breakie');
   };
-  
+
 
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
@@ -108,7 +117,6 @@ const Filter = () => {
     }
   };
 
-  console.log(choseList);
 
   const removeItem = (item: any) => {
     //uppdate data with isChecked  in usecollection for localstorge then
@@ -132,13 +140,13 @@ const Filter = () => {
     setChoseList(choseList.filter((x: any) => x.id !== item.id));
   };
 
-  const activeBar = () => {
+  const activeSearchBar = () => {
     setActive(!active);
   };
 
   return (
     <>
-      {show && <Overlay choseList={choseList} storedItems={storedItems}  />}
+      {show && <Overlay choseList={choseList} storedItems={storedItems} />}
       <div className={classes.wrapper} >
         <div
           className={
@@ -151,7 +159,7 @@ const Filter = () => {
             src={search}
             alt=''
             className={classes.searchicon}
-            onClick={activeBar}
+            onClick={activeSearchBar}
           />
           <input
             className={classes.search}
@@ -162,19 +170,18 @@ const Filter = () => {
           />
         </div>
 
-        {localitems.name ?  (
+        {localitems.name ? (
           <span className={classes.storedLocal}>
             <img src={close} alt='close' onClick={() => closeFavoritList()} />
             <span>{localitems.name}</span>
           </span>
         ) : null}
-        
+
         <section className={classes.filter_box}>
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>fysisk</h3>
             <ul className={classes.filterlist}>
-              {fysisk &&
-                fysisk
+              {fysisk &&  fysisk
                   .filter((item: any) => item.name.includes(searchField))
                   .map((item: any) => {
                     return (
@@ -191,8 +198,7 @@ const Filter = () => {
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>mental</h3>
             <ul className={classes.filterlist}>
-              {mental &&
-                mental
+              {mental && mental
                   .filter((item: any) => item.name.includes(searchField))
                   .map((item: any) => {
                     return (
@@ -209,8 +215,7 @@ const Filter = () => {
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>social</h3>
             <ul className={classes.filterlist}>
-              {social &&
-                social
+              {social &&  social
                   .filter((item: any) => item.name.includes(searchField))
                   .map((item: any) => {
                     return (

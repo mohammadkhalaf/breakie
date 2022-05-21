@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import classes from './listitem.module.css';
 
- 
-const ListItem = ({ item, saveData,removeItem}) => {
-const changeHandler = (e, item) => {
-  if(!item.isChecked){
-    saveData(item);
-  }else{
-    removeItem(item)
-  }
+
+const ListItem = ({ item, saveData, removeItem }) => {
+  const changeHandler = (e, item) => {
+    if (!item.isChecked) {
+      saveData(item);
+    } else {
+      removeItem(item)
+    }
   };
   return (
     <>

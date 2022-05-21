@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import mental from '../assets/mental.svg';
-import fysisk from '../assets/fysisk.svg';
-import social from '../assets/social.svg';
+import mental from '../../assets/mental.svg';
+import fysisk from '../../assets/fysisk.svg';
+import social from '../../assets/social.svg';
 import classes from './InputBrakie.module.css';
-import { db } from '../backend/firebase';
+import { db } from '../../backend/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 const InputBrakie = () => {
   const [activity, setActivity] = useState('');

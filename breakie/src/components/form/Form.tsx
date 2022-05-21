@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import mental from '../assets/mental.svg';
-import fysisk from '../assets/fysisk.svg';
-import social from '../assets/social.svg';
+import mental from '../../assets/mental.svg';
+import fysisk from '../../assets/fysisk.svg';
+import social from '../../assets/social.svg';
 import classes from './form.module.css';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/activityContext';
+import { AppContext } from '../../context/activityContext';
 import {
   collection,
   query,
@@ -12,17 +12,14 @@ import {
   getDocs,
   DocumentData,
 } from 'firebase/firestore';
-import { db } from '../backend/firebase';
+import { db } from '../../backend/firebase';
 const Form = () => {
   const [activity, setActivity] = useState('');
   const [time, setTime] = useState('');
   const { getData } = useContext(AppContext);
   const getbreakie = async () => {
     if (activity.length) {
-      const q1 = query(
-        collection(db, 'Breakies'),
-        where('type', '==', activity)
-      );
+      const q1 = query( collection(db, 'Breakies'),   where('type', '==', activity)  );
       const breakieSnapshot = await getDocs(q1);
       const breakielist: DocumentData[] = breakieSnapshot.docs
         .map((doc) => doc.data())

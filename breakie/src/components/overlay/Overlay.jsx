@@ -34,7 +34,6 @@ const Overlay = ({ choseList, storedItems }) => {
   };
 
   const showFavorit = (items) => {
-    console.log(items);
     storedItems(items);
     openOverlay();
   };

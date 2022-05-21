@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
   collection,
   getDocs,
-  DocumentData,
   where,
   query,
 } from 'firebase/firestore';

@@ -21,11 +21,11 @@ const Breakie = () => {
     const randomElement: DocumentData =
       activities[Math.floor(Math.random() * activities.length)];
     setRandom(randomElement);
-     if (randomElement){
-       setMinutes(randomElement.time);
-       setSeconds(0);
-      }
-    
+    if (randomElement) {
+      setMinutes(randomElement.time);
+      setSeconds(0);
+    }
+
 
     setLoading(false);
   };
@@ -36,6 +36,8 @@ const Breakie = () => {
   }, []);
 
   useEffect(() => {
+
+    //Timer countdown
     let s = seconds;
     let m = minutes;
     const int = setInterval(() => {
@@ -61,7 +63,7 @@ const Breakie = () => {
   if (random && random.URL) {
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video
     const newURL = random.URL.replace('watch?v=', 'embed/');
-          
+
     randomUrl =
       random && random.URL.includes('youtube') ? (
         <embed src={`${newURL}?autoplay=1&mute=1`} width='100%' type='video/mp4' height='100%'></embed>
@@ -69,20 +71,22 @@ const Breakie = () => {
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
-      console.log(`${newURL}?autoplay=1`)
+    console.log(`${newURL}?autoplay=1`)
   }
-   let imgtype;
-  if(random && random.type=="fysisk"){
-    imgtype=
-    <img src={fysisk} alt='fysisk' />
+
+  //Type icon in breakie header
+  let imgtype;
+  if (random && random.type == "fysisk") {
+    imgtype =
+      <img src={fysisk} alt='fysisk' />
   }
-  else if( random && random.type=="social"){
-    imgtype=
-    <img src={social} alt='social'/>
+  else if (random && random.type == "social") {
+    imgtype =
+      <img src={social} alt='social' />
   }
-  else{
-    imgtype=
-    <img src={mental} alt='social'/>
+  else {
+    imgtype =
+      <img src={mental} alt='social' />
   }
 
   return (
@@ -95,7 +99,7 @@ const Breakie = () => {
 
               <div className={classes.info}>
                 <div className={classes.type}>
-                   {imgtype}
+                  {imgtype}
                   <span>{random.type}</span>
                 </div>
                 <div>

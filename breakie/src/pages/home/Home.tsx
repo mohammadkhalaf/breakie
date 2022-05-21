@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/Form';
+import Form from '../../components/form/Form';
 import classes from './home.module.css';
 
 const Home = () => {
