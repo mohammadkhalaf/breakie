@@ -15,18 +15,15 @@ const Filter = () => {
   const [choseList, setChoseList] = useState(new Array());
   const { chooseData, show } = useContext(AppContext);
   const [active, setActive] = useState(false);
-
-  const [localitems, setLocalItems] = useState(Object);
-
+  const [localitems, setLocalItems] = useState( Object);
   const navigate = useNavigate();
 
   //hämta list from localStorge with checked item
   const storedItems = (items:any) => {
 
-
+     closeFavoritList()
      setChoseList([...items.item.choseList]);
-     let x= items.item;
-     setLocalItems(x)
+     setLocalItems(items.item)
      console.log(localitems)
 
      const arr: any = items.item.choseList;
@@ -53,7 +50,7 @@ const Filter = () => {
    
   };
 
-  const closeStoredName = () => {
+  const closeFavoritList = () => {
     setChoseList([]);
     let s = [...social];
 
@@ -167,7 +164,7 @@ const Filter = () => {
 
         {localitems.name ?  (
           <span className={classes.storedLocal}>
-            <img src={close} alt='close' onClick={() => closeStoredName()} />
+            <img src={close} alt='close' onClick={() => closeFavoritList()} />
             <span>{localitems.name}</span>
           </span>
         ) : null}

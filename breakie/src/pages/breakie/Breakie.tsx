@@ -4,13 +4,13 @@ import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import fysisk from '../../assets/fysisk.svg';
 import social from '../../assets/social.svg';
+import mental from '../../assets/mental.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
   const [random, setRandom] = useState(Object);
   const [loading, setLoading] = useState(false);
-
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const navigate = useNavigate();
@@ -72,12 +72,17 @@ const Breakie = () => {
       console.log(`${newURL}?autoplay=1`)
   }
    let imgtype;
-  if(random){
-    imgtype=random.type==="fysisk"?(
+  if(random && random.type=="fysisk"){
+    imgtype=
     <img src={fysisk} alt='fysisk' />
-    ):
-  (
-    <img src={social} alt='social'/>)
+  }
+  else if( random && random.type=="social"){
+    imgtype=
+    <img src={social} alt='social'/>
+  }
+  else{
+    imgtype=
+    <img src={mental} alt='social'/>
   }
 
   return (
