@@ -4,7 +4,6 @@ import { db } from '../backend/firebase';
 
 const useCollection = (col) => {
   const [allBreakies, setAll] = useState(Array);
-  
   const getAllbreakie = async () => {
   let all=[];
   const querySnapshot = await getDocs(collection(db, 'Breakies'));
@@ -13,7 +12,6 @@ const useCollection = (col) => {
   });
   setAll(all);
 }
-
   useEffect(() => {
     getAllbreakie();
   }, [col]);

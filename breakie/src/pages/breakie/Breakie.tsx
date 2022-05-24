@@ -55,6 +55,7 @@ const Breakie = () => {
       clearInterval(int);
     };
   }, [random]);
+  
   useEffect(() => {
     getRandom();
   }, [activities]);

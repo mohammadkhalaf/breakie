@@ -18,10 +18,12 @@ const Filter = () => {
   const navigate = useNavigate();
 
   //hämta list from localStorge with checked item
-  const storedItems = (items: any) => {
+  const showFavoriteItems = (items: any) => {
     //ta bort checked from gamal favorit list
-
+   
+    console.log(3)
     setChoseList([...items.item.choseList]);
+    console.log(4)
     setLocalItems(items.item)
     const arr: any = items.item.choseList;
     arr.map((item: any) => {
@@ -29,17 +31,19 @@ const Filter = () => {
       let idx: number = A.findIndex((i: any) => i.id === item.id);
       A[idx].isChecked = true;
       setAll([...A]);
-    });
+    })
+    
   };
 
   const closeFavoritList = () => {
-    setChoseList([]);
+    setChoseList([])
     let A = [...allBreakies];
     setAll(
       A.map((item: any) => {
         return { ...item, isChecked: false };
       })
     );
+
     setLocalItems({});
   };
 
@@ -51,7 +55,6 @@ const Filter = () => {
 
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
-
     setChoseList([...choseList, { ...item, isChecked: !item.isChecked }]);
     let A: any = [...allBreakies];
     let idx: number = A.findIndex((i: any) => i.id === item.id);
@@ -61,7 +64,6 @@ const Filter = () => {
 
 
   const removeItem = (item: any) => {
-
     let A: any = [...allBreakies];
     let idx: number = A.findIndex((i: any) => i.id === item.id);
     A[idx].isChecked = !A[idx].isChecked;
@@ -72,10 +74,10 @@ const Filter = () => {
   const activeSearchBar = () => {
     setActive(!active);
   };
-
+ console.log(choseList)
   return (
     <>
-      {show && <Overlay choseList={choseList} storedItems={storedItems} />}
+      {show && <Overlay choseList={choseList} showFavoriteItems={showFavoriteItems}  removeItem={removeItem}/>}
       <div className={classes.wrapper} >
         <div
           className={
