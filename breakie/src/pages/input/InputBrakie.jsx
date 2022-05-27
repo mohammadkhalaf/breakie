@@ -159,7 +159,7 @@ const InputBrakie = () => {
             ></textarea>
           </div>
         </form>
-        <button onClick={submitHandler} type='submit'>
+        <button onClick={submitHandler} className={classes.button} type='submit'>
           Skapa breakien
         </button>
       </div>

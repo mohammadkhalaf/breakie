@@ -17,7 +17,7 @@ const ListItem = ({ item, saveData, removeItem }) => {
           <input
             onChange={(e) => changeHandler(e, item)}
             checked={item.isChecked}
-            type='checkbox'
+            type='checkbox'  
           />
           {item.name}
         </label>

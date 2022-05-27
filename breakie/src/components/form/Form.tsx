@@ -125,7 +125,7 @@ const Form = () => {
         </div>
 
         <button className={classes.button}>
-          {activity ? 'Slumpa fram en breakie' : 'Välj specifik Breakie'}
+          {activity &&time ?  'Slumpa fram en breakie' : 'Välj specifik Breakie'}
         </button>
       </form>
     </>
