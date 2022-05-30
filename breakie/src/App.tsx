@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import { Route, Routes } from 'react-router';
 import Manuall from './pages/Manuall';
 import Breakie from './pages/breakie/Breakie';
-import InputBrakie from './pages/InputBrakie';
+import InputBrakie from './pages/input/InputBrakie';
 import './App.css';
 import Menu from './components/menu/menu';
 import Overlay from './components/overlay/Overlay'

@@ -35,11 +35,15 @@
 .info img {
   width: 2.5rem;
   height: 2.5rem;
+  filter: invert(1);
+  
 }
+
 .type {
   display: flex;
   align-items: center;
   margin-right: 2rem;
+ 
 }
 .container span {
   font-family: Fira Sans;

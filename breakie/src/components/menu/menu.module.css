@@ -22,7 +22,7 @@ border-radius: 4px;
  background-color:#FFFFFF;
 }
 .menu_icon:hover{
-background-color:rgba(238, 238, 238, 1);
+background-color:rgb(242,242,242,1);
 }
 .menu_button{
  outline:none;

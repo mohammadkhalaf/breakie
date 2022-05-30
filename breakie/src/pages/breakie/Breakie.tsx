@@ -2,18 +2,15 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/activityContext';
 import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
-import pic from '../../assets/pic.svg';
 import fysisk from '../../assets/fysisk.svg';
-import mental from '../../assets/mental.svg';
 import social from '../../assets/social.svg';
+import mental from '../../assets/mental.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
-  // const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
   const [loading, setLoading] = useState(false);
-
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [img, setImg] = useState('');
@@ -25,12 +22,11 @@ const Breakie = () => {
     setLoading(true);
     const randomElement: DocumentData =
       activities[Math.floor(Math.random() * activities.length)];
-    // setData(activities);
     setRandom(randomElement);
-
-    setMinutes(randomElement?.time);
-    setSeconds(0);
-    console.log(random);
+    if (randomElement) {
+      setMinutes(randomElement.time);
+      setSeconds(0);
+    }
 
     setLoading(false);
   };
@@ -43,6 +39,7 @@ const Breakie = () => {
   };
 
   useEffect(() => {
+    //Timer countdown
     let s = seconds;
     let m = minutes;
     const int = setInterval(() => {
@@ -60,6 +57,7 @@ const Breakie = () => {
       clearInterval(int);
     };
   }, [random]);
+
   useEffect(() => {
     getRandom();
   }, [activities]);
@@ -71,11 +69,27 @@ const Breakie = () => {
 
     randomUrl =
       random && random.URL.includes('youtube') ? (
-        <embed src={newURL} width='100%' type='video/mp4' height='100%'></embed>
+        <embed
+          src={`${newURL}?autoplay=1&mute=1`}
+          width='100%'
+          type='video/mp4'
+          height='100%'
+        ></embed>
       ) : (
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
+    console.log(`${newURL}?autoplay=1`);
+  }
+
+  //Type icon in breakie header
+  let imgtype;
+  if (random && random.type == 'fysisk') {
+    imgtype = <img src={fysisk} alt='fysisk' />;
+  } else if (random && random.type == 'social') {
+    imgtype = <img src={social} alt='social' />;
+  } else {
+    imgtype = <img src={mental} alt='social' />;
   }
   console.log(mental);
 
@@ -89,7 +103,7 @@ const Breakie = () => {
 
               <div className={classes.info}>
                 <div className={classes.type}>
-                  <img src={img} alt='' />
+                  {imgtype}
                   <span>{random.type}</span>
                 </div>
                 <div>

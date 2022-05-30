@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import mental from '../assets/mental.svg';
-import fysisk from '../assets/fysisk.svg';
-import social from '../assets/social.svg';
+import mental from '../../assets/mental.svg';
+import fysisk from '../../assets/fysisk.svg';
+import social from '../../assets/social.svg';
 import classes from './InputBrakie.module.css';
-import { db } from '../backend/firebase';
+import { db } from '../../backend/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import Modal from '../components/Modal/Modal';
 const InputBrakie = () => {
@@ -173,7 +173,7 @@ const InputBrakie = () => {
             ></textarea>
           </div>
         </form>
-        <button onClick={submitHandler} type='submit'>
+        <button onClick={submitHandler} className={classes.button} type='submit'>
           Skapa breakien
         </button>
       </div>

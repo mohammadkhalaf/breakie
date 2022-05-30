@@ -1,5 +1,4 @@
-import React, { createContext, useEffect, useReducer, useState } from 'react';
-import useFetch from '../hooks/useFetch';
+import React, { createContext, useReducer, useState } from 'react';
 
 export const AppContext = createContext();
 
@@ -17,9 +16,9 @@ const initialState = {
 };
 
 const AppProvider = ({ children }) => {
-const [state, dispatch] = useReducer(reducer, initialState);
-const [show, setShow] = useState(false);
-const openOverlay = () => {setShow(!show);};
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [show, setShow] = useState(false);
+  const openOverlay = () => { setShow(!show); };
 
 
 
@@ -27,12 +26,11 @@ const openOverlay = () => {setShow(!show);};
     dispatch({ type: 'SET_DATA', payload: data });
   };
   const chooseData = (data) => {
-    dispatch({ type: 'CHOOSE_DATA', payload: data});
-    console.log(data);
+    dispatch({ type: 'CHOOSE_DATA', payload: data });
   };
 
   return (
-    <AppContext.Provider value={{ ...state, getData, chooseData,openOverlay,show}}>
+    <AppContext.Provider value={{ ...state, getData, chooseData, openOverlay, show }}>
       {children}
     </AppContext.Provider>
   );
