@@ -24,7 +24,7 @@ const InputBrakie = () => {
   const instrctionHandler = (e) => {
     setInstruction(e.target.value);
   };
-  const closeOverlay = () => {
+  const closeModal = () => {
     setShowModal(false);
     setName('');
     setTime('');
@@ -35,13 +35,13 @@ const InputBrakie = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (!activity || !time || !URL || !instruction || !name) {
+    if (!activity || !time || !instruction || !name) {
       console.log('please provide all value');
     }
 
     try {
-      if (activity && time  && instruction && name) {
-       await addDoc(collection(db, 'Breakies'), {
+      if (activity && time && instruction && name) {
+        await addDoc(collection(db, 'Breakies'), {
           type: activity,
           desc: instruction,
           time,
@@ -57,7 +57,7 @@ const InputBrakie = () => {
 
   return (
     <>
-      {showModal && <Modal closeOverlay={closeOverlay} name={name} />}
+      {showModal && <Modal closeModal={closeModal} name={name} />}
       <div className={classes.form}>
         <form onSubmit={submitHandler}>
           <div className={classes.header}>

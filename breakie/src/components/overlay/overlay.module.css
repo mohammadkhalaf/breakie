@@ -44,9 +44,9 @@
   margin: 100px auto;
   top: 30rem;
 }
-.listInfo{
-  width:25rem;
-  height:5rem;
+.listInfo {
+  width: 25rem;
+  height: 5rem;
 }
 .listname {
   color: white;
@@ -129,4 +129,20 @@
   align-items: center;
 
   margin-top: 1.6rem;
+}
+.msgalert {
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: white;
+  margin-left: 1rem;
+  font-family: Fira Sans;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
 }
