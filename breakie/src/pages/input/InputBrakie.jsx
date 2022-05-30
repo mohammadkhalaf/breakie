@@ -5,7 +5,7 @@ import social from '../../assets/social.svg';
 import classes from './InputBrakie.module.css';
 import { db } from '../../backend/firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import Modal from '../components/Modal/Modal';
+import Modal from '../../components/Modal/Modal';
 const InputBrakie = () => {
   const [activity, setActivity] = useState('');
 
@@ -38,6 +38,7 @@ const InputBrakie = () => {
     if (!activity || !time || !URL || !instruction || !name) {
       console.log('please provide all value');
     }
+
     try {
       if (activity && time && URL && instruction && name) {
         await addDoc(collection(db, 'Breakies'), {
@@ -47,8 +48,8 @@ const InputBrakie = () => {
           name,
           URL,
         });
+        setShowModal(true);
       }
-      setShowModal(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -173,7 +174,11 @@ const InputBrakie = () => {
             ></textarea>
           </div>
         </form>
-        <button onClick={submitHandler} className={classes.button} type='submit'>
+        <button
+          onClick={submitHandler}
+          className={classes.button}
+          type='submit'
+        >
           Skapa breakien
         </button>
       </div>
