@@ -3,16 +3,21 @@ import { AppContext } from '../../context/activityContext';
 import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import pic from '../../assets/pic.svg';
+import fysisk from '../../assets/fysisk.svg';
+import mental from '../../assets/mental.svg';
+import social from '../../assets/social.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
-  const [data, setData] = useState<DocumentData[] | null>(Array);
+  // const [data, setData] = useState<DocumentData[] | null>(Array);
   const [random, setRandom] = useState(Object);
   const [loading, setLoading] = useState(false);
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const [img, setImg] = useState('');
+
   const navigate = useNavigate();
 
   const getRandom = async () => {
@@ -20,19 +25,22 @@ const Breakie = () => {
     setLoading(true);
     const randomElement: DocumentData =
       activities[Math.floor(Math.random() * activities.length)];
-    setData(activities);
+    // setData(activities);
     setRandom(randomElement);
 
     setMinutes(randomElement?.time);
     setSeconds(0);
+    console.log(random);
 
     setLoading(false);
   };
 
-  const updateRemainingTime = useCallback((s: any, m: any) => {
+  console.log(random);
+
+  const updateRemainingTime = (s: any, m: any) => {
     setSeconds(s);
     setMinutes(m);
-  }, []);
+  };
 
   useEffect(() => {
     let s = seconds;
@@ -69,6 +77,7 @@ const Breakie = () => {
         <img src={random.URL} alt='breakie-image' />
       );
   }
+  console.log(mental);
 
   return (
     <>
@@ -80,7 +89,7 @@ const Breakie = () => {
 
               <div className={classes.info}>
                 <div className={classes.type}>
-                  <img src={pic} alt='' />
+                  <img src={img} alt='' />
                   <span>{random.type}</span>
                 </div>
                 <div>

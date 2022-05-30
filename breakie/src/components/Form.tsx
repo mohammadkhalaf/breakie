@@ -33,7 +33,7 @@ const Form = () => {
   const navigate = useNavigate();
   const submitHandler = (e: any) => {
     e.preventDefault();
-    if (activity && time) {
+    if (activity || time) {
       getbreakie();
       navigate('/breakie');
     } else {
@@ -128,7 +128,9 @@ const Form = () => {
         </div>
 
         <button className={classes.button}>
-          {activity ? 'Slumpa fram en breakie' : 'Välj specifik Breakie'}
+          {activity && time
+            ? 'Slumpa fram en breakie'
+            : 'Välj specifik Breakie'}
         </button>
       </form>
     </>
