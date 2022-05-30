@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { createPortal } from 'react-dom';
 import classes from './overlay.module.css';
 import { AppContext } from '../../context/activityContext';
@@ -35,9 +35,10 @@ const Overlay = ({ choseList, showFavoriteItems, removeItem }) => {
   };
 
   const showFavorit = (items) => {
-    choseList.map((item)=>{removeItem(item);})
+    choseList.map((item)=>{removeItem(item)})
     showFavoriteItems(items);
     openOverlay();
+
   };
   const removFromLocalStorage = (item, index) => {
     let newBreakies = JSON.parse(localStorage.getItem('Breakies'));

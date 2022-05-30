@@ -15,22 +15,40 @@ import {
 import { db } from '../../backend/firebase';
 const Form = () => {
   const [activity, setActivity] = useState('');
+  const [type,setType]=useState(Array)
   const [time, setTime] = useState('');
   const { getData } = useContext(AppContext);
   const getbreakie = async () => {
-    if (activity.length) {
+    if (activity.length  || time.length) {
       const q1 = query( collection(db, 'Breakies'),   where('type', '==', activity)  );
       const breakieSnapshot = await getDocs(q1);
-      const breakielist: DocumentData[] = breakieSnapshot.docs
-        .map((doc) => doc.data())
-        .filter((doc) => doc.time == time);
-      getData(breakielist);
+      const typelist: DocumentData[] = breakieSnapshot.docs
+        .map((doc) => doc.data());
+      
+ 
+     const q2= query( collection(db, 'Breakies'),   where('time', '==', time)  );
+     const timeSnapshot = await getDocs(q2);
+     const timelist: DocumentData[] = timeSnapshot.docs
+       .map((doc) => doc.data());
+
+    if(activity && !time){
+      getData(typelist)
+    }
+   else if(!activity && time){
+    getData(timelist);
+   }
+   else {
+    const  breakielist: DocumentData[] = typelist
+         .filter((doc) => doc.time == time);
+         getData(breakielist)
+   }
+
     }
   };
   const navigate = useNavigate();
   const submitHandler = (e: any) => {
     e.preventDefault();
-    if (activity && time) {
+    if (activity || time) {
       getbreakie();
       navigate('/breakie');
     } else {
@@ -38,6 +56,17 @@ const Form = () => {
     }
   };
 
+  let types:String[]=[];
+  const Toggle=(x:any)=>{
+  if(!types.includes(x)) { 
+  types.push(x);
+  console.log(types)
+  }
+  // else if(types.findIndex(x)){
+  //   types.splice(x);
+  //   console.log(types)
+  // }
+  }
   return (
     <>
       <form className={classes.form} onSubmit={submitHandler}>
@@ -51,7 +80,7 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => setActivity('fysisk')}
+            onClick={() => Toggle("fysisk")}
           >
             <img src={fysisk} alt='fysisk' />
             <span>fysisk</span>
@@ -62,7 +91,7 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => setActivity('mental')}
+            onClick={() => Toggle('mental')}
           >
             <img src={mental} alt='mental' />
             <span>mental</span>
@@ -73,7 +102,7 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => setActivity('social')}
+            onClick={() => Toggle('social')}
           >
             <img src={social} alt='social' />
             <span>social</span>
@@ -125,7 +154,7 @@ const Form = () => {
         </div>
 
         <button className={classes.button}>
-          {activity &&time ?  'Slumpa fram en breakie' : 'Välj specifik Breakie'}
+          {activity|| time ?  'Slumpa fram en breakie' : 'Välj specifik Breakie'}
         </button>
       </form>
     </>

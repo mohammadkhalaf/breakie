@@ -26,7 +26,6 @@ const Breakie = () => {
       setSeconds(0);
     }
 
-
     setLoading(false);
   };
 
@@ -55,7 +54,7 @@ const Breakie = () => {
       clearInterval(int);
     };
   }, [random]);
-  
+
   useEffect(() => {
     getRandom();
   }, [activities]);
@@ -72,7 +71,23 @@ const Breakie = () => {
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
-    console.log(`${newURL}?autoplay=1`)
+  }
+  else {
+
+    if (random && random.type == "fysisk") {
+      randomUrl =
+        <img src={fysisk} alt='fysisk' />
+    }
+    else if (random && random.type == "social") {
+      randomUrl =
+        <img src={social} alt='social' />
+    }
+    else {
+      randomUrl =
+
+        <img src={mental} alt='social' />
+    }
+
   }
 
   //Type icon in breakie header
@@ -117,7 +132,12 @@ const Breakie = () => {
             <div className={classes.description}>
               <p>{random.desc}</p>
             </div>
+
+            <div>
+              <button className={classes.avsluta}>Avsluta breakien</button>
+            </div>
           </div>
+
         </div>
       ) : (
         'loading'

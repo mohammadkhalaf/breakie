@@ -26,8 +26,8 @@ const InputBrakie = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      if (activity && time && URL && instruction && name) {
-        const docRef = await addDoc(collection(db, 'Breakies'), {
+      if (activity && time  && instruction && name) {
+       await addDoc(collection(db, 'Breakies'), {
           type: activity,
           desc: instruction,
           time,
