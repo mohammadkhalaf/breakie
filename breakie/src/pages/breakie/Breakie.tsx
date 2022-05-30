@@ -13,6 +13,8 @@ const Breakie = () => {
   const [loading, setLoading] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const [img, setImg] = useState('');
+
   const navigate = useNavigate();
 
   const getRandom = async () => {
@@ -29,13 +31,14 @@ const Breakie = () => {
     setLoading(false);
   };
 
-  const updateRemainingTime = useCallback((s: any, m: any) => {
+  console.log(random);
+
+  const updateRemainingTime = (s: any, m: any) => {
     setSeconds(s);
     setMinutes(m);
-  }, []);
+  };
 
   useEffect(() => {
-
     //Timer countdown
     let s = seconds;
     let m = minutes;
@@ -66,7 +69,12 @@ const Breakie = () => {
 
     randomUrl =
       random && random.URL.includes('youtube') ? (
-        <embed src={`${newURL}?autoplay=1&mute=1`} width='100%' type='video/mp4' height='100%'></embed>
+        <embed
+          src={`${newURL}?autoplay=1&mute=1`}
+          width='100%'
+          type='video/mp4'
+          height='100%'
+        ></embed>
       ) : (
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
@@ -92,18 +100,14 @@ const Breakie = () => {
 
   //Type icon in breakie header
   let imgtype;
-  if (random && random.type == "fysisk") {
-    imgtype =
-      <img src={fysisk} alt='fysisk' />
+  if (random && random.type == 'fysisk') {
+    imgtype = <img src={fysisk} alt='fysisk' />;
+  } else if (random && random.type == 'social') {
+    imgtype = <img src={social} alt='social' />;
+  } else {
+    imgtype = <img src={mental} alt='social' />;
   }
-  else if (random && random.type == "social") {
-    imgtype =
-      <img src={social} alt='social' />
-  }
-  else {
-    imgtype =
-      <img src={mental} alt='social' />
-  }
+  console.log(mental);
 
   return (
     <>

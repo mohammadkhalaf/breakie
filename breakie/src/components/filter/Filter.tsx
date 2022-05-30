@@ -20,23 +20,22 @@ const Filter = () => {
   //hämta list from localStorge with checked item
   const showFavoriteItems = (items: any) => {
     //ta bort checked from gamal favorit list
-   
-    console.log(3)
+
+    console.log(3);
     setChoseList([...items.item.choseList]);
-    console.log(4)
-    setLocalItems(items.item)
+    console.log(4);
+    setLocalItems(items.item);
     const arr: any = items.item.choseList;
     arr.map((item: any) => {
       let A: any = [...allBreakies];
       let idx: number = A.findIndex((i: any) => i.id === item.id);
       A[idx].isChecked = true;
       setAll([...A]);
-    })
-    
+    });
   };
 
   const closeFavoritList = () => {
-    setChoseList([])
+    setChoseList([]);
     let A = [...allBreakies];
     setAll(
       A.map((item: any) => {
@@ -52,7 +51,6 @@ const Filter = () => {
     navigate('/breakie');
   };
 
-
   const saveData = (item: any) => {
     //save data in state for slump breakir from manuall
     setChoseList([...choseList, { ...item, isChecked: !item.isChecked }]);
@@ -61,7 +59,6 @@ const Filter = () => {
     A[idx].isChecked = !A[idx].isChecked;
     setAll(A);
   };
-
 
   const removeItem = (item: any) => {
     let A: any = [...allBreakies];
@@ -74,11 +71,17 @@ const Filter = () => {
   const activeSearchBar = () => {
     setActive(!active);
   };
- console.log(choseList)
+  console.log(choseList);
   return (
     <>
-      {show && <Overlay choseList={choseList} showFavoriteItems={showFavoriteItems}  removeItem={removeItem}/>}
-      <div className={classes.wrapper} >
+      {show && (
+        <Overlay
+          choseList={choseList}
+          showFavoriteItems={showFavoriteItems}
+          removeItem={removeItem}
+        />
+      )}
+      <div className={classes.wrapper}>
         <div
           className={
             active
@@ -97,73 +100,82 @@ const Filter = () => {
             placeholder=''
             type='text'
             value={searchField}
-            onChange={(e) => { setSearchField(e.target.value) }}
+            onChange={(e) => {
+              setSearchField(e.target.value);
+            }}
           />
         </div>
 
         {localitems.name ? (
-          <span className={classes.storedLocal} onClick={() => closeFavoritList()}>
+          <span
+            className={classes.storedLocal}
+            onClick={() => closeFavoritList()}
+          >
             <img src={close} alt='close' onClick={() => closeFavoritList()} />
             <span>{localitems.name}</span>
           </span>
         ) : null}
 
         <section className={classes.filter_box}>
-
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>fysisk</h3>
             <ul className={classes.filterlist}>
-              {allBreakies && allBreakies.filter((item: any) => item.type == "fysisk")
-                .filter((item: any) => item.name.includes(searchField))
-                .map((item: any) => {
-                  return (
-                    <ListItem
-                      key={item.id}
-                      item={item}
-                      saveData={saveData}
-                      removeItem={removeItem}
-                    />
-                  );
-                })}
+              {allBreakies &&
+                allBreakies
+                  .filter((item: any) => item.type == 'fysisk')
+                  .filter((item: any) => item.name.includes(searchField))
+                  .map((item: any) => {
+                    return (
+                      <ListItem
+                        key={item.id}
+                        item={item}
+                        saveData={saveData}
+                        removeItem={removeItem}
+                      />
+                    );
+                  })}
             </ul>
           </article>
 
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>mental</h3>
             <ul className={classes.filterlist}>
-              {allBreakies && allBreakies.filter((item: any) => item.type == "mental")
-                .filter((item: any) => item.name.includes(searchField))
-                .map((item: any) => {
-                  return (
-                    <ListItem
-                      key={item.id}
-                      item={item}
-                      saveData={saveData}
-                      removeItem={removeItem}
-                    />
-                  );
-                })}
+              {allBreakies &&
+                allBreakies
+                  .filter((item: any) => item.type == 'mental')
+                  .filter((item: any) => item.name.includes(searchField))
+                  .map((item: any) => {
+                    return (
+                      <ListItem
+                        key={item.id}
+                        item={item}
+                        saveData={saveData}
+                        removeItem={removeItem}
+                      />
+                    );
+                  })}
             </ul>
           </article>
 
           <article className={classes.flex_item}>
             <h3 className={classes.filterTitle}>social</h3>
             <ul className={classes.filterlist}>
-              {allBreakies && allBreakies.filter((item: any) => item.type == "social")
-                .filter((item: any) => item.name.includes(searchField))
-                .map((item: any) => {
-                  return (
-                    <ListItem
-                      key={item.id}
-                      item={item}
-                      saveData={saveData}
-                      removeItem={removeItem}
-                    />
-                  );
-                })}
+              {allBreakies &&
+                allBreakies
+                  .filter((item: any) => item.type == 'social')
+                  .filter((item: any) => item.name.includes(searchField))
+                  .map((item: any) => {
+                    return (
+                      <ListItem
+                        key={item.id}
+                        item={item}
+                        saveData={saveData}
+                        removeItem={removeItem}
+                      />
+                    );
+                  })}
             </ul>
           </article>
-
         </section>
 
         <button
