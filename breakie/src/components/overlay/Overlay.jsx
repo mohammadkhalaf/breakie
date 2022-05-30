@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import classes from './overlay.module.css';
 import { AppContext } from '../../context/activityContext';
