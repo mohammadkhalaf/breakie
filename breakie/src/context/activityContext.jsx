@@ -18,9 +18,9 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [show, setShow] = useState(false);
-  const openOverlay = () => { setShow(!show); };
-
-
+  const toggleOverlay = () => {
+    setShow(!show);
+  };
 
   const getData = (data) => {
     dispatch({ type: 'SET_DATA', payload: data });
@@ -30,7 +30,9 @@ const AppProvider = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ ...state, getData, chooseData, openOverlay, show }}>
+    <AppContext.Provider
+      value={{ ...state, getData, chooseData, toggleOverlay, show }}
+    >
       {children}
     </AppContext.Provider>
   );
