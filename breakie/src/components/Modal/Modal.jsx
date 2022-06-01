@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import classes from './modal.module.css';
@@ -10,9 +10,14 @@ const Modal = ({
   addTolocal,
   remove,
   itemname,
-
-  removeFromLocalStroate,
+  removeFromLocalStroate, 
+  breakie,
+  breakieend,
 }) => {
+
+  
+  
+
   const inputBreakie = useRef(null);
   const add = () => {
     if (inputBreakie.current.value) {
@@ -42,10 +47,17 @@ const Modal = ({
     if (name) {
       return <p className={classes.msg}>Du har nu skapat breakien </p>;
     }
+    if(breakie){
+      return <p className={classes.start}>Läs instruktionerna noggrannt och notera tidsåtgången. </p>;
+    }
+    // if(breakieend){
+    //   return <p className={classes.end}>Heja! </p>;
+    // }
   };
 
+ 
   return createPortal(
-    <div className={classes.overlay}>
+    <div className={breakie?  `${classes.overlay} ${classes.breakie} `:    classes.overlay}>
       <div className={classes.modal}>
         {msg()}
         <h1>{name}</h1>
@@ -61,9 +73,10 @@ const Modal = ({
 
         {remove && <h2>Är du säker på det? </h2>}
         <div className={classes.overlayBtnBox}>
+          {remove &&
           <button className={classes.closebtn} onClick={() => closeModal()}>
             {name ? 'Okej' : 'Avbryt!'}
-          </button>
+          </button>}
 
           {localStorage && (
             <button className={classes.closebtn} onClick={() => add()}>
@@ -75,6 +88,17 @@ const Modal = ({
               jadå!
             </button>
           )}
+          
+        {breakie &&   <h1 className={classes.starttitle}>Är ni redo ? </h1>}
+        {breakie&& (
+         <button className={classes.closebtn} onClick={() => closeModal()}>
+         Nu kör vi!
+       </button>)}
+       {/* {breakieend && (
+         <button className={classes.closebtn} onClick={() => breakieend() }>
+         tillbaka till lektionen
+       </button>)} */}
+
         </div>
       </div>
     </div>,

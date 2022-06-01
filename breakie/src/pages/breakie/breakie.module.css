@@ -1,11 +1,11 @@
 .wrapper {
   display: flex;
-  position: relative;
+   position: relative; 
   display: flex;
   justify-content: center;
 }
 .container {
-  position: absolute;
+  position: absolute;  
   width: 85rem;
   height: 47.9rem;
   background-color: white;
@@ -108,4 +108,7 @@
   margin-left: 35rem;
   margin-top: 7rem;
   border:none;
+}
+.activ{
+  color:red;
 }

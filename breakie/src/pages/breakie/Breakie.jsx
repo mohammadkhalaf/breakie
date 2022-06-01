@@ -1,11 +1,12 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/activityContext';
-import { DocumentData } from 'firebase/firestore';
+// import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import fysisk from '../../assets/fysisk.svg';
 import social from '../../assets/social.svg';
 import mental from '../../assets/mental.svg';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../../components/Modal/Modal';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
@@ -14,16 +15,20 @@ const Breakie = () => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [img, setImg] = useState('');
-
+  const [activ, setActiv]=useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [breakiestart,setBreakiestart]=useState(false)
   const navigate = useNavigate();
 
   const getRandom = async () => {
+    console.log(showModal)
+    setShowModal(true)
     //Random Breakie
     setLoading(true);
-    const randomElement: DocumentData =
+    const randomElement =
       activities[Math.floor(Math.random() * activities.length)];
     setRandom(randomElement);
-    if (randomElement) {
+    if (randomElement ) {
       setMinutes(randomElement.time);
       setSeconds(0);
     }
@@ -33,7 +38,20 @@ const Breakie = () => {
 
   console.log(random);
 
-  const updateRemainingTime = (s: any, m: any) => {
+ //close modal 
+ const closeModal = () => {
+  setShowModal(false);
+  
+};
+const breakie=()=>{
+  setBreakiestart(true)
+}
+const breakieend=()=>{
+ navigate('/')
+}
+
+
+  const updateRemainingTime = (s, m) => {
     setSeconds(s);
     setMinutes(m);
   };
@@ -48,7 +66,11 @@ const Breakie = () => {
         m--;
         s = 59;
         if (m < 0) {
-          navigate('/');
+          m=0;
+          if(s=0){
+            s=0;
+            setActiv(true)
+          }
         }
       }
       updateRemainingTime(s, m);
@@ -56,7 +78,7 @@ const Breakie = () => {
     return () => {
       clearInterval(int);
     };
-  }, [random]);
+  } , [random]);
 
   useEffect(() => {
     getRandom();
@@ -82,11 +104,11 @@ const Breakie = () => {
   }
   else {
 
-    if (random && random.type == "fysisk") {
+    if (random && random.type === "fysisk") {
       randomUrl =
         <img src={fysisk} alt='fysisk' />
     }
-    else if (random && random.type == "social") {
+    else if (random && random.type === "social") {
       randomUrl =
         <img src={social} alt='social' />
     }
@@ -100,9 +122,9 @@ const Breakie = () => {
 
   //Type icon in breakie header
   let imgtype;
-  if (random && random.type == 'fysisk') {
+  if (random && random.type === 'fysisk') {
     imgtype = <img src={fysisk} alt='fysisk' />;
-  } else if (random && random.type == 'social') {
+  } else if (random && random.type === 'social') {
     imgtype = <img src={social} alt='social' />;
   } else {
     imgtype = <img src={mental} alt='social' />;
@@ -111,6 +133,7 @@ const Breakie = () => {
 
   return (
     <>
+     
       {random ? (
         <div className={classes.wrapper}>
           <div className={classes.container}>
@@ -132,13 +155,15 @@ const Breakie = () => {
               </div>
             </div>
 
-            <div className={classes.image}>{randomUrl}</div>
+            <div className={classes.image}>{randomUrl}
+            {showModal &&   <Modal    closeModal={closeModal} breakie={breakie} breakieend={breakieend}  />}
+            </div>
             <div className={classes.description}>
               <p>{random.desc}</p>
             </div>
 
             <div>
-              <button className={classes.avsluta}>Avsluta breakien</button>
+              <button className={activ ? `${classes.activ}`: classes.avsluta} onClick={()=>navigate('/end')}>Avsluta breakien</button>
             </div>
           </div>
 
