@@ -37,6 +37,8 @@ const Form = () => {
      const timeSnapshot = await getDocs(q2);
      const timelist: DocumentData[] = timeSnapshot.docs
        .map((doc) => doc.data());
+     
+
 
     if(activity && !time){
       getData(typelist)
@@ -64,14 +66,14 @@ const Form = () => {
   };
 
   const activChoose=(choose:any)=>{
-    let t=timesArray.find((item)=>item===choose)
+   
     let y=type.find((item)=>item===choose)
    if (y){
      setActivity(choose)
    }
-  
+   let t=timesArray.find((item)=>item===choose)
    if (t){
-     setActivity(choose)
+     setTime(choose)
     
     }
   }
@@ -90,7 +92,8 @@ const Form = () => {
     console.log(type)
     console.log(A[idx])
     setIsToggle(!istoggle)
-  }
+  }}
+  const Toggletime=(x:any)=>{
    if(!timesArray.includes(x)) { 
     timesArray.push(x);
     activChoose(x);
@@ -104,6 +107,7 @@ const Form = () => {
       console.log(B[idx])
       setIsToggle(!istoggle)
     }
+  
 
   }
 
@@ -159,7 +163,7 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => Toggle('1')}
+            onClick={() => Toggletime('1')}
           >
             <div className={classes.tidinfo}>
               <p> &#60; 1</p>
@@ -172,7 +176,7 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => Toggle('2')}
+            onClick={() => Toggletime('2')}
           >
             <div className={classes.tidinfo}>
               <p> 1-2</p>
@@ -185,7 +189,7 @@ const Form = () => {
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => Toggle('3')}
+            onClick={() => Toggletime('3')}
           >
             <div className={classes.tidinfo}>
               <p>3+</p>

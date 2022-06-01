@@ -72,7 +72,7 @@ const Modal = ({
         )}
 
         {remove && <h2>Är du säker på det? </h2>}
-        <div className={classes.overlayBtnBox}>
+        <div className={breakie?  `${classes.breakiee} `: classes.overlayBtnBox}>
           {remove &&
           <button className={classes.closebtn} onClick={() => closeModal()}>
             {name ? 'Okej' : 'Avbryt!'}
@@ -89,11 +89,14 @@ const Modal = ({
             </button>
           )}
           
-        {breakie &&   <h1 className={classes.starttitle}>Är ni redo ? </h1>}
+       
         {breakie&& (
+          <>
+           <h1 className={classes.starttitle}>Är ni redo ? </h1>
          <button className={classes.closebtn} onClick={() => closeModal()}>
          Nu kör vi!
-       </button>)}
+       </button></>)
+       }
        {/* {breakieend && (
          <button className={classes.closebtn} onClick={() => breakieend() }>
          tillbaka till lektionen
