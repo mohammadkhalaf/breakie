@@ -15,34 +15,38 @@ import {
 import { db } from '../../backend/firebase';
 const Form = () => {
   const [activity, setActivity] = useState('');
-  const [type,setType]=useState(Array)
+  const [type, setType] = useState(Array);
   const [time, setTime] = useState('');
   const { getData } = useContext(AppContext);
+  const [active, setActive] = useState(false);
+  const [xxx, setxxx] = useState([]);
   const getbreakie = async () => {
-    if (activity.length  || time.length) {
-      const q1 = query( collection(db, 'Breakies'),   where('type', '==', activity)  );
+    if (activity.length || time.length) {
+      const q1 = query(
+        collection(db, 'Breakies'),
+        where('type', '==', activity)
+      );
       const breakieSnapshot = await getDocs(q1);
-      const typelist: DocumentData[] = breakieSnapshot.docs
-        .map((doc) => doc.data());
-      
- 
-     const q2= query( collection(db, 'Breakies'),   where('time', '==', time)  );
-     const timeSnapshot = await getDocs(q2);
-     const timelist: DocumentData[] = timeSnapshot.docs
-       .map((doc) => doc.data());
+      const typelist: DocumentData[] = breakieSnapshot.docs.map((doc) =>
+        doc.data()
+      );
 
-    if(activity && !time){
-      getData(typelist)
-    }
-   else if(!activity && time){
-    getData(timelist);
-   }
-   else {
-    const  breakielist: DocumentData[] = typelist
-         .filter((doc) => doc.time == time);
-         getData(breakielist)
-   }
+      const q2 = query(collection(db, 'Breakies'), where('time', '==', time));
+      const timeSnapshot = await getDocs(q2);
+      const timelist: DocumentData[] = timeSnapshot.docs.map((doc) =>
+        doc.data()
+      );
 
+      if (activity && !time) {
+        getData(typelist);
+      } else if (!activity && time) {
+        getData(timelist);
+      } else {
+        const breakielist: DocumentData[] = typelist.filter(
+          (doc) => doc.time == time
+        );
+        getData(breakielist);
+      }
     }
   };
   const navigate = useNavigate();
@@ -56,17 +60,23 @@ const Form = () => {
     }
   };
 
-  let types:String[]=[];
-  const Toggle=(x:any)=>{
-  if(!types.includes(x)) { 
-  types.push(x);
-  console.log(types)
+  let types: String[] = [];
+  const Toggle = (x: any) => {
+    types.push(x);
+  
+  };
+
+  function myFunction() {
+    var element: any = document.getElementsByClassName(classes.formcontrol);
+    console.log(
+      element.map((i: any) => {
+        console.log(i);
+      })
+    );
+
+    // element.classList.toggle('active');
   }
-  // else if(types.findIndex(x)){
-  //   types.splice(x);
-  //   console.log(types)
-  // }
-  }
+
   return (
     <>
       <form className={classes.form} onSubmit={submitHandler}>
@@ -75,19 +85,29 @@ const Form = () => {
         </div>
         <div className={classes.activities}>
           <div
+            // className={
+            //   activity === 'fysisk'
+            //     ? `${classes.formcontrol} ${classes.active} `
+            //     : classes.formcontrol
+            // }
             className={
-              activity === 'fysisk'
+              activity === 'fysisk' && active
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
-            onClick={() => Toggle("fysisk")}
+            onClick={() => Toggle('fysisk')}
           >
             <img src={fysisk} alt='fysisk' />
             <span>fysisk</span>
           </div>
           <div
+            // className={
+            //   activity === 'mental'
+            //     ? `${classes.formcontrol} ${classes.active} `
+            //     : classes.formcontrol
+            // }
             className={
-              activity === 'mental'
+              activity === 'mental' && active
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
@@ -97,8 +117,13 @@ const Form = () => {
             <span>mental</span>
           </div>
           <div
+            // className={
+            //   activity === 'social'
+            //     ? `${classes.formcontrol} ${classes.active} `
+            //     : classes.formcontrol
+            // }
             className={
-              activity === 'social'
+              activity === 'social' && active
                 ? `${classes.formcontrol} ${classes.active} `
                 : classes.formcontrol
             }
@@ -154,7 +179,9 @@ const Form = () => {
         </div>
 
         <button className={classes.button}>
-          {activity|| time ?  'Slumpa fram en breakie' : 'Välj specifik Breakie'}
+          {activity || time
+            ? 'Slumpa fram en breakie'
+            : 'Välj specifik Breakie'}
         </button>
       </form>
     </>

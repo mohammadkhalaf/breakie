@@ -6,6 +6,7 @@ import fysisk from '../../assets/fysisk.svg';
 import social from '../../assets/social.svg';
 import mental from '../../assets/mental.svg';
 import { useNavigate } from 'react-router-dom';
+import Alert from '../../components/Alert/Alert';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
@@ -14,6 +15,8 @@ const Breakie = () => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [img, setImg] = useState('');
+  const [start, setStart] = useState(true);
+  const [end, setEnd] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,32 +34,42 @@ const Breakie = () => {
     setLoading(false);
   };
 
-  console.log(random);
+  // console.log(random);
 
   const updateRemainingTime = (s: any, m: any) => {
     setSeconds(s);
     setMinutes(m);
   };
 
-  useEffect(() => {
-    //Timer countdown
+  const timer = () => {
     let s = seconds;
+
     let m = minutes;
+
     const int = setInterval(() => {
       s--;
-      if (s < 0) {
-        m--;
+      if (s <= 0) {
         s = 59;
+        m--;
+        if (seconds == 55) {
+          console.log('s');
+        }
         if (m < 0) {
-          navigate('/');
+          s = 0;
+          m = 0;
+
+          setEnd(true);
+          clearInterval(int);
         }
       }
+
       updateRemainingTime(s, m);
     }, 1000);
+
     return () => {
       clearInterval(int);
     };
-  }, [random]);
+  };
 
   useEffect(() => {
     getRandom();
@@ -79,23 +92,14 @@ const Breakie = () => {
         //"https://www.youtube.com/embed/i8n1gSw_o_8"
         <img src={random.URL} alt='breakie-image' />
       );
-  }
-  else {
-
-    if (random && random.type == "fysisk") {
-      randomUrl =
-        <img src={fysisk} alt='fysisk' />
+  } else {
+    if (random && random.type == 'fysisk') {
+      randomUrl = <img src={fysisk} alt='fysisk' />;
+    } else if (random && random.type == 'social') {
+      randomUrl = <img src={social} alt='social' />;
+    } else {
+      randomUrl = <img src={mental} alt='social' />;
     }
-    else if (random && random.type == "social") {
-      randomUrl =
-        <img src={social} alt='social' />
-    }
-    else {
-      randomUrl =
-
-        <img src={mental} alt='social' />
-    }
-
   }
 
   //Type icon in breakie header
@@ -107,7 +111,11 @@ const Breakie = () => {
   } else {
     imgtype = <img src={mental} alt='social' />;
   }
-  console.log(mental);
+  // console.log(mental);
+  const startBreakie = () => {
+    setStart(false);
+    timer();
+  };
 
   return (
     <>
@@ -124,7 +132,7 @@ const Breakie = () => {
                 </div>
                 <div>
                   <span className={classes.time}>
-                    0{minutes}:{seconds < 10 ? 0 : null}
+                    {minutes}:{seconds < 10 ? 0 : null}
                     {seconds}
                   </span>
                   <span>minuter</span>
@@ -132,16 +140,31 @@ const Breakie = () => {
               </div>
             </div>
 
-            <div className={classes.image}>{randomUrl}</div>
+            <div className={classes.image}>
+              {start && <Alert startBreakie={startBreakie} />}
+
+              {randomUrl}
+            </div>
             <div className={classes.description}>
               <p>{random.desc}</p>
             </div>
 
             <div>
-              <button className={classes.avsluta}>Avsluta breakien</button>
+              {!start && (
+                <button
+                  disabled={!end}
+                  onClick={() => console.log('clickable')}
+                  className={
+                    end
+                      ? `${classes.avsluta} ${classes.active} `
+                      : classes.avsluta
+                  }
+                >
+                  Avsluta breakien
+                </button>
+              )}
             </div>
           </div>
-
         </div>
       ) : (
         'loading'
