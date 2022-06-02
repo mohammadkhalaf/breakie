@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../../backend/firebase';
 const Form = () => {
+
   const [activity, setActivity] = useState('');
   const [type,setType]=useState (new Array)
 
@@ -24,36 +25,28 @@ const Form = () => {
   
   const { getData } = useContext(AppContext);
  
-
+/////////////////////Firebase ////////////////////
   const getbreakie = async () => {
-    if (activity.length  || time.length) {
-      const q1 = query( collection(db, 'Breakies'),   where('type', 'in', type)  );
+    if (type.length ) {
+     
+      const q1 = query( collection(db, 'Breakies'),   where('type', 'in', type )  );
       const breakieSnapshot = await getDocs(q1);
       const typelist: DocumentData[] = breakieSnapshot.docs
         .map((doc) => doc.data());
       console.log(typelist)
- 
+      getData(typelist)
+    }
+    else if(timesArray.length){
      const q2= query( collection(db, 'Breakies'),   where('time', 'in', timesArray)  );
      const timeSnapshot = await getDocs(q2);
      const timelist: DocumentData[] = timeSnapshot.docs
        .map((doc) => doc.data());
+       getData(timelist)
      
-
-
-    if(activity && !time){
-      getData(typelist)
-    }
-   else if(!activity && time){
-    getData(timelist);
-   }
-   else {
-    const  breakielist: DocumentData[] = typelist
-         .filter((doc) => doc.time == timesArray);
-         getData(breakielist)
-   }
 
     }
   };
+  /////////////////////////////////////////////////////////////77
   const navigate = useNavigate();
   const submitHandler = (e: any) => {
     e.preventDefault();
@@ -64,9 +57,8 @@ const Form = () => {
       navigate('/manuall');
     }
   };
-
+//////////////////////////////////////////////////////////////////7
   const activChoose=(choose:any)=>{
-   
     let y=type.find((item)=>item===choose)
    if (y){
      setActivity(choose)
@@ -81,33 +73,26 @@ const Form = () => {
   const Toggle=(x:any)=>{
   if(!type.includes(x)) { 
   type.push(x);
-  console.log(type)
   activChoose(x);
-  console.log(true)
   }
   else{
     let A: any = [...type];
     let idx: number = A.findIndex((i: any) => i === x);
     type.splice(idx)
-    console.log(type)
-    console.log(A[idx])
     setIsToggle(!istoggle)
   }}
+  
   const Toggletime=(x:any)=>{
    if(!timesArray.includes(x)) { 
     timesArray.push(x);
     activChoose(x);
-    console.log(timesArray)
     }
     else{
       let B: any = [...timesArray];
       let idx: number = B.findIndex((i: any) => i === x);
       timesArray.splice(idx)
-      console.log(timesArray)
-      console.log(B[idx])
       setIsToggle(!istoggle)
     }
-  
 
   }
 
@@ -199,7 +184,7 @@ const Form = () => {
         </div>
 
         <button className={classes.button}>
-          {activity || time ?  'Slumpa fram en breakie' : 'Välj specifik Breakie'}
+          {type.length || timesArray.length ?  'Slumpa fram en breakie' : 'Välj specifik Breakie'}
         </button>
       </form>
     </>

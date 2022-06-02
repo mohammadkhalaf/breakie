@@ -24,6 +24,7 @@ const AppProvider = ({ children }) => {
 
   const getData = (data) => {
     dispatch({ type: 'SET_DATA', payload: data });
+    console.log(data)
   };
   const chooseData = (data) => {
     dispatch({ type: 'CHOOSE_DATA', payload: data });

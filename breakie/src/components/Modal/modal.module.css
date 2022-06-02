@@ -7,33 +7,7 @@
   width: 100%;
   z-index: 2;
 }
-.breakie{
-  position: absolute;
-  opacity: .95;
-  width:85rem;
-  height: 47.9rem;
-  margin:10% 20% 60% 20%;
-}
-.start{
-  width: 40.4rem;
-  font-family: 'Fira Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #FFFFFF;
-}
-.starttitle{
-  font-family: 'Fira Sans';
- font-style: normal;
- font-weight: 700;
- font-size: 2.4rem;
- line-height: 3.6rem;
- margin-bottom:2rem;
-}
+
 .modal {
   /* position: relative; */
 
@@ -92,9 +66,7 @@ h1 {
   justify-content: center;
   width: 40rem;
 }
-.breakiee{
 
-}
 h2 {
   color: #fff;
   font-size: 2.4rem;

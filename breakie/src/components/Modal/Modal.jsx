@@ -11,8 +11,7 @@ const Modal = ({
   remove,
   itemname,
   removeFromLocalStroate, 
-  breakie,
-  breakieend,
+
 }) => {
 
   
@@ -47,17 +46,11 @@ const Modal = ({
     if (name) {
       return <p className={classes.msg}>Du har nu skapat breakien </p>;
     }
-    if(breakie){
-      return <p className={classes.start}>Läs instruktionerna noggrannt och notera tidsåtgången. </p>;
-    }
-    // if(breakieend){
-    //   return <p className={classes.end}>Heja! </p>;
-    // }
   };
 
  
   return createPortal(
-    <div className={breakie?  `${classes.overlay} ${classes.breakie} `:    classes.overlay}>
+    <div className={ classes.overlay}>
       <div className={classes.modal}>
         {msg()}
         <h1>{name}</h1>
@@ -72,7 +65,7 @@ const Modal = ({
         )}
 
         {remove && <h2>Är du säker på det? </h2>}
-        <div className={breakie?  `${classes.breakiee} `: classes.overlayBtnBox}>
+        <div className={classes.overlayBtnBox}>
           {remove &&
           <button className={classes.closebtn} onClick={() => closeModal()}>
             {name ? 'Okej' : 'Avbryt!'}
@@ -89,18 +82,7 @@ const Modal = ({
             </button>
           )}
           
-       
-        {breakie&& (
-          <>
-           <h1 className={classes.starttitle}>Är ni redo ? </h1>
-         <button className={classes.closebtn} onClick={() => closeModal()}>
-         Nu kör vi!
-       </button></>)
-       }
-       {/* {breakieend && (
-         <button className={classes.closebtn} onClick={() => breakieend() }>
-         tillbaka till lektionen
-       </button>)} */}
+      
 
         </div>
       </div>
