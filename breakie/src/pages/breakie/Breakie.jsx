@@ -6,7 +6,8 @@ import fysisk from '../../assets/fysisk.svg';
 import social from '../../assets/social.svg';
 import mental from '../../assets/mental.svg';
 import { useNavigate } from 'react-router-dom';
-
+import Modal from '../../components/Modal/Modal';
+import End from '../../components/Breakieend/End';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
@@ -16,10 +17,13 @@ const Breakie = () => {
   const [minutes, setMinutes] = useState(0);
   const [img, setImg] = useState('');
   const [activ, setActiv]=useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [breakiestart,setBreakiestart]=useState(false)
   const navigate = useNavigate();
 
   const getRandom = async () => {
-   
+    console.log(showModal)
+    setShowModal(true)
     //Random Breakie
     setLoading(true);
     const randomElement =
@@ -35,9 +39,17 @@ const Breakie = () => {
 
   console.log(random);
 
-
-
-
+ //close modal 
+ const closeModal = () => {
+  setShowModal(false);
+  
+};
+const breakie=()=>{
+  setBreakiestart(true)
+}
+const breakieend=()=>{
+ navigate('/')
+}
 
 
   const updateRemainingTime = (s, m) => {
@@ -58,7 +70,7 @@ const Breakie = () => {
           m=0;
           if(s=0){
             s=0;
-            setActiv(true)
+            
           }
         }
       }
@@ -72,7 +84,6 @@ const Breakie = () => {
   useEffect(() => {
     getRandom();
   }, [activities]);
-
   let randomUrl;
   if (random && random.URL) {
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video
@@ -122,8 +133,8 @@ const Breakie = () => {
 
   return (
     <>
-     
-      {random ? (
+     <End/> 
+      {/* {random ? (
         <div className={classes.wrapper}>
           <div className={classes.container}>
             <div className={classes.header}>
@@ -145,7 +156,7 @@ const Breakie = () => {
             </div>
 
             <div className={classes.image}>{randomUrl}
-         
+            {showModal &&   <Modal    closeModal={closeModal} breakie={breakie} breakieend={breakieend}  />}
             </div>
             <div className={classes.description}>
               <p>{random.desc}</p>
@@ -159,7 +170,7 @@ const Breakie = () => {
         </div>
       ) : (
         'loading'
-      )}
+      )} */}
     </>
   );
 };
