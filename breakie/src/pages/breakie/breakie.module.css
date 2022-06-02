@@ -1,16 +1,16 @@
 .wrapper {
   display: flex;
-   position: relative; 
+  position: relative;
   display: flex;
   justify-content: center;
 }
 .container {
-  position: absolute;  
+  position: absolute;
   width: 85rem;
   height: 47.9rem;
   background-color: white;
   border-radius: 0.4rem;
-  top: 100px;
+  top: 10rem;
 }
 .header {
   background: rgba(34, 34, 34, 1);
@@ -145,12 +145,9 @@
   text-align: center;
   color: #fbfbfb;
   margin-left: 35rem;
-  margin-top: 7rem;
+  margin-top: 3rem;
   border: none;
 }
 .avsluta.active {
   background: rgba(34, 34, 34, 0.8);
-}
-.activ{
-  color:red;
 }
