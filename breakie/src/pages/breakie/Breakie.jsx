@@ -133,8 +133,8 @@ const breakieend=()=>{
 
   return (
     <>
-     <End/> 
-      {/* {random ? (
+     
+      {random ? (
         <div className={classes.wrapper}>
           <div className={classes.container}>
             <div className={classes.header}>
@@ -170,7 +170,7 @@ const breakieend=()=>{
         </div>
       ) : (
         'loading'
-      )} */}
+      )}
     </>
   );
 };
