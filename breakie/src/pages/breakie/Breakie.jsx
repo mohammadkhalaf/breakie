@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/activityContext';
-import { DocumentData } from 'firebase/firestore';
+// import { DocumentData } from 'firebase/firestore';
 import classes from './breakie.module.css';
 import fysisk from '../../assets/fysisk.svg';
 import social from '../../assets/social.svg';
@@ -23,7 +23,7 @@ const Breakie = () => {
   const getRandom = async () => {
     //Random Breakie
     setLoading(true);
-    const randomElement: DocumentData =
+    const randomElement =
       activities[Math.floor(Math.random() * activities.length)];
     setRandom(randomElement);
     if (randomElement) {
@@ -36,7 +36,7 @@ const Breakie = () => {
 
   // console.log(random);
 
-  const updateRemainingTime = (s: any, m: any) => {
+  const updateRemainingTime = (s, m) => {
     setSeconds(s);
     setMinutes(m);
   };
@@ -93,9 +93,9 @@ const Breakie = () => {
         <img src={random.URL} alt='breakie-image' />
       );
   } else {
-    if (random && random.type == 'fysisk') {
+    if (random && random.type === 'fysisk') {
       randomUrl = <img src={fysisk} alt='fysisk' />;
-    } else if (random && random.type == 'social') {
+    } else if (random && random.type === 'social') {
       randomUrl = <img src={social} alt='social' />;
     } else {
       randomUrl = <img src={mental} alt='social' />;
@@ -104,9 +104,9 @@ const Breakie = () => {
 
   //Type icon in breakie header
   let imgtype;
-  if (random && random.type == 'fysisk') {
+  if (random && random.type === 'fysisk') {
     imgtype = <img src={fysisk} alt='fysisk' />;
-  } else if (random && random.type == 'social') {
+  } else if (random && random.type === 'social') {
     imgtype = <img src={social} alt='social' />;
   } else {
     imgtype = <img src={mental} alt='social' />;
