@@ -7,6 +7,8 @@ import social from '../../assets/social.svg';
 import mental from '../../assets/mental.svg';
 import { useNavigate } from 'react-router-dom';
 import Alert from '../../components/Alert/Alert';
+import Modal from '../../components/Modal/Modal';
+import End from '../../components/Breakieend/End';
 
 const Breakie = () => {
   const { activities } = useContext(AppContext);
@@ -74,7 +76,6 @@ const Breakie = () => {
   useEffect(() => {
     getRandom();
   }, [activities]);
-
   let randomUrl;
   if (random && random.URL) {
     //Ändra URL till new URl som replace embed istället watch?= då funkar youtube video

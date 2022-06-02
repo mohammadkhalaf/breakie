@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import classes from './end.module.css';
 
 const End = () => {
@@ -8,13 +9,12 @@ const navigate=useNavigate();
 const end=()=>{
 navigate('/')
 }
-  return (
+  return createPortal(
     <>
       <div className={classes.end}>
-      <ul>
-            
-      <li className={classes.circle}></li>  
-      <li className={classes.circle}></li>  
+     
+      <section className={classes.colorparty}> 
+          
       <div className={classes.circle}></div>  
       <div className={classes.circle}></div>  
       <div className={classes.circle}></div>  
@@ -25,12 +25,22 @@ navigate('/')
       <div className={classes.circle}></div>  
       <div className={classes.circle}></div>  
       <div className={classes.circle}></div>  
-      <div className={classes.circle}></div>  </ul>  
+      <div className={classes.circle}></div>  
+      <div className={classes.circle}></div>  
+      <div className={classes.circle}></div> 
+      <div className={classes.circle}></div> 
+      <div className={classes.circle}></div> 
+      <div className={classes.circle}></div> 
+      <div className={classes.circle}></div> 
+      
+      </section> 
              
      <h1 className={classes.title}>Heja!</h1>
      <button className={classes.btn} onClick={()=>end()}>Tillbaka till lektionen</button>
       </div>
-    </>
+    </>,  
+    document.getElementById('modal')
+
   );
 };
 
