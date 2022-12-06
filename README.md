@@ -1,5 +1,4 @@
 # BREAKIE FRONTEND / DEV
-#  Här kan du se projketet : https://toolie.se/breakie/
  
 ## användbara länkar
 
